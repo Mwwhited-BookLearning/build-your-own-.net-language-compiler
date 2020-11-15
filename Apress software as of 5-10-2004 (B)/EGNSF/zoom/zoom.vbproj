@@ -108,6 +108,10 @@
       <Project>{a5fde5e9-2dd8-40d4-8183-46e0fee30f5f}</Project>
       <Name>utilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\windowsUtilities\windowsUtilities.vbproj">
+      <Project>{f09bab71-81b4-4b3c-88ed-49c4c7f41536}</Project>
+      <Name>windowsUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="My Project\" />

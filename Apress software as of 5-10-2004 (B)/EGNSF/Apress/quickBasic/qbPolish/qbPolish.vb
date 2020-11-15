@@ -1,17 +1,17 @@
-Option Strict
+Option Strict On
 
 Imports System.Threading
 Public Class qbPolish
 
-' *********************************************************************
-' *                                                                   *
-' * qbPolish     quickBasicEngine: Polish instruction                 *
-' *                                                                   *
-' *                                                                   *
-' * This class represents one instruction to our non-CLR Nutty        *
-' * Professor machine: for more information see qbPolish.DOC.         *  
-' *                                                                   *
-' *********************************************************************
+    ' *********************************************************************
+    ' *                                                                   *
+    ' * qbPolish     quickBasicEngine: Polish instruction                 *
+    ' *                                                                   *
+    ' *                                                                   *
+    ' * This class represents one instruction to our non-CLR Nutty        *
+    ' * Professor machine: for more information see qbPolish.DOC.         *  
+    ' *                                                                   *
+    ' *********************************************************************
 
     ' ***** Shared *****
     Private Shared _INTsequence As Integer
@@ -22,25 +22,25 @@ Public Class qbPolish
     ' --- Class name
     Private Const CLASS_NAME As String = "qbPolish"
     ' --- Easter yEgg
-    Private Const ABOUTINFO As String = _
-        "qbPolish" & _
-        vbNewline & vbNewline & _
-        "This class represents one instruction to our non-CLR Nutty Professor machine." & _
-        vbNewline & vbNewline & _
-        "This class was developed commencing on 6/04/2003 by" & vbNewline & vbNewline & _
-        "Edward G. Nilges" & vbNewLine & _
-        "spinoza1111@yahoo.COM" & vbNewLine & _
+    Private Const ABOUTINFO As String =
+        "qbPolish" &
+        vbNewLine & vbNewLine &
+        "This class represents one instruction to our non-CLR Nutty Professor machine." &
+        vbNewLine & vbNewLine &
+        "This class was developed commencing on 6/04/2003 by" & vbNewLine & vbNewLine &
+        "Edward G. Nilges" & vbNewLine &
+        "spinoza1111@yahoo.COM" & vbNewLine &
         "http://members.screenz.com/edNilges"
     ' --- Inspection
-    Private Const INSPECTION_USABLE As String = _
+    Private Const INSPECTION_USABLE As String =
         "The object must be usable"
-    Private Const INSPECTION_OPVALID As String = _
+    Private Const INSPECTION_OPVALID As String =
         "The operation code can’t be the Invalid enumerator value"
-    Private Const INSPECTION_OPERAND As String = _
+    Private Const INSPECTION_OPERAND As String =
         "The operand must be a .Net scalar"
-    Private Const INSPECTION_STARTINDEXLENGTH As String = _
-        "The start index of the source code for the op must be greater than " & _
-        "0 AND the length must be greater than 0, " & _
+    Private Const INSPECTION_STARTINDEXLENGTH As String =
+        "The start index of the source code for the op must be greater than " &
+        "0 AND the length must be greater than 0, " &
         "or else, both start index and length should be 0"
 
     ' ***** Object State *****
@@ -52,43 +52,43 @@ Public Class qbPolish
         Dim strComment As String             ' Commentary
         Dim intStartIndex As Integer         ' Source code token start index
         Dim intLength As Integer             ' Source code token length
-    End Structure     
-    Private USRstate as TYPstate
-    
+    End Structure
+    Private USRstate As TYPstate
+
     ' ***** Object constructor ****************************************
 
     Public Sub New()
         With USRstate
-            .strName = "qbPolish" & _
-                       _OBJutilities.alignRight(CStr(Interlocked.Increment(_INTsequence)), _
-                                                4, "0")  
+            .strName = "qbPolish" &
+                       _OBJutilities.alignRight(CStr(Interlocked.Increment(_INTsequence)),
+                                                4, "0")
             Dim strTestReport As String
-            .booUsable = True: .booUsable = inspection_                                      
-        End With        
+            .booUsable = True : .booUsable = inspection_()
+        End With
     End Sub
-    
+
     ' ***** Public Procedures *****************************************
-    
+
     ' -----------------------------------------------------------------
     ' Return information about the class
     '
     '
     Public Shared ReadOnly Property About As String
         Get
-            Return(ABOUTINFO)
-        End Get        
-    End Property    
-    
+            Return (ABOUTINFO)
+        End Get
+    End Property
+
     ' -----------------------------------------------------------------
     ' Return name of class
     '
     '
     Public Shared ReadOnly Property ClassName As String
         Get
-            Return(CLASS_NAME)
-        End Get        
-    End Property    
-    
+            Return (CLASS_NAME)
+        End Get
+    End Property
+
     ' -----------------------------------------------------------------
     ' Return and change commentary
     '
@@ -96,12 +96,12 @@ Public Class qbPolish
     Public Property Comment As String
         Get
             If Not checkUsable_("Comment Get") Then Return ""
-            Return(USRstate.strComment)
-        End Get        
+            Return (USRstate.strComment)
+        End Get
         Set(ByVal strNewValue As String)
-            If Not checkUsable_("Comment Set") Then Return 
-            usrstate.strComment = strNewValue
-        End Set        
+            If Not checkUsable_("Comment Set") Then Return
+            USRstate.strComment = strNewValue
+        End Set
     End Property
 
     ' -----------------------------------------------------------------
@@ -119,24 +119,24 @@ Public Class qbPolish
     Public Function inspect(ByRef strReport As String) As Boolean
         With USRstate
             Dim booInspection As Boolean = True
-            strReport = "Inspection of qbPolish instance " & _
-                        _OBJutilities.enquote(.strName) & " " & _
+            strReport = "Inspection of qbPolish instance " &
+                        _OBJutilities.enquote(.strName) & " " &
                         "at " & Now
-            If _OBJutilities.inspectionAppend(strReport, _
-                                              INSPECTION_USABLE, _
-                                              .booUsable, _
+            If _OBJutilities.inspectionAppend(strReport,
+                                              INSPECTION_USABLE,
+                                              .booUsable,
                                               booInspection) Then
-                _OBJutilities.inspectionAppend(strReport, _
-                                                INSPECTION_OPVALID, _
-                                                .enuOpCode <> qbOp.qbOp.ENUop.opInvalid, _
+                _OBJutilities.inspectionAppend(strReport,
+                                                INSPECTION_OPVALID,
+                                                .enuOpCode <> qbOp.qbOp.ENUop.opInvalid,
                                                 booInspection)
-                _OBJutilities.inspectionAppend(strReport, _
-                                                INSPECTION_STARTINDEXLENGTH, _
+                _OBJutilities.inspectionAppend(strReport,
+                                                INSPECTION_STARTINDEXLENGTH,
                                                 .intStartIndex > 0 AndAlso .intLength > 0 _
-                                                OrElse _
-                                                .intStartIndex = 0 AndAlso .intLength = 0, _
-                                                booInspection, _
-                                                "Start index is " & .intStartIndex & ": " & _
+                                                OrElse
+                                                .intStartIndex = 0 AndAlso .intLength = 0,
+                                                booInspection,
+                                                "Start index is " & .intStartIndex & ": " &
                                                 "length is " & .intLength)
             End If
             If Not booInspection Then
@@ -181,34 +181,34 @@ Public Class qbPolish
         Return (object2XML(booHeaderComment, True))
     End Function
     ' --- Allows suppression of both comments   
-    Public Overloads Function object2XML(ByVal booHeaderComment As Boolean, _
+    Public Overloads Function object2XML(ByVal booHeaderComment As Boolean,
                                          ByVal booLineComments As Boolean) _
            As String
         With USRstate
-            Return (_OBJutilities.objectInfo2XML(Me.ClassName, _
-                                   Me.About, _
-                                   booHeaderComment, _
-                                   booLineComments, _
-                                   "booUsable", _
-                                   "Indicates usability of object", _
-                                   CStr(.booUsable), _
-                                   "strName", _
-                                   "Names the object instance", _
-                                   .strName, _
-                                   "enuOpCode", _
-                                   "Identifies the op code", _
-                                   .enuOpCode.ToString, _
-                                   "intStartIndex", _
-                                   "Identifies the first token responsible for this op code", _
-                                   CStr(.intStartIndex), _
-                                   "intLength", _
-                                   "Identifies how many tokens are responsible for this op code", _
-                                   CStr(.intLength), _
-                                   "objOperand", _
-                                   "Identifies the operand (if any)", _
-                                   _OBJutilities.object2String(.objOperand), _
-                                   "strComment", _
-                                   "Comments the opcode", _
+            Return (_OBJutilities.objectInfo2XML(Me.ClassName,
+                                   Me.About,
+                                   booHeaderComment,
+                                   booLineComments,
+                                   "booUsable",
+                                   "Indicates usability of object",
+                                   CStr(.booUsable),
+                                   "strName",
+                                   "Names the object instance",
+                                   .strName,
+                                   "enuOpCode",
+                                   "Identifies the op code",
+                                   .enuOpCode.ToString,
+                                   "intStartIndex",
+                                   "Identifies the first token responsible for this op code",
+                                   CStr(.intStartIndex),
+                                   "intLength",
+                                   "Identifies how many tokens are responsible for this op code",
+                                   CStr(.intLength),
+                                   "objOperand",
+                                   "Identifies the operand (if any)",
+                                   _OBJutilities.object2String(.objOperand),
+                                   "strComment",
+                                   "Comments the opcode",
                                    .strComment))
         End With
     End Function
@@ -289,8 +289,8 @@ Public Class qbPolish
         Set(ByVal intNewValue As Integer)
             If Not checkUsable_("TokenLength Set") Then Return
             If intNewValue < 0 Then
-                errorHandler_("Invalid source length " & intNewValue, _
-                              "TokenLength Set", _
+                errorHandler_("Invalid source length " & intNewValue,
+                              "TokenLength Set",
                               "Not changing object state")
                 Return
             End If
@@ -310,8 +310,8 @@ Public Class qbPolish
         Set(ByVal intNewValue As Integer)
             If Not checkUsable_("TokenStartIndex Set") Then Return
             If intNewValue < 1 Then
-                errorHandler_("Invalid source start index " & intNewValue, _
-                              "SourceStartIndex Set", _
+                errorHandler_("Invalid source start index " & intNewValue,
+                              "SourceStartIndex Set",
                               "Not changing object state")
                 Return
             End If
@@ -328,21 +328,21 @@ Public Class qbPolish
         With Me
             Dim strOperand As String
             If Not _OBJop.isJumpOp(.Opcode) _
-               AndAlso _
+               AndAlso
                Not IsNumeric(strOperand) _
-               AndAlso _
+               AndAlso
                Not _OBJutilities.isQuoted(strOperand) _
-               AndAlso _
+               AndAlso
                Not (.Operand Is Nothing) Then
                 strOperand = _OBJutilities.object2String(.Operand)
-            ElseIf (TypeOf strOperand Is qbVariable.qbVariable) Then
-                strOperand = CType(.Operand, qbVariable.qbVariable).ToString
+            ElseIf (TypeOf .Operand Is qbVariable.qbVariable) Then
+                strOperand = CType(.Operand, qbVariable.qbVariable).toString
             ElseIf Not (.Operand Is Nothing) Then
                 strOperand = CStr(.Operand)
             End If
-            Return (.opcodeToString & " " & _
-                    strOperand & _
-                    CStr(IIf(Trim(.Comment) = "", "", ": ")) & _
+            Return (.opcodeToString & " " &
+                    strOperand &
+                    CStr(IIf(Trim(.Comment) = "", "", ": ")) &
                     .Comment)
         End With
     End Function
@@ -365,9 +365,9 @@ Public Class qbPolish
     '
     Private Function checkUsable_(ByVal strProcedure As String) As Boolean
         If Not USRstate.booUsable Then
-            errorHandler_("Object instance is not usable", _
-                          strProcedure, _
-                          "Returning a default value: making no change to " & _
+            errorHandler_("Object instance is not usable",
+                          strProcedure,
+                          "Returning a default value: making no change to " &
                           "the state of the object")
         End If
         Return (True)
@@ -377,12 +377,12 @@ Public Class qbPolish
     ' Interface to the error handler
     '
     '
-    Private Sub errorHandler_(ByVal strMessage As String, _
-                              ByVal strProcedure As String, _
+    Private Sub errorHandler_(ByVal strMessage As String,
+                              ByVal strProcedure As String,
                               ByVal strHelp As String)
-        _OBJutilities.errorHandler(strMessage, _
-                                   Me.Name, _
-                                   strProcedure, _
+        _OBJutilities.errorHandler(strMessage,
+                                   Me.Name,
+                                   strProcedure,
                                    strHelp)
     End Sub
 
@@ -393,10 +393,10 @@ Public Class qbPolish
     Private Function inspection_() As Boolean
         Dim strReport As String
         If Not Me.inspect(strReport) Then
-            errorHandler_("Internal inspection failed: " & _
-                          vbNewLine & vbNewLine & _
-                          strReport, _
-                          "inspection_", _
+            errorHandler_("Internal inspection failed: " &
+                          vbNewLine & vbNewLine &
+                          strReport,
+                          "inspection_",
                           "Object has been marked unusable")
             Return (False)
         End If

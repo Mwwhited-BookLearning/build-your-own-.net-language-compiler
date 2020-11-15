@@ -825,7 +825,7 @@ Me.ResumeLayout(False)
             AddHandler objQBE.scanEvent, AddressOf scanEventHandler
             AddHandler objQBE.parseEvent, AddressOf parseEventHandler
             AddHandler objQBE.interpretPrintEvent, AddressOf interpretPrintEventHandler
-            AddHandler objQBE.interpretTraceEvent, AddressOf interpretTraceEventHandler
+            ' AddHandler objQBE.interpretTraceEvent, AddressOf interpretTraceEventHandler '''TODO: this may need fixed.
             With objQBE
                 .SourceCode = rules2Basic()
                 .run()

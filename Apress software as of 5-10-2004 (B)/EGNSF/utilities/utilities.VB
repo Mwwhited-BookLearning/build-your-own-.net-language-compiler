@@ -2187,7 +2187,7 @@ Public Class utilities
                 Case ENUdatatype.SignumDatatype
                     If datatype(strInstring, ENUdatatype.ShortDatatype, objValue) Then
                         booDatatypeValue = True
-                        Select Case objValue
+                        Select Case CLng(objValue)
                             Case 1
                             Case 0
                             Case -1
