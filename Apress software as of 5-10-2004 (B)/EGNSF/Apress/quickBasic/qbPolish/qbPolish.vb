@@ -328,14 +328,14 @@ Public Class qbPolish
         With Me
             Dim strOperand As String
             If Not _OBJop.isJumpOp(.Opcode) _
-               AndAlso _
+               AndAlso
                Not IsNumeric(strOperand) _
-               AndAlso _
+               AndAlso
                Not _OBJutilities.isQuoted(strOperand) _
-               AndAlso _
+               AndAlso
                Not (.Operand Is Nothing) Then
                 strOperand = _OBJutilities.object2String(.Operand)
-            ElseIf (TypeOf strOperand Is qbVariable.qbVariable) Then
+            ElseIf (TypeOf .Operand Is qbVariable.qbVariable) Then
                 strOperand = CType(.Operand, qbVariable.qbVariable).ToString
             ElseIf Not (.Operand Is Nothing) Then
                 strOperand = CStr(.Operand)

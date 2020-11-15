@@ -22,10 +22,14 @@
     <OptionStrict>Off</OptionStrict>
     <RootNamespace>qbPolish</RootNamespace>
     <StartupObject />
-    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
     <MyType>Windows</MyType>
-    <UpgradeBackupLocation>C:\Repos\learning\build-your-own-.net-language-compiler\Apress software as of 5-10-2004 (B)\EGNSF\Backup\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <OldToolsVersion>0.0</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -62,14 +66,6 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="qbOp">
-      <Name>qbOp</Name>
-      <HintPath>..\qbOp\bin\qbOp.dll</HintPath>
-    </Reference>
-    <Reference Include="qbVariable">
-      <Name>qbVariable</Name>
-      <HintPath>..\qbVariable\bin\qbVariable.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -78,10 +74,6 @@
     </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
-    </Reference>
-    <Reference Include="utilities">
-      <Name>utilities</Name>
-      <HintPath>..\..\..\utilities\bin\utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +91,23 @@
       <SubType>Code</SubType>
     </Compile>
     <Content Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\utilities\utilities.vbproj">
+      <Project>{a5fde5e9-2dd8-40d4-8183-46e0fee30f5f}</Project>
+      <Name>utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\qbOp\qbOp.vbproj">
+      <Project>{a53b0924-e97b-43f0-9f89-56ee7fc46c94}</Project>
+      <Name>qbOp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\qbVariable\qbVariable.vbproj">
+      <Project>{edc78191-7ca6-42f7-a7e7-b6b164229cbc}</Project>
+      <Name>qbVariable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>

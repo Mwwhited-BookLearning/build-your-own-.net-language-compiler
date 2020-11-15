@@ -1562,9 +1562,14 @@ Public Class qbQuickBasicEngine
     Public Event scanEvent(ByVal objQBsender As qbQuickBasicEngine, _
                            ByVal objToken As qbToken.qbToken)
     Public Event threadStatusChangeEvent(ByVal objQBsender As qbQuickBasicEngine)
-    Public Event userErrorEvent(ByVal objQBsender As qbQuickBasicEngine, _
-                                ByVal strDescription As String, _
+    Public Event userErrorEvent(ByVal objQBsender As qbQuickBasicEngine,
+                                ByVal strDescription As String,
                                 ByVal strHelp As String)
+
+    Public Event interpretTraceEvent(objQBsender As qbQuickBasicEngine,
+                                     intIndex As Integer,
+                                     objStack As Stack,
+                                     colStorage As Collection)
 
     ' ***** Compilation status *****
     Private Enum ENUstatus

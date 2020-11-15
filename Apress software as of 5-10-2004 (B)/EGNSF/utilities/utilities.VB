@@ -1,4 +1,4 @@
-Option Strict
+Option Strict On
 
 Imports System
 Imports Microsoft.VisualBasic
@@ -413,12 +413,12 @@ Imports System.Drawing
 Public Class utilities
 
     ' ***** Easter Egg *****
-    Private Const ABOUTINFO As String = _
-    "This Shared and stateless object exposes a number of utility methods " & _
-    "for development tasks common to Windows and Web applications." & _
-    vbNewline & vbNewline & _
-    "Edward G. Nilges" & vbNewLine & _
-    "spinoza1111@yahoo.COM" & vbNewLine & _
+    Private Const ABOUTINFO As String =
+    "This Shared and stateless object exposes a number of utility methods " &
+    "for development tasks common to Windows and Web applications." &
+    vbNewLine & vbNewLine &
+    "Edward G. Nilges" & vbNewLine &
+    "spinoza1111@yahoo.COM" & vbNewLine &
     "http://members.screenz.com/edNilges"
 
     ' ***** Alignment *****
@@ -427,14 +427,14 @@ Public Class utilities
         alignCenter = 2
         alignRight = 3
     End Enum
-    
+
     ' **** The character sets *****
     Public Enum ENUasciiCharset
         allAscii
-        alphabetic            
+        alphabetic
         alphanumeric
         commonPunctuation
-        digits        
+        digits
         doubleQuote
         graphic
         graphicNonnumeric
@@ -446,7 +446,7 @@ Public Class utilities
         unknown
         XMLmeta
     End Enum
-    
+
     ' ***** The standard types *****
     Public Enum ENUcanonicalType
         ctUnknown = 0
@@ -460,31 +460,31 @@ Public Class utilities
         ctDouble = 8
         ctString = 9
     End Enum
-    
+
     ' ***** String data types *****
-    Public Enum ENUdatatype 
+    Public Enum ENUdatatype
         AlphabeticDatatype                ' Alphabetic string: returned by 
-                                          ' datatype(string)
+        ' datatype(string)
         ByteDatatype                      ' Integer in the range 0..255: returned by 
-                                          ' datatype(string)
+        ' datatype(string)
         DateDatatype                      ' Valid date 
         DoubleDatatype                    ' Real number in the Double range: 
-                                          ' returned by datatype(string)
+        ' returned by datatype(string)
         FalseDatatype                     ' Return value only
         IntegerDatatype                   ' Integer in the range -2^31..2^31-1: 
-                                          ' returned by datatype(string)
+        ' returned by datatype(string)
         LabelDatatype                     ' Word that contains no blanks
         LongDatatype                      ' Integer in the range -2^63..2^63-1: 
-                                          ' returned by datatype(string)
+        ' returned by datatype(string)
         LowerDatatype                     ' Alphabetic lower-case string: returned by 
-                                          ' datatype(string)
+        ' datatype(string)
         PercentValueDatatype              ' Integer percent in range 0..100
         SerialDatatype                    ' Any integer value 
         SignumDatatype                    ' Integer in the range -1..1 
         ShortDatatype                     ' 16-bit integer: returned by 
-                                          ' datatype(string)
+        ' datatype(string)
         SingleDatatype                    ' Real number in the Single range: returned 
-                                          ' by datatype(string)
+        ' by datatype(string)
         StringDatatype                    ' Any string
         TrueDatatype                      ' Return value only
         UnknownDatatype                   ' Special value
@@ -493,10 +493,10 @@ Public Class utilities
         UnsignedShortDatatype             ' Integer number in range 0..2^31-1
         UnspecifiedDatatype               ' Not normally used
         UpperDatatype                     ' Alphabetic upper-case string: returned by 
-                                          ' datatype(string)
+        ' datatype(string)
         VBIdentifierDatatype              ' Visual Basic identifier 
     End Enum
-    
+
     ' ***** Display to string syntax *****
     Public Enum ENUdisplay2StringSyntax
         C
@@ -508,14 +508,14 @@ Public Class utilities
         Determine
         Invalid
     End Enum
-        
+
     ' ***** bg2fgColor *****        
     Public Const BG2FGCOLOR_DEFAULT As String = "red white green white blue white yellow black 75"
-    
+
     ' ***** spinlock *****
     Private Const SPINLOCK_TIMEOUT_DEFAULT As Integer = 10     ' Secs
     Private Const SPINLOCK_SLEEPWAIT_DEFAULT As Integer = 1    ' Secs
-    
+
     ' ***** The standard or canonical types *****
     Private Const CT_UNKNOWN As String = "UNKNOWN"
     Private Const CT_BOOLEAN As String = "BOOLEAN"
@@ -530,10 +530,10 @@ Public Class utilities
     Private Const CT_SINGLE As String = "SINGLE"
     Private Const CT_DOUBLE As String = "DOUBLE"
     Private Const CT_STRING As String = "STRING"
-    Public Const CANONICAL_TYPES As String = CT_BOOLEAN & " " & CT_BYTE & " " & CT_CHAR & " " & _
-                                             CT_SHORT & " " & CT_INTEGER & " " & CT_LONG & " " & _
+    Public Const CANONICAL_TYPES As String = CT_BOOLEAN & " " & CT_BYTE & " " & CT_CHAR & " " &
+                                             CT_SHORT & " " & CT_INTEGER & " " & CT_LONG & " " &
                                              CT_SINGLE & " " & CT_DOUBLE & " " & CT_STRING
-            
+
     ' -----------------------------------------------------------------------
     ' Return True (strCheck abbreviates strMaster) or False
     '
@@ -551,46 +551,46 @@ Public Class utilities
     ' 12 13 02   Nilges         Version 1
     '
     '
-    Public Shared Function abbrev(ByVal strCheck As String, _
+    Public Shared Function abbrev(ByVal strCheck As String,
                                   ByVal strMaster As String) As Boolean
         Dim intLength As Integer = Len(strCheck) 'boop
-        If intLength > Len(strMaster) Then Return(False)                            
-        Return(Mid(Ucase(Trim(strMaster)), 1, Len(strCheck)) _
-               = _
-               UCase(Trim(strCheck))) 
-    End Function                           
-            
+        If intLength > Len(strMaster) Then Return (False)
+        Return (Mid(UCase(Trim(strMaster)), 1, Len(strCheck)) _
+               =
+               UCase(Trim(strCheck)))
+    End Function
+
     ' -----------------------------------------------------------------------
     ' Return "about" information
     '
     '
     Public Shared ReadOnly Property About() As String
         Get
-            Return(ABOUTINFO)
-        End Get         
-    End Property                           
+            Return (ABOUTINFO)
+        End Get
+    End Property
 
     ' -----------------------------------------------------------------------
     ' Align and fill a string
     '
     '
-    Public Shared Overloads Function align(ByVal strInstring As String, _
+    Public Overloads Shared Function align(ByVal strInstring As String,
                                            ByVal intAlignLength As Integer) As String
-        Return(align(strInstring, intAlignLength, ENUalign.alignLeft, " "))
+        Return (align(strInstring, intAlignLength, ENUalign.alignLeft, " "))
     End Function
-    Public Shared Overloads Function align(ByVal strInstring As String, _
-                                           ByVal intAlignLength As Integer, _
+    Public Overloads Shared Function align(ByVal strInstring As String,
+                                           ByVal intAlignLength As Integer,
                                            ByVal enuAlignment As ENUalign) As String
-        Return(align(strInstring, intAlignLength, enuAlignment, " "))
+        Return (align(strInstring, intAlignLength, enuAlignment, " "))
     End Function
-    Public Shared Overloads Function align(ByVal strInstring As String, _
-                                           ByVal intAlignLength As Integer, _
+    Public Overloads Shared Function align(ByVal strInstring As String,
+                                           ByVal intAlignLength As Integer,
                                            ByVal strFill As String) As String
-        Return(align(strInstring, intAlignLength, ENUalign.alignLeft, strFill))
+        Return (align(strInstring, intAlignLength, ENUalign.alignLeft, strFill))
     End Function
-    Public Shared Overloads Function align(ByVal strInstring As String, _
-                                           ByVal intAlignLength As Integer, _
-                                           ByVal enuAlignment As ENUalign, _
+    Public Overloads Shared Function align(ByVal strInstring As String,
+                                           ByVal intAlignLength As Integer,
+                                           ByVal enuAlignment As ENUalign,
                                            ByVal strFill As String) As String
         Dim intSizeDelta As Integer
         Dim strAligned As String
@@ -602,25 +602,25 @@ Public Class utilities
         If Len(strFill) <> 1 Then
             errorHandler("Fill is not one character")
         End If
-        intSizeDelta = Math.max(0, intAlignLength - Len(strInstring))
+        intSizeDelta = Math.Max(0, intAlignLength - Len(strInstring))
         strInstringTruncate = Mid(strInstring, 1, intAlignLength)
         If enuAlignment = ENUalign.alignCenter Then
             Dim intQuotient As Integer = intSizeDelta \ 2
-            strAligned = copies(intQuotient, strFill) & _
-                            strInstringTruncate & _
+            strAligned = copies(intQuotient, strFill) &
+                            strInstringTruncate &
                             copies(intQuotient + intSizeDelta Mod 2, strFill)
         Else
             strPad = copies(intSizeDelta, strFill)
             Select Case enuAlignment
-                Case ENUalign.alignLeft:
+                Case ENUalign.alignLeft
                     strAligned = strInstringTruncate & strPad
-                Case ENUalign.alignRight:
+                Case ENUalign.alignRight
                     strAligned = strPad & strInstringTruncate
-                Case Else:
+                Case Else
                     errorHandler("Invalid align code " & enuAlignment)
             End Select
         End If
-        Return(strAligned)
+        Return (strAligned)
     End Function
 
     ' ------------------------------------------------------------------
@@ -628,48 +628,48 @@ Public Class utilities
     '
     '
     ' --- Align with blanks
-    Public Shared Overloads Function alignCenter(ByVal strInstring As String, _
+    Public Overloads Shared Function alignCenter(ByVal strInstring As String,
                                                  ByVal intAlignLength As Integer) As String
-        Return(alignCenter(strInstring, intAlignLength, " "))
-    End Function           
+        Return (alignCenter(strInstring, intAlignLength, " "))
+    End Function
     ' --- Align with specified fill                                    
-    Public Shared Overloads Function alignCenter(ByVal strInstring As String, _
-                                                 ByVal intAlignLength As Integer, _
+    Public Overloads Shared Function alignCenter(ByVal strInstring As String,
+                                                 ByVal intAlignLength As Integer,
                                                  ByVal strFill As String) As String
-        Return(align(strInstring, intAlignLength, ENUalign.alignCenter, strFill))
-    End Function                                           
+        Return (align(strInstring, intAlignLength, ENUalign.alignCenter, strFill))
+    End Function
 
     ' ------------------------------------------------------------------
     ' Left align a string, padding with blanks or other characters
     '
     '
     ' --- Align with blanks
-    Public Shared Overloads Function alignLeft(ByVal strInstring As String, _
+    Public Overloads Shared Function alignLeft(ByVal strInstring As String,
                                                ByVal intAlignLength As Integer) As String
-        Return(alignLeft(strInstring, intAlignLength, " "))
-    End Function           
+        Return (alignLeft(strInstring, intAlignLength, " "))
+    End Function
     ' --- Align with specified fill                                    
-    Public Shared Overloads Function alignLeft(ByVal strInstring As String, _
-                                               ByVal intAlignLength As Integer, _
+    Public Overloads Shared Function alignLeft(ByVal strInstring As String,
+                                               ByVal intAlignLength As Integer,
                                                ByVal strFill As String) As String
-        Return(align(strInstring, intAlignLength, ENUalign.alignLeft, strFill))
-    End Function                                           
+        Return (align(strInstring, intAlignLength, ENUalign.alignLeft, strFill))
+    End Function
 
     ' ------------------------------------------------------------------
     ' Right align a string, padding with blanks or other characters
     '
     '
     ' --- Align with blanks
-    Public Shared Overloads Function alignRight(ByVal strInstring As String, _
+    Public Overloads Shared Function alignRight(ByVal strInstring As String,
                                                 ByVal intAlignLength As Integer) As String
-        Return(alignRight(strInstring, intAlignLength, " "))
-    End Function           
+        Return (alignRight(strInstring, intAlignLength, " "))
+    End Function
     ' --- Align with specified fill                                    
-    Public Shared Overloads Function alignRight(ByVal strInstring As String, _
-                                               ByVal intAlignLength As Integer, _
+    Public Overloads Shared Function alignRight(ByVal strInstring As String,
+                                               ByVal intAlignLength As Integer,
                                                ByVal strFill As String) As String
-        Return(align(strInstring, intAlignLength, ENUalign.alignRight, strFill))
-    End Function                                           
+        Return (align(strInstring, intAlignLength, ENUalign.alignRight, strFill))
+    End Function
 
     ' ---------------------------------------------------------------------
     ' Append string
@@ -704,48 +704,48 @@ Public Class utilities
     ' 05 13 03   Nilges         Replaced msgbox with errorHandler
     '
     ' --- Append a string and return result
-    Public Shared Overloads Function append(ByRef strInstring As String, _
-                                            ByVal strSeparator As String, _
-                                            ByVal strAppend As String, _
-                                            Optional ByVal booToStart As Boolean = False, _
+    Public Overloads Shared Function append(ByRef strInstring As String,
+                                            ByVal strSeparator As String,
+                                            ByVal strAppend As String,
+                                            Optional ByVal booToStart As Boolean = False,
                                             Optional ByVal intMaxLength As Integer = -1) _
            As String
-        Return(CStr(append_(strInstring, _
-                            Nothing, _
-                            strSeparator, _
-                            strAppend, _
-                            booToStart, _
+        Return (CStr(append_(strInstring,
+                            Nothing,
+                            strSeparator,
+                            strAppend,
+                            booToStart,
                             intMaxLength)))
     End Function
     ' --- Append a string to a string builder in place
-    Public Shared Overloads Function append(ByRef objStringBuilder As System.Text.StringBuilder, _
-                                            ByVal strSeparator As String, _
-                                            ByVal strAppend As String, _
-                                            Optional ByVal booToStart As Boolean = False, _
+    Public Overloads Shared Function append(ByRef objStringBuilder As System.Text.StringBuilder,
+                                            ByVal strSeparator As String,
+                                            ByVal strAppend As String,
+                                            Optional ByVal booToStart As Boolean = False,
                                             Optional ByVal intMaxLength As Integer = -1) _
-           As Boolean  
+           As Boolean
         Dim strString As String
-        Return(CBool(append_(strString, _
-                             objStringBuilder, _
-                             strSeparator, _
-                             strAppend, _
-                             booToStart, _
+        Return (CBool(append_(strString,
+                             objStringBuilder,
+                             strSeparator,
+                             strAppend,
+                             booToStart,
                              intMaxLength)))
     End Function
     ' --- Common functionality
-    Private Shared Overloads Function append_(ByRef strString As String, _
-                                                ByVal objStringBuilder As System.Text.StringBuilder, _
-                                                ByVal strSeparator As String, _
-                                                ByVal strAppend As String, _
-                                                ByVal booToStart As Boolean, _
+    Private Overloads Shared Function append_(ByRef strString As String,
+                                                ByVal objStringBuilder As System.Text.StringBuilder,
+                                                ByVal strSeparator As String,
+                                                ByVal strAppend As String,
+                                                ByVal booToStart As Boolean,
                                                 ByVal intMaxLength As Integer) As Object
-        Dim objErrorReturn As Object = Iif(objStringBuilder Is Nothing, "", False)
+        Dim objErrorReturn As Object = IIf(objStringBuilder Is Nothing, "", False)
         Dim objStringBuilderHandle As System.Text.StringBuilder
         If intMaxLength < -1 Then
-            errorHandler("Invalid intMaxLength = " & intMaxLength, _
-                         Name, "append", _
+            errorHandler("Invalid intMaxLength = " & intMaxLength,
+                         Name, "append",
                          "Returning error indicator")
-            Return(objErrorReturn)
+            Return (objErrorReturn)
         End If
         If objStringBuilder Is Nothing Then
             Dim objStringBuilderNew As New System.Text.StringBuilder(strString)
@@ -755,13 +755,13 @@ Public Class utilities
         End If
         With objStringBuilderHandle
             Dim strSeparatorWork As String
-            If .Length <> 0 Then  
+            If .Length <> 0 Then
                 strSeparatorWork = strSeparator
             End If
             If intMaxLength <> -1 _
-               AndAlso _
-               .Length + Len(strAppend) + len(strSeparatorWork) > intMaxLength Then
-                Return(objErrorReturn)
+               AndAlso
+               .Length + Len(strAppend) + Len(strSeparatorWork) > intMaxLength Then
+                Return (objErrorReturn)
             End If
             If booToStart Then
                 .Insert(0, strAppend & strSeparatorWork)
@@ -772,9 +772,9 @@ Public Class utilities
         If objStringBuilder Is Nothing Then
             strString = objStringBuilderHandle.ToString
             objStringBuilderHandle = Nothing
-            Return(strString)
+            Return (strString)
         Else
-            Return(True)
+            Return (True)
         End If
     End Function
 
@@ -798,38 +798,38 @@ Public Class utilities
     '                           documentation.
     '
     '
-    Public Shared Function appendPath(ByVal strPath As String, _
+    Public Shared Function appendPath(ByVal strPath As String,
                                       ByVal strFileTitle As String) As String
-        If Len(strPath) = 0 Then Return(strFileTitle)                                      
+        If Len(strPath) = 0 Then Return (strFileTitle)
         If Mid(strPath, Len(strPath), 1) <> "\" Then
-            Return(strPath & "\" & strFileTitle)
-        End If        
-        Return(strPath & strFileTitle)
+            Return (strPath & "\" & strFileTitle)
+        End If
+        Return (strPath & strFileTitle)
     End Function
-    
+
     ' ------------------------------------------------------------------
     ' Convert the name of an ASCII character set to the string set
     '
     '
     Public Shared Function asciiCharsetEnum2String(ByVal enuCharset As ENUasciiCharset) As String
         Select Case enuCharset
-            Case ENUasciiCharset.allAscii: 
-                Return(range2String(0, 255))
-            Case ENUasciiCharset.alphabetic: 
-                Return(range2String("A", "Z") & range2String("a", "z"))
-            Case ENUasciiCharset.alphanumeric: 
-                Return(asciiCharsetEnum2String(ENUasciiCharset.alphabetic) & _
+            Case ENUasciiCharset.allAscii
+                Return (range2String(0, 255))
+            Case ENUasciiCharset.alphabetic
+                Return (range2String("A", "Z") & range2String("a", "z"))
+            Case ENUasciiCharset.alphanumeric
+                Return (asciiCharsetEnum2String(ENUasciiCharset.alphabetic) &
                        asciiCharsetEnum2String(ENUasciiCharset.digits))
-            Case ENUasciiCharset.commonPunctuation: Return(".,;:?!")
-            Case ENUasciiCharset.digits: Return("0123456789")
-            Case ENUasciiCharset.graphic: Return(asciiCharsetEnum2String(ENUasciiCharset.alphanumeric) & _
+            Case ENUasciiCharset.commonPunctuation : Return (".,;:?!")
+            Case ENUasciiCharset.digits : Return ("0123456789")
+            Case ENUasciiCharset.graphic : Return (asciiCharsetEnum2String(ENUasciiCharset.alphanumeric) &
                                                  asciiCharsetEnum2String(ENUasciiCharset.graphicSpecial))
-            Case ENUasciiCharset.graphicSpecial: Return(" ~!@#$%^&*()_+`-={}[]:;'<>,./|\" & Chr(34))
-            Case ENUasciiCharset.hexDigits: Return("0123456789ABCDEF")
-            Case ENUasciiCharset.lower: Return(range2String("a", "z"))
-            Case ENUasciiCharset.null: Return("")
-            Case ENUasciiCharset.upper: Return(range2String("A", "Z"))
-            Case ENUasciiCharset.XMLmeta: Return("&'<>" & Chr(34))
+            Case ENUasciiCharset.graphicSpecial : Return (" ~!@#$%^&*()_+`-={}[]:;'<>,./|\" & Chr(34))
+            Case ENUasciiCharset.hexDigits : Return ("0123456789ABCDEF")
+            Case ENUasciiCharset.lower : Return (range2String("a", "z"))
+            Case ENUasciiCharset.null : Return ("")
+            Case ENUasciiCharset.upper : Return (range2String("A", "Z"))
+            Case ENUasciiCharset.XMLmeta : Return ("&'<>" & Chr(34))
         End Select
     End Function
 
@@ -878,33 +878,33 @@ Public Class utilities
     '
     '
     ' --- Base is a number
-    Public Shared Overloads Function baseN2Long(ByVal strBaseN As String, _
-                                                ByVal intBase As Integer, _
+    Public Overloads Shared Function baseN2Long(ByVal strBaseN As String,
+                                                ByVal intBase As Integer,
                                                 Optional ByVal booIgnoreCase _
                                                          As Boolean = False) As Long
-        Return(baseN2Long(strBaseN, intBase, 0, booIgnoreCase))
+        Return (baseN2Long(strBaseN, intBase, 0, booIgnoreCase))
     End Function
     ' --- Base is a number and a word size is present
-    Public Shared Overloads Function baseN2Long(ByVal strBaseN As String, _
-                                                ByVal intBase As Integer, _
-                                                ByVal bytWordSize As Byte, _
+    Public Overloads Shared Function baseN2Long(ByVal strBaseN As String,
+                                                ByVal intBase As Integer,
+                                                ByVal bytWordSize As Byte,
                                                 Optional ByVal booIgnoreCase _
                                                          As Boolean = False) As Long
-        Return(baseN2Long(strBaseN, _
-                          baseN2Long_base2Digits_(intBase), _
-                          booIgnoreCase:=booIgnoreCase))                                   
-    End Function       
+        Return (baseN2Long(strBaseN,
+                          baseN2Long_base2Digits_(intBase),
+                          booIgnoreCase:=booIgnoreCase))
+    End Function
     ' --- Base is specified as the digits                                                    
-    Public Shared Overloads Function baseN2Long(ByVal strBaseN As String, _
-                                                ByVal strDigits As String, _
+    Public Overloads Shared Function baseN2Long(ByVal strBaseN As String,
+                                                ByVal strDigits As String,
                                                 Optional ByVal booIgnoreCase _
                                                          As Boolean = False) As Long
         Return baseN2Long(strBaseN, strDigits, 0, booIgnoreCase)
     End Function
     ' --- Base is specified as the digits and a word size is present 
-    Public Shared Overloads Function baseN2Long(ByVal strBaseN As String, _
-                                                ByVal strDigits As String, _
-                                                ByVal bytWordSize As Byte, _
+    Public Overloads Shared Function baseN2Long(ByVal strBaseN As String,
+                                                ByVal strDigits As String,
+                                                ByVal bytWordSize As Byte,
                                                 Optional ByVal booIgnoreCase _
                                                          As Boolean = False) As Long
         Dim bytAdjustment As Byte
@@ -918,25 +918,25 @@ Public Class utilities
         Dim strDigitsWork As String = strDigits
         intBaseValue = Len(strDigits)
         If intBaseValue < 2 Then
-            errorHandler("Only zero or one digits were supplied for the output " & _
+            errorHandler("Only zero or one digits were supplied for the output " &
                          "number")
-            Return(0)
+            Return (0)
         End If
         If intBaseValue <> 2 And bytWordSize <> 0 Then
             errorHandler("Word size can only be defined for binary conversion")
-            Return(0)
+            Return (0)
         End If
         intSignum = 1
         strBaseNWork = strBaseN
-        If booIgnoreCase Then 
-            strBaseNWork = UCase(strBaseNWork): strDigitsWork = UCase(strDigitsWork)
+        If booIgnoreCase Then
+            strBaseNWork = UCase(strBaseNWork) : strDigitsWork = UCase(strDigitsWork)
         End If
         bytAdjustment = 0
         If intBaseValue = 2 And bytWordSize <> 0 Then
             If Mid(strBaseN, 1, 1) = Mid(strDigits, 2, 1) Then
-                intSignum = -1: bytAdjustment = 1
-                strBaseNWork = translate(Mid(strBaseN, 2), _
-                                             strDigits, _
+                intSignum = -1 : bytAdjustment = 1
+                strBaseNWork = translate(Mid(strBaseN, 2),
+                                             strDigits,
                                              StrReverse(strDigits))
             End If
         End If
@@ -944,22 +944,22 @@ Public Class utilities
         For intIndex1 = Len(strBaseNWork) To 1 Step -1
             intIndex2 = InStr(strDigits, Mid(strBaseNWork, intIndex1, 1))
             If intIndex2 < 1 Then
-                errorHandler("Invalid digits in base " & intBaseValue & " number " & strBaseN) 
-                Return(0)
+                errorHandler("Invalid digits in base " & intBaseValue & " number " & strBaseN)
+                Return (0)
             End If
             Try
                 lngBase10 = lngBase10 + (intIndex2 - 1) * lngPower
                 lngPower = lngPower * intBaseValue
             Catch
-                errorHandler("Apparent numeric overflow while calculating base " & _
-                             "10 value: " & _
+                errorHandler("Apparent numeric overflow while calculating base " &
+                             "10 value: " &
                              Err.Number & " " & Err.Description & ": returning 0")
-                Return(0)
+                Return (0)
             End Try
         Next intIndex1
-        Return(lngBase10 * intSignum - bytAdjustment)
+        Return (lngBase10 * intSignum - bytAdjustment)
     End Function
-    
+
     ' ----------------------------------------------------------------------
     ' Convert the base to a digit string on behalf of baseN2Long and
     ' long2BaseN
@@ -968,15 +968,15 @@ Public Class utilities
     Private Shared Function baseN2Long_base2Digits_(ByVal intBase As Integer) As String
         Dim intBaseWork As Integer = intBase
         If intBaseWork < 2 OrElse intBaseWork > 36 Then
-            errorHandler("Invalid intBase " & intBase, _
-                         Name, "baseN2Long", _
-                         "intBase must be greater than one and less than 36.  " & _
+            errorHandler("Invalid intBase " & intBase,
+                         Name, "baseN2Long",
+                         "intBase must be greater than one and less than 36.  " &
                          "Assuming hex conversion (for no good reason)")
-            intBaseWork = 16                         
-        End If   
-        Return(Mid("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, intBaseWork))
-    End Function    
-    
+            intBaseWork = 16
+        End If
+        Return (Mid("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, intBaseWork))
+    End Function
+
     ' ----------------------------------------------------------------------
     ' Convert a background to a foreground color
     '
@@ -1046,52 +1046,52 @@ Public Class utilities
     ' 01 03 03     Nilges       Version 1
     '
     '
-    Public Shared Overloads Function bg2fgColor(ByVal objBG As Color) As Color
-        Return(bg2fgColor(objBG, BG2FGCOLOR_DEFAULT))
-    End Function    
-    Public Shared Overloads Function bg2fgColor(ByVal objBG As Color, _
+    Public Overloads Shared Function bg2fgColor(ByVal objBG As Color) As Color
+        Return (bg2fgColor(objBG, BG2FGCOLOR_DEFAULT))
+    End Function
+    Public Overloads Shared Function bg2fgColor(ByVal objBG As Color,
                                                 ByVal strTranslation As String) As Color
-        Dim sglWhiteBlackDivide As Single                                         
-        Dim colTable As Collection = bg2fgColor_mkTable_(strTranslation, _
+        Dim sglWhiteBlackDivide As Single
+        Dim colTable As Collection = bg2fgColor_mkTable_(strTranslation,
                                                          sglWhiteBlackDivide)
-        If (colTable Is Nothing) Then Return(Nothing)
+        If (colTable Is Nothing) Then Return (Nothing)
         Try
-            Return(CType(colTable(UCase(objBG.Name)), Color))
+            Return (CType(colTable(UCase(objBG.Name)), Color))
         Catch
-            errorHandler("Can't translate background to foreground color", _
-                         Name, "bg2fgColor", _
-                         "Background color name is " & _
-                         enquote(objBG.Name) & ": " & _
+            errorHandler("Can't translate background to foreground color",
+                         Name, "bg2fgColor",
+                         "Background color name is " &
+                         enquote(objBG.Name) & ": " &
                          Err.Number & " " & Err.Description)
-            Return(Nothing)                         
-        End Try        
-    End Function    
-    
+            Return (Nothing)
+        End Try
+    End Function
+
     ' ----------------------------------------------------------------------
     ' Translate string to color translation table on behalf of bg2fgColor
     '
     '
-    Private Shared Function bg2fgColor_mkTable_(ByVal strTranslation As String, _
+    Private Shared Function bg2fgColor_mkTable_(ByVal strTranslation As String,
                                                 ByRef sglWhiteBlackDivide As Single) As Collection
         Dim colTable As Collection
         Try
             colTable = New Collection
         Catch
-            errorHandler("Can't create color table collection", _
-                         Name, "bg2fgColor_mkTable_", _
+            errorHandler("Can't create color table collection",
+                         Name, "bg2fgColor_mkTable_",
                          Err.Number & " " & Err.Description)
-            Return(Nothing)                         
-        End Try  
+            Return (Nothing)
+        End Try
         Dim strSplit() As String
         Try
-            strSplit = split(Replace(strTranslation, "*", " " & BG2FGCOLOR_DEFAULT & " "), " ")
+            strSplit = Split(Replace(strTranslation, "*", " " & BG2FGCOLOR_DEFAULT & " "), " ")
         Catch
-            errorHandler("Can't create color table collection", _
-                         Name, "bg2fgColor_mkTable_", _
+            errorHandler("Can't create color table collection",
+                         Name, "bg2fgColor_mkTable_",
                          Err.Number & " " & Err.Description)
-            Return(Nothing)                         
-        End Try 
-        Dim objColor As Color             
+            Return (Nothing)
+        End Try
+        Dim objColor As Color
         Dim intIndex1 As Integer = 0
         Dim strNext As String
         Dim sglNext As Single
@@ -1101,53 +1101,53 @@ Public Class utilities
                 sglNext = string2Percent(strNext)
                 If sglNext >= 0 Then
                     sglWhiteBlackDivide = sglNext
-                Else        
+                Else
                     Try
                         objColor.FromName(UCase(strNext))
                     Catch
-                        errorHandler("Error in translation string: " & _
-                                     "background color name " & _
-                                     enquote(strNext) & " " & _
-                                     "doesn't identify a color", _
-                                     Name, "bg2fgColor_mkTable_", _
+                        errorHandler("Error in translation string: " &
+                                     "background color name " &
+                                     enquote(strNext) & " " &
+                                     "doesn't identify a color",
+                                     Name, "bg2fgColor_mkTable_",
                                      "Returning Nothing")
-                        Return(Nothing)                                     
-                    End Try          
-                    If intIndex1 = UBound(strSplit)
-                        errorHandler("Error in translation string: " & _
-                                     "last background color name " & _
-                                     enquote(strNext) & " " & _
-                                     "is not followed by a foreground color", _
-                                     Name, "bg2fgColor_mkTable_", _
+                        Return (Nothing)
+                    End Try
+                    If intIndex1 = UBound(strSplit) Then
+                        errorHandler("Error in translation string: " &
+                                     "last background color name " &
+                                     enquote(strNext) & " " &
+                                     "is not followed by a foreground color",
+                                     Name, "bg2fgColor_mkTable_",
                                      "Returning Nothing")
-                        Return(Nothing)                                     
-                    End If  
+                        Return (Nothing)
+                    End If
                     intIndex1 += 1
                     Try
                         objColor.FromName(UCase(strSplit(intIndex1)))
                     Catch
-                        errorHandler("Error in translation string: " & _
-                                     "foreground color name " & _
-                                     enquote(strNext) & " " & _
-                                     "doesn't identify a color", _
-                                     Name, "bg2fgColor_mkTable_", _
+                        errorHandler("Error in translation string: " &
+                                     "foreground color name " &
+                                     enquote(strNext) & " " &
+                                     "doesn't identify a color",
+                                     Name, "bg2fgColor_mkTable_",
                                      "Returning Nothing")
-                        Return(Nothing)                                     
-                    End Try                                                             
+                        Return (Nothing)
+                    End Try
                     Try
                         colTable.Add(objColor, strNext)
                     Catch
-                        errorHandler("Cannot extend translation table", _
-                                     Name, "bg2fgColor_mkTable_", _
+                        errorHandler("Cannot extend translation table",
+                                     Name, "bg2fgColor_mkTable_",
                                      Err.Number & " " & Err.Description)
-                        Return(Nothing)                                     
-                    End Try            
-                End If            
-            End If 
-            intIndex1 += 1               
-        Loop        
-        Return(colTable)
-    End Function    
+                        Return (Nothing)
+                    End Try
+                End If
+            End If
+            intIndex1 += 1
+        Loop
+        Return (colTable)
+    End Function
 
     ' ----------------------------------------------------------------
     ' Break up overlong words
@@ -1172,7 +1172,7 @@ Public Class utilities
     '          the max length, and multiples of the max length.
     '
     '
-    Public Shared Function breakLongWords(ByVal strInstring As String, _
+    Public Shared Function breakLongWords(ByVal strInstring As String,
                                           ByVal intMax As Integer) As String
         Dim intIndex1 As Integer
         Dim strEdited(1) As String
@@ -1195,14 +1195,14 @@ Public Class utilities
     ' Segment with blanks on behalf of breakLongWords
     '
     '
-    Private Shared Function breakLongWords_addBlanks_(ByVal strInstring As String, _
+    Private Shared Function breakLongWords_addBlanks_(ByVal strInstring As String,
                                                       ByVal intMax As Integer) As String
         Dim intIndex1 As Integer
         Dim intStep As Integer = CInt(intMax * 0.75)
         Dim strOutstring As String
         For intIndex1 = 1 To Len(strInstring) Step intStep
-            append(strOutstring, _
-                   " ", _
+            append(strOutstring,
+                   " ",
                    Mid(strInstring, intIndex1, intStep))
         Next intIndex1
         Return (strOutstring)
@@ -1212,7 +1212,7 @@ Public Class utilities
     ' Segment fileid on behalf of breakLongWords
     '
     '
-    Private Shared Function breakLongWords_fileidEdit_(ByVal strInstring As String, _
+    Private Shared Function breakLongWords_fileidEdit_(ByVal strInstring As String,
                                                        ByVal intMax As Integer) As String
         Dim strSlashSep As String = breakLongWords_slashType(strInstring)
         If strSlashSep = "" Then Return strInstring
@@ -1237,7 +1237,7 @@ Public Class utilities
     ' breakLongWords
     '
     '
-    Private Shared Function breakLongWords_wordTooLong_(ByVal strInstring As String, _
+    Private Shared Function breakLongWords_wordTooLong_(ByVal strInstring As String,
                                                         ByVal intMax As Integer) As Boolean
         Dim intIndex1 As Integer
         For intIndex1 = 1 To words(strInstring)
@@ -1267,11 +1267,11 @@ Public Class utilities
     '                           don't match.
     '
     '
-    Public Overloads Shared Function canonicalTypeCast(ByVal objObjectValue As Object, _
+    Public Overloads Shared Function canonicalTypeCast(ByVal objObjectValue As Object,
                                                         ByVal strTypeName As String) As Object
         Return (canonicalTypeCast(objObjectValue, canonicalTypeName2Enum(strTypeName, True)))
     End Function
-    Public Overloads Shared Function canonicalTypeCast(ByVal objObjectValue As Object, _
+    Public Overloads Shared Function canonicalTypeCast(ByVal objObjectValue As Object,
                                                         ByVal enuType As ENUcanonicalType) As Object
         Dim objConverted As Object
         Try
@@ -1331,13 +1331,13 @@ Public Class utilities
     ' 10 23 01   Nilges         Add Boolean and Char
     '
     '
-    Public Overloads Shared Function canonicalTypeName2Enum(ByVal strName As String, _
+    Public Overloads Shared Function canonicalTypeName2Enum(ByVal strName As String,
                                                             ByVal booErrorHandle As Boolean) As ENUcanonicalType
         Dim enuType As ENUcanonicalType
         enuType = canonicalTypeName2Enum(strName)
         If Not booErrorHandle Then Return (enuType)
         If enuType = ENUcanonicalType.ctUnknown Then
-            errorHandler("Canonical type, identified by name as " & enquote(strName) & " " & _
+            errorHandler("Canonical type, identified by name as " & enquote(strName) & " " &
                          "is not valid")
         End If
         Return (enuType)
@@ -1384,9 +1384,9 @@ Public Class utilities
     '
     Public Shared Function char2Name(ByVal strChar As String) As String
         If Len(strChar) <> 1 Then
-            errorHandler("strChar is not a single character", _
-                         "utilities", _
-                         "char2Name", _
+            errorHandler("strChar is not a single character",
+                         "utilities",
+                         "char2Name",
                          "Returning a null string")
             Return ""
         End If
@@ -1466,10 +1466,10 @@ Public Class utilities
         Try
             ReDim strChangeRecords(UBound(strChanges) \ 3, 2)
         Catch ex As Exception
-            errorHandler("Cannot allocate change record as an array: " & _
-                         Err.Number & " " & Err.Description, _
-                         Name, "changeRecord", _
-                         "Returning a null string" & vbNewLine & vbNewLine & _
+            errorHandler("Cannot allocate change record as an array: " &
+                         Err.Number & " " & Err.Description,
+                         Name, "changeRecord",
+                         "Returning a null string" & vbNewLine & vbNewLine &
                          ex.ToString)
             Return ("")
         End Try
@@ -1506,30 +1506,30 @@ Public Class utilities
         Try
             objStringBuilder = New System.Text.StringBuilder
         Catch ex As Exception
-            errorHandler("Cannot create string builder: " & Err.Number & " " & Err.Description, _
-                         Name, "changeRecord", _
-                         "Returning a null string" & vbNewLine & vbNewLine & _
+            errorHandler("Cannot create string builder: " & Err.Number & " " & Err.Description,
+                         Name, "changeRecord",
+                         "Returning a null string" & vbNewLine & vbNewLine &
                          ex.ToString)
             Return ("")
         End Try
         intMaxDate = Math.Max(intMaxDate, 4)
         intMaxProgrammer = Math.Max(intMaxProgrammer, 20)
         intMaxDescription = Math.Max(intMaxDescription, 21)
-        Dim strColheader As String = copies("-", intMaxDate) & " " & _
-                                     copies("-", intMaxProgrammer) & "     " & _
+        Dim strColheader As String = copies("-", intMaxDate) & " " &
+                                     copies("-", intMaxProgrammer) & "     " &
                                      copies("-", intMaxDescription)
-        objStringBuilder.Append(alignLeft("C H A N G E   R E C O R D ", Len(strColheader), "-") & _
-                                vbNewLine & _
-                                alignCenter("DATE", intMaxDate) & " " & _
-                                alignCenter("PROGRAMMER/GENERATOR", intMaxProgrammer) & "     " & _
-                                alignCenter("D E S C R I P T I O N", intMaxDescription) & _
-                                vbNewLine & _
+        objStringBuilder.Append(alignLeft("C H A N G E   R E C O R D ", Len(strColheader), "-") &
+                                vbNewLine &
+                                alignCenter("DATE", intMaxDate) & " " &
+                                alignCenter("PROGRAMMER/GENERATOR", intMaxProgrammer) & "     " &
+                                alignCenter("D E S C R I P T I O N", intMaxDescription) &
+                                vbNewLine &
                                 strColheader)
         For intIndex1 = 0 To UBound(strChangeRecords, 1)
-            append(objStringBuilder, _
-                   vbNewLine, _
-                   alignLeft(strChangeRecords(intIndex1, 0), intMaxDate) & " " & _
-                   alignLeft(strChangeRecords(intIndex1, 1), intMaxProgrammer) & "     " & _
+            append(objStringBuilder,
+                   vbNewLine,
+                   alignLeft(strChangeRecords(intIndex1, 0), intMaxDate) & " " &
+                   alignLeft(strChangeRecords(intIndex1, 1), intMaxProgrammer) & "     " &
                    alignLeft(strChangeRecords(intIndex1, 2), intMaxDescription))
         Next intIndex1
         Return (objStringBuilder.ToString)
@@ -1674,18 +1674,18 @@ Public Class utilities
         Try
             colNew = New Collection
         Catch ex As Exception
-            errorHandler("Cannot create collection: " & Err.Number & " " & Err.Description, _
-                         Name, "commonRegularExpressions", _
+            errorHandler("Cannot create collection: " & Err.Number & " " & Err.Description,
+                         Name, "commonRegularExpressions",
                          "Returning Nothing")
             Return (Nothing)
         End Try
         Dim strSplit() As String
         Try
-            strSplit = Split(commonRegularExpressions_substitute_(COMMON_REGULAR_EXPRESSIONS), _
+            strSplit = Split(commonRegularExpressions_substitute_(COMMON_REGULAR_EXPRESSIONS),
                              COMMON_REGULAR_EXPRESSIONS_SEP)
         Catch ex As Exception
-            errorHandler("Cannot split string: " & Err.Number & " " & Err.Description, _
-                         Name, "commonRegularExpressions", _
+            errorHandler("Cannot split string: " & Err.Number & " " & Err.Description,
+                         Name, "commonRegularExpressions",
                          "Returning empty collection")
             Return (colNew)
         End Try
@@ -1716,9 +1716,9 @@ Public Class utilities
                 End With
             Catch ex As Exception
                 colSubEntry = Nothing
-                errorHandler("Cannot create subcollection (or extend main collection): " & _
-                             Err.Number & " " & Err.Description, _
-                             Name, "commonRegularExpressions", _
+                errorHandler("Cannot create subcollection (or extend main collection): " &
+                             Err.Number & " " & Err.Description,
+                             Name, "commonRegularExpressions",
                              "Returning available regular expressions")
                 Return (colNew)
             End Try
@@ -1734,8 +1734,8 @@ Public Class utilities
         Try
             strRE = CStr(CType(colRE.Item(strREname), Collection).Item(2))
         Catch ex As Exception
-            errorHandler("Undefined regular expression" & enquote(strREname), _
-                         Name, "commonRegularExpressions", _
+            errorHandler("Undefined regular expression" & enquote(strREname),
+                         Name, "commonRegularExpressions",
                          "Returning null string")
             Return ("")
         End Try
@@ -1754,22 +1754,22 @@ Public Class utilities
         commonRegularExpressions_substitute__extendProperty_(strTests, strExpectedResults, "Get")
         commonRegularExpressions_substitute__extendProperty_(strTests, strExpectedResults, "Let")
         commonRegularExpressions_substitute__extendProperty_(strTests, strExpectedResults, "Set")
-        Dim strSub As String = Replace(strCRE, _
-                                       COMMON_REGULAR_EXPRESSIONS_LD & _
-                                       "vbProcedureHeaderCOMtests" & _
-                                       COMMON_REGULAR_EXPRESSIONS_RD, _
-                                       strTests & _
-                                       COMMON_REGULAR_EXPRESSIONS_SEP & _
+        Dim strSub As String = Replace(strCRE,
+                                       COMMON_REGULAR_EXPRESSIONS_LD &
+                                       "vbProcedureHeaderCOMtests" &
+                                       COMMON_REGULAR_EXPRESSIONS_RD,
+                                       strTests &
+                                       COMMON_REGULAR_EXPRESSIONS_SEP &
                                        strExpectedResults)
         strTests = "" : strExpectedResults = ""
         commonRegularExpressions_substitute__extendCommon_(strTests, strExpectedResults)
         commonRegularExpressions_substitute__extendProperty_(strTests, strExpectedResults, "")
-        strSub = Replace(strSub, _
-                         COMMON_REGULAR_EXPRESSIONS_LD & _
-                         "vbProcedureHeaderNettests" & _
-                         COMMON_REGULAR_EXPRESSIONS_RD, _
-                         strTests & _
-                         COMMON_REGULAR_EXPRESSIONS_SEP & _
+        strSub = Replace(strSub,
+                         COMMON_REGULAR_EXPRESSIONS_LD &
+                         "vbProcedureHeaderNettests" &
+                         COMMON_REGULAR_EXPRESSIONS_RD,
+                         strTests &
+                         COMMON_REGULAR_EXPRESSIONS_SEP &
                          strExpectedResults)
         Return (strSub)
     End Function
@@ -1779,15 +1779,15 @@ Public Class utilities
     '
     '
     Private Shared Sub commonRegularExpressions_substitute__extend_ _
-                       (ByRef strTests As String, _
-                        ByRef strExpectedResults As String, _
+                       (ByRef strTests As String,
+                        ByRef strExpectedResults As String,
                         ByVal strNextTest As String)
         Dim strNewline As String = CStr(IIf(Rnd() > 0.25, vbNewLine, vbLf))
-        Dim strNextTestWork As String = copies(" ", CInt(Rnd() * 7)) & _
-                                        strNextTest & _
+        Dim strNextTestWork As String = copies(" ", CInt(Rnd() * 7)) &
+                                        strNextTest &
                                         " Procedure" & CStr(CInt(Rnd() * 1024))
-        strExpectedResults = append(strExpectedResults, _
-                                    " ", _
+        strExpectedResults = append(strExpectedResults,
+                                    " ",
                                     Len(strTests) & " " & Len(strNextTestWork) + Len(strNewline))
         strTests &= strNewline & strNextTestWork
     End Sub
@@ -1798,31 +1798,31 @@ Public Class utilities
     '
     '
     Private Shared Sub commonRegularExpressions_substitute__extendCommon_ _
-                       (ByRef strTests As String, _
+                       (ByRef strTests As String,
                         ByRef strExpectedResults As String)
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Sub")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Public Sub")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Private Sub")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Friend Sub")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Function")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Public Function")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Private Function")
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Friend Function")
     End Sub
 
@@ -1832,22 +1832,22 @@ Public Class utilities
     '
     '
     Private Shared Sub commonRegularExpressions_substitute__extendProperty_ _
-                       (ByRef strTests As String, _
-                        ByRef strExpectedResults As String, _
+                       (ByRef strTests As String,
+                        ByRef strExpectedResults As String,
                         ByVal strGetLetSet As String)
-        Dim strGetLetSetWork As String = CStr(IIf(strGetLetSet = "", "", " ")) & _
+        Dim strGetLetSetWork As String = CStr(IIf(strGetLetSet = "", "", " ")) &
                                          strGetLetSet
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Property" & strGetLetSetWork)
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Public Property" & strGetLetSetWork)
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Private Property" & strGetLetSetWork)
-        commonRegularExpressions_substitute__extend_(strTests, _
-                                                     strExpectedResults, _
+        commonRegularExpressions_substitute__extend_(strTests,
+                                                     strExpectedResults,
                                                      "Friend Property" & strGetLetSetWork)
     End Sub
 
@@ -1865,7 +1865,7 @@ Public Class utilities
         strReport = "Unknown test failure"
         Dim colRE As Collection = commonRegularExpressions(booExtension:=True)
         If (colRE Is Nothing) Then Return (False)
-        strReport = "COMMON REGULAR EXPRESSION TEST     " & Now & _
+        strReport = "COMMON REGULAR EXPRESSION TEST     " & Now &
                     vbNewLine & vbNewLine & vbNewLine
         Dim colREentry As Collection
         Dim colREsubEntry As Collection
@@ -1886,29 +1886,29 @@ Public Class utilities
                 With colREentry
                     strRE = CStr(.Item(2))
                     strTest = CStr(.Item(4))
-                    strReport = append(strReport, _
-                                       vbNewLine & vbNewLine & vbNewLine, _
-                                       "Testing the " & _
-                                       CStr(.Item(1)) & " " & _
-                                       "regular expression " & _
-                                       enquote(strRE) & ": " & _
-                                       CStr(.Item(3)) & vbNewLine & _
+                    strReport = append(strReport,
+                                       vbNewLine & vbNewLine & vbNewLine,
+                                       "Testing the " &
+                                       CStr(.Item(1)) & " " &
+                                       "regular expression " &
+                                       enquote(strRE) & ": " &
+                                       CStr(.Item(3)) & vbNewLine &
                                        "Test string: " & string2Display(strTest))
                     Try
                         objRE = New System.Text.RegularExpressions.Regex(strRE)
                     Catch ex As Exception
-                        errorHandler("Can't create or can't apply regular expression: " & _
-                                     Err.Number & " " & Err.Description, _
-                                     Name, "commonRegularExpressionTester", _
-                                     "Returning failed test" & vbNewLine & vbNewLine & _
+                        errorHandler("Can't create or can't apply regular expression: " &
+                                     Err.Number & " " & Err.Description,
+                                     Name, "commonRegularExpressionTester",
+                                     "Returning failed test" & vbNewLine & vbNewLine &
                                      ex.ToString)
                     End Try
                     colREsubEntry = CType(.Item(5), Collection)
                     With colREsubEntry
                         intStartAt = 0
                         For intIndex2 = 1 To .Count Step 2
-                            strReport = append(strReport, _
-                                               vbNewLine & vbNewLine, _
+                            strReport = append(strReport,
+                                               vbNewLine & vbNewLine,
                                                "Test case " & intIndex2 \ 2 + 1 & " of " & .Count \ 2)
                             intExpectedIndex = CInt(.Item(intIndex2))
                             intExpectedLength = CInt(.Item(intIndex2 + 1))
@@ -1917,39 +1917,39 @@ Public Class utilities
                             With objREmatch
                                 If .Length = 0 Then Exit For
                                 intStartAt = .Index + .Length
-                                strReport = append(strReport, _
-                                                    "    " & vbNewLine, _
-                                                    "Expected index (zero based) is " & _
-                                                    intExpectedIndex & ": " & _
-                                                    "expected length is " & _
+                                strReport = append(strReport,
+                                                    "    " & vbNewLine,
+                                                    "Expected index (zero based) is " &
+                                                    intExpectedIndex & ": " &
+                                                    "expected length is " &
                                                     intExpectedLength)
-                                strReport = append(strReport, _
-                                                    "    " & vbNewLine, _
-                                                    "Actual index (zero based) is " & _
-                                                    .Index & ": " & _
-                                                    "actual length is " & _
+                                strReport = append(strReport,
+                                                    "    " & vbNewLine,
+                                                    "Actual index (zero based) is " &
+                                                    .Index & ": " &
+                                                    "actual length is " &
                                                     .Length)
                                 If .Index <> intExpectedIndex _
-                                   OrElse _
+                                   OrElse
                                    .Length <> intExpectedLength Then
-                                    strReport = append(strReport, _
-                                                       vbNewLine, _
+                                    strReport = append(strReport,
+                                                       vbNewLine,
                                                        "Expected and actual values do NOT match")
                                     intErrors += 1
                                 End If
                             End With
                         Next intIndex2
                         If intIndex2 <> .Count + 1 Then
-                            strReport = append(strReport, _
-                                               vbNewLine, _
+                            strReport = append(strReport,
+                                               vbNewLine,
                                                "Expected and actual matches are not the same")
                             intErrors += 1
                         End If
                     End With
                 End With
             Next intIndex1
-            strReport = append(strReport, _
-                               vbNewLine & vbNewLine & vbNewLine, _
+            strReport = append(strReport,
+                               vbNewLine & vbNewLine & vbNewLine,
                                CStr(IIf(intErrors = 0, "Test passed", "Test failed")))
             Return (intErrors = 0)
         End With
@@ -2036,60 +2036,60 @@ Public Class utilities
     ' --- Determines the data type
     Public Overloads Shared Function datatype(ByVal strInstring As String) _
            As ENUdatatype
-        Return (datatype_(strInstring, _
-               ENUdatatype.UnspecifiedDatatype, _
-               Nothing, _
+        Return (datatype_(strInstring,
+               ENUdatatype.UnspecifiedDatatype,
+               Nothing,
                False))
     End Function
     ' --- Tests for the enumerated data type
-    Public Overloads Shared Function datatype(ByVal strInstring As String, _
+    Public Overloads Shared Function datatype(ByVal strInstring As String,
                                               ByVal enuExpectedDatatype As ENUdatatype) _
            As Boolean
         Return (datatype_(strInstring, enuExpectedDatatype, Nothing, False) _
-               = _
+               =
                ENUdatatype.TrueDatatype)
     End Function
     ' --- Tests for the named data type  
-    Public Overloads Shared Function datatype(ByVal strInstring As String, _
+    Public Overloads Shared Function datatype(ByVal strInstring As String,
                                               ByVal strExpectedDatatype As String) _
            As Boolean
         Return (datatype(strInstring, strExpectedDatatype, Nothing))
     End Function
     ' --- Sets the converted value
-    Public Overloads Shared Function datatype(ByVal strInstring As String, _
+    Public Overloads Shared Function datatype(ByVal strInstring As String,
                                               ByRef objConverted As Object) _
                      As ENUdatatype
-        Return (datatype_(strInstring, _
-               ENUdatatype.UnspecifiedDatatype, _
+        Return (datatype_(strInstring,
+               ENUdatatype.UnspecifiedDatatype,
                objConverted, True))
     End Function
     ' --- Tests for the enumerated data type and sets the converted value
-    Public Overloads Shared Function datatype(ByVal strInstring As String, _
-                                              ByVal enuExpectedDatatype As ENUdatatype, _
+    Public Overloads Shared Function datatype(ByVal strInstring As String,
+                                              ByVal enuExpectedDatatype As ENUdatatype,
                                               ByRef objConverted As Object) _
                      As Boolean
         Return (datatype_(strInstring, enuExpectedDatatype, objConverted, True) _
-               = _
+               =
                ENUdatatype.TrueDatatype)
     End Function
     ' --- Tests for the named data type and sets the converted value
-    Public Overloads Shared Function datatype(ByVal strInstring As String, _
-                                              ByVal strExpectedDatatype As String, _
+    Public Overloads Shared Function datatype(ByVal strInstring As String,
+                                              ByVal strExpectedDatatype As String,
                                               ByRef objConverted As Object) _
            As Boolean
         Dim enuExpectedDatatype As ENUdatatype = datatypeName2Enum(strExpectedDatatype)
         If enuExpectedDatatype = ENUdatatype.UnspecifiedDatatype Then
-            errorHandler("Invalid data type name " & enquote(strExpectedDatatype), _
-                         Name, "datatype", _
+            errorHandler("Invalid data type name " & enquote(strExpectedDatatype),
+                         Name, "datatype",
                          "Returning False")
             Return (False)
         End If
         Return (datatype(strInstring, enuExpectedDatatype, objConverted))
     End Function
     ' --- Common functionality
-    Private Overloads Shared Function datatype_(ByVal strInstring As String, _
-                                                ByVal enuExpectedDatatype As ENUdatatype, _
-                                                ByRef objConverted As Object, _
+    Private Overloads Shared Function datatype_(ByVal strInstring As String,
+                                                ByVal enuExpectedDatatype As ENUdatatype,
+                                                ByRef objConverted As Object,
                                                 ByVal booReturnConverted As Boolean) _
                      As ENUdatatype
         '
@@ -2107,9 +2107,9 @@ Public Class utilities
             booDatatypeValue = False
             Select Case enuExpectedDatatype
                 Case ENUdatatype.AlphabeticDatatype
-                    If verify(UCase(strInstring), _
+                    If verify(UCase(strInstring),
                               "ABCDEFGHIJKLMNOPQRSTUVWXYZ") _
-                    = _
+                    =
                     0 Then
                         booDatatypeValue = True
                         objValue = CStr(strInstring)
@@ -2122,7 +2122,7 @@ Public Class utilities
                         booDatatypeValue = False
                     End Try
                     booDatatypeValue = booDatatypeValue _
-                                       AndAlso _
+                                       AndAlso
                                        datatype_integerCheck_(strInstring, objValue)
                 Case ENUdatatype.DateDatatype
                     If IsDate(strInstring) Then
@@ -2144,7 +2144,7 @@ Public Class utilities
                         booDatatypeValue = False
                     End Try
                     booDatatypeValue = booDatatypeValue _
-                                       AndAlso _
+                                       AndAlso
                                        datatype_integerCheck_(strInstring, objValue)
                 Case ENUdatatype.LabelDatatype
                     If InStr(strInstring, " ") = 0 Then
@@ -2158,7 +2158,7 @@ Public Class utilities
                         booDatatypeValue = False
                     End Try
                     booDatatypeValue = booDatatypeValue _
-                                       AndAlso _
+                                       AndAlso
                                        datatype_integerCheck_(strInstring, objValue)
                 Case ENUdatatype.LowerDatatype
                     If verify(strInstring, "abcdefghijklmnopqrstuvwxyz") = 0 Then
@@ -2182,12 +2182,12 @@ Public Class utilities
                         Return (ENUdatatype.FalseDatatype)
                     End Try
                     booDatatypeValue = booDatatypeValue _
-                                       AndAlso _
+                                       AndAlso
                                        datatype_integerCheck_(strInstring, objValue)
                 Case ENUdatatype.SignumDatatype
                     If datatype(strInstring, ENUdatatype.ShortDatatype, objValue) Then
                         booDatatypeValue = True
-                        Select Case objValue
+                        Select Case CLng(objValue)
                             Case 1
                             Case 0
                             Case -1
@@ -2204,8 +2204,8 @@ Public Class utilities
                 Case ENUdatatype.StringDatatype
                     booDatatypeValue = True : objValue = strInstring
                 Case ENUdatatype.UnsignedIntegerDatatype
-                    If datatype(strInstring, _
-                                ENUdatatype.IntegerDatatype, _
+                    If datatype(strInstring,
+                                ENUdatatype.IntegerDatatype,
                                 objValue) Then
                         booDatatypeValue = (CInt(objValue) >= 0)
                     End If
@@ -2218,37 +2218,37 @@ Public Class utilities
                         booDatatypeValue = (CInt(objValue) >= 0)
                     End If
                 Case ENUdatatype.UpperDatatype
-                    If verify(strInstring, _
+                    If verify(strInstring,
                               "ABCDEFGHIJKLMNOPQRSTUVWXYZ") _
-                    = _
+                    =
                     0 Then
                         booDatatypeValue = True : objValue = strInstring
                     End If
                 Case ENUdatatype.VBIdentifierDatatype
-                    If verify(LCase(strInstring), _
+                    If verify(LCase(strInstring),
                               "0123456789_abcdefghijklmnopqrstuvwxyz") _
-                    = _
+                    =
                     0 Then
                         Dim strChar1 As String
                         strChar1 = Mid(strInstring, 1, 1)
-                        booDatatypeValue = datatype(strChar1, _
+                        booDatatypeValue = datatype(strChar1,
                                                     ENUdatatype.AlphabeticDatatype) _
-                                           OrElse _
+                                           OrElse
                                            strChar1 = "_"
                         If booDatatypeValue Then objValue = strInstring
                     End If
                 Case Else
-                    errorHandler("Error in datatype: invalid datatype code", _
-                                 Name, "datatype", _
+                    errorHandler("Error in datatype: invalid datatype code",
+                                 Name, "datatype",
                                  "Returning the unknown data type")
                     Return (ENUdatatype.UnknownDatatype)
             End Select
             If booReturnConverted Then
                 objConverted = IIf(booDatatypeValue, objValue, Nothing)
             End If
-            enuDatatypeValue = CType(IIf(booDatatypeValue, _
-                                         ENUdatatype.TrueDatatype, _
-                                         ENUdatatype.FalseDatatype), _
+            enuDatatypeValue = CType(IIf(booDatatypeValue,
+                                         ENUdatatype.TrueDatatype,
+                                         ENUdatatype.FalseDatatype),
                                      ENUdatatype)
         Else
             If datatype(strInstring, ENUdatatype.ByteDatatype) Then
@@ -2286,7 +2286,7 @@ Public Class utilities
     ' On behalf of datatype, check for an integer
     '
     '
-    Private Shared Function datatype_integerCheck_(ByVal strInstring As String, _
+    Private Shared Function datatype_integerCheck_(ByVal strInstring As String,
                                                    ByRef objValue As Object) As Boolean
         If CDbl(strInstring) = CLng(strInstring) Then Return (True)
         objValue = Nothing
@@ -2392,13 +2392,13 @@ Public Class utilities
     ' intMaxLength.
     '
     '
-    Public Shared Function determineNewline(ByVal strInstring As String, _
+    Public Shared Function determineNewline(ByVal strInstring As String,
                                             Optional ByVal intMaxLength As Integer = -1) _
                            As String
         If intMaxLength < -1 Then
-            errorHandler("intMaxLength is not valid", _
-                         Name, _
-                         "determineNewline", _
+            errorHandler("intMaxLength is not valid",
+                         Name,
+                         "determineNewline",
                          "Returning a null string")
             Return ("")
         End If
@@ -2531,14 +2531,14 @@ Public Class utilities
     '                           False, and convert to Boolean
     '
     ' --- Determine the syntax
-    Public Overloads Shared Function display2String(ByVal strInstring As String, _
+    Public Overloads Shared Function display2String(ByVal strInstring As String,
                                                     Optional ByVal booVariableLenVals _
                                                              As Boolean = False) As String
         Return (display2String(strInstring, ENUdisplay2StringSyntax.Determine, booVariableLenVals:=booVariableLenVals))
     End Function
     ' --- Specifies the syntax as a string
-    Public Overloads Shared Function display2String(ByVal strInstring As String, _
-                                                    ByVal strSyntax As String, _
+    Public Overloads Shared Function display2String(ByVal strInstring As String,
+                                                    ByVal strSyntax As String,
                                                     Optional ByVal booVariableLenVals _
                                                              As Boolean = False) As String
         Dim enuSyntax As ENUdisplay2StringSyntax = display2String_syntax2Enum_(strSyntax)
@@ -2546,9 +2546,9 @@ Public Class utilities
         Return (display2String(strInstring, enuSyntax, booVariableLenVals:=booVariableLenVals))
     End Function
     ' --- Common logic                                   
-    Public Overloads Shared Function display2String(ByVal strInstring As String, _
+    Public Overloads Shared Function display2String(ByVal strInstring As String,
                                                     ByVal enuSyntax _
-                                                          As ENUdisplay2StringSyntax, _
+                                                          As ENUdisplay2StringSyntax,
                                                     Optional ByVal booVariableLenVals _
                                                              As Boolean = False) As String
         Dim booCondensed As Boolean
@@ -2572,28 +2572,28 @@ Public Class utilities
             Case ENUdisplay2StringSyntax.Determine
                 booCsyntax = (InStr(strInstring, "\") <> 0)
                 booXMLsyntax = (InStr(strInstring, "&#") <> 0)
-                strOutstring = _
-                display2String_VBexpression2String_(strInstring, _
-                                                    booVBexpressionSyntax, _
+                strOutstring =
+                display2String_VBexpression2String_(strInstring,
+                                                    booVBexpressionSyntax,
                                                     booCondensed)
                 If Not (booCsyntax _
-                        AndAlso _
+                        AndAlso
                         Not booXMLsyntax _
-                        AndAlso _
+                        AndAlso
                         Not booVBexpressionSyntax _
-                        OrElse _
+                        OrElse
                         Not booCsyntax _
-                        AndAlso _
+                        AndAlso
                         booXMLsyntax _
-                        AndAlso _
+                        AndAlso
                         Not booVBexpressionSyntax _
-                        OrElse _
+                        OrElse
                         Not booCsyntax _
-                        AndAlso _
+                        AndAlso
                         Not booXMLsyntax _
-                        AndAlso _
+                        AndAlso
                         booVBexpressionSyntax) Then
-                    errorHandler("Cannot determine input string's display syntax", _
+                    errorHandler("Cannot determine input string's display syntax",
                                  "display2String")
                 End If
                 If booVBexpressionSyntax Then Return (strOutstring)
@@ -2601,27 +2601,27 @@ Public Class utilities
                 booXMLsyntax = True
             Case ENUdisplay2StringSyntax.VBExpression
                 If strInstring = "" Then Return ("")
-                strOutstring = _
-                display2String_VBexpression2String_(strInstring, _
-                                                    booVBexpressionSyntax, _
+                strOutstring =
+                display2String_VBexpression2String_(strInstring,
+                                                    booVBexpressionSyntax,
                                                     booCondensed)
                 If Not booVBexpressionSyntax OrElse booCondensed Then
-                    errorHandler("Cannot convert string " & vbNewLine & vbNewLine & _
-                                 strInstring & vbNewLine & vbNewLine & _
-                                 "assuming uncondensed VB expression syntax", _
+                    errorHandler("Cannot convert string " & vbNewLine & vbNewLine &
+                                 strInstring & vbNewLine & vbNewLine &
+                                 "assuming uncondensed VB expression syntax",
                                  "display2String")
                     Return ("")
                 End If
                 Return (strOutstring)
             Case ENUdisplay2StringSyntax.VBExpressionCondensed
                 If strInstring = "" Then Return ("")
-                strOutstring = _
-                display2String_VBexpression2String_(strInstring, _
-                                                    booVBexpressionSyntax, _
+                strOutstring =
+                display2String_VBexpression2String_(strInstring,
+                                                    booVBexpressionSyntax,
                                                     booCondensed)
                 If Not booVBexpressionSyntax Then
-                    errorHandler("Cannot convert string " & vbNewLine & vbNewLine & _
-                                 strInstring & vbNewLine & vbNewLine & _
+                    errorHandler("Cannot convert string " & vbNewLine & vbNewLine &
+                                 strInstring & vbNewLine & vbNewLine &
                                  "assuming condensed VB expression syntax")
                     Return ("")
                 End If
@@ -2639,8 +2639,8 @@ Public Class utilities
                 strEscape = "&#"
             End If
             intIndex2 = InStr(intIndex1, strInstring & strEscape, strEscape)
-            objStringBuilder.Append(Mid(strInstring, _
-                                        intIndex1, _
+            objStringBuilder.Append(Mid(strInstring,
+                                        intIndex1,
                                         intIndex2 - intIndex1))
             If intIndex2 > intLength Then Exit Do
             If booCsyntax Then
@@ -2649,22 +2649,22 @@ Public Class utilities
                     strEscape = strEscape
                     intIndex1 = intIndex2 + 2
                 ElseIf strNextChar = "x" _
-                       AndAlso _
+                       AndAlso
                        intLength - intIndex2 >= 3 Then
                     intIndex2 += 2
-                    intIndex3 = verify(strInstring, _
-                                       asciiCharsetEnum2String(ENUasciiCharset. _
-                                                               hexDigits), _
+                    intIndex3 = verify(strInstring,
+                                       asciiCharsetEnum2String(ENUasciiCharset.
+                                                               hexDigits),
                                        intIndex2)
                     If intIndex3 = 0 Then intIndex3 = Len(strInstring) + 1
                     intIndex3 = CInt(Math.Min(2, intIndex3 - intIndex2))
                     If booVariableLenVals Or intIndex3 = 2 Then
-                        strEscape = _
-                        ChrW(CInt(baseN2Long(Mid(strInstring & " ", _
-                                                 intIndex2, _
-                                                 intIndex3), _
+                        strEscape =
+                        ChrW(CInt(baseN2Long(Mid(strInstring & " ",
+                                                 intIndex2,
+                                                 intIndex3),
                                              asciiCharsetEnum2String _
-                                             (ENUasciiCharset.hexDigits), _
+                                             (ENUasciiCharset.hexDigits),
                                              booIgnoreCase:=True)))
                     Else
                         strEscape = Mid(strInstring, intIndex2 - 2, intIndex3 + 2)
@@ -2681,19 +2681,19 @@ Public Class utilities
                 If intLength - intIndex2 >= 2 Then
                     Dim objRegEx As System.Text.RegularExpressions.Regex
                     Dim objRegExMatch As System.Text.RegularExpressions.Match
-                    objRegEx = _
+                    objRegEx =
                         New System.Text.RegularExpressions.Regex("[\+\-]{0,1}[0123456789]+")
                     objRegExMatch = objRegEx.Match(strInstring, intIndex2 - 1)
                     intIndex3 = objRegExMatch.Index + 1
                     If intIndex3 = intIndex2 + 2 Then
                         intIndex4 = CInt(Math.Min(objRegExMatch.Length, 5))
                         If booVariableLenVals OrElse intIndex4 = 5 Then
-                            strEscape = ChrW(CInt(Mid(strInstring, _
-                                                      intIndex3, _
+                            strEscape = ChrW(CInt(Mid(strInstring,
+                                                      intIndex3,
                                                       intIndex4)))
                         Else
-                            strEscape = Mid(strInstring, _
-                                            intIndex3 - 2, _
+                            strEscape = Mid(strInstring,
+                                            intIndex3 - 2,
                                             objRegExMatch.Length + 2)
                         End If
                         intIndex2 = intIndex3 + intIndex4
@@ -2722,8 +2722,8 @@ Public Class utilities
             Case "VBEXPRESSIONCONDENSED" : Return ENUdisplay2StringSyntax.VBExpressionCondensed
             Case "DETERMINE" : Return ENUdisplay2StringSyntax.Determine
             Case Else
-                errorHandler("Invalid syntax " & enquote(strSyntax), Name, "display2String", _
-                             "The valid values are C, XML, VBEXPRESSION, VBEXPRESSIONCONDENSED and DETERMINE: returning " & _
+                errorHandler("Invalid syntax " & enquote(strSyntax), Name, "display2String",
+                             "The valid values are C, XML, VBEXPRESSION, VBEXPRESSIONCONDENSED and DETERMINE: returning " &
                              "a null string")
                 Return ENUdisplay2StringSyntax.Invalid
         End Select
@@ -2735,8 +2735,8 @@ Public Class utilities
     '
     '
     Private Shared Function display2String_VBexpression2String_(ByVal strInstring _
-                                                                      As String, _
-                                                                ByRef booValid As Boolean, _
+                                                                      As String,
+                                                                ByRef booValid As Boolean,
                                                                 ByRef booCondensed _
                                                                       As Boolean) As String
         Dim intIndex1 As Integer
@@ -2749,13 +2749,13 @@ Public Class utilities
         End Select
         Dim objStringBuilder As New System.Text.StringBuilder
         Dim objRegEx As New System.Text.RegularExpressions.Regex _
-            (Replace("(<quote>[^<quote>]*<quote>)|(ChrW\(([0123456789]+)\))" & _
-                     "|" & _
-                     "(copies\(((<quote>[^<quote>]*<quote>)" & _
-                     "|" & _
-                     "(ChrW\(([0123456789]+)\))), ([0123456789]+)\))" & _
-                     "|" & _
-                     "(range2String\(([0123456789]+), ([0123456789]+)\))|( & )", _
+            (Replace("(<quote>[^<quote>]*<quote>)|(ChrW\(([0123456789]+)\))" &
+                     "|" &
+                     "(copies\(((<quote>[^<quote>]*<quote>)" &
+                     "|" &
+                     "(ChrW\(([0123456789]+)\))), ([0123456789]+)\))" &
+                     "|" &
+                     "(range2String\(([0123456789]+), ([0123456789]+)\))|( & )",
                      "<quote>", Chr(34)))
         Dim strArray() As String
         Dim strNext As String
@@ -2771,41 +2771,41 @@ Public Class utilities
                     strToken = dequote(strToken)
                 ElseIf Mid(strToken, 1, 4) = "ChrW" Then
                     Try
-                        strToken = ChrW(CInt(Mid(strInstring, _
-                                                 .Groups.Item(3).Index + 1, _
+                        strToken = ChrW(CInt(Mid(strInstring,
+                                                 .Groups.Item(3).Index + 1,
                                                  .Groups.Item(3).Length)))
                     Catch : End Try
                 ElseIf Mid(strToken, 1, 6) = "copies" Then
-                    strToken = Mid(strInstring, _
-                                   .Groups.Item(5).Index + 1, _
+                    strToken = Mid(strInstring,
+                                   .Groups.Item(5).Index + 1,
                                    .Groups.Item(5).Length)
                     If isQuoted(strToken) Then
                         Try
-                            strToken = copies(dequote(strToken), _
-                                              CInt(Mid(strInstring, _
-                                                   .Groups.Item(9).Index + 1, _
+                            strToken = copies(dequote(strToken),
+                                              CInt(Mid(strInstring,
+                                                   .Groups.Item(9).Index + 1,
                                                    .Groups.Item(9).Length)))
                         Catch : End Try
                     Else
                         Try
-                            strToken = copies(ChrW(CInt(Mid(strInstring, _
+                            strToken = copies(ChrW(CInt(Mid(strInstring,
                                                             .Groups.Item(8).Index _
-                                                            + _
-                                                            1, _
-                                                            .Groups.Item(8). _
-                                                            Length))), _
-                                              CInt(Mid(strInstring, _
-                                                       .Groups.Item(9).Index + 1, _
+                                                            +
+                                                            1,
+                                                            .Groups.Item(8).
+                                                            Length))),
+                                              CInt(Mid(strInstring,
+                                                       .Groups.Item(9).Index + 1,
                                                        .Groups.Item(9).Length)))
                         Catch : End Try
                     End If
                 ElseIf Mid(strToken, 1, 12) = "range2String" Then
                     Try
-                        strToken = range2String(CInt(Mid(strInstring, _
-                                                     .Groups.Item(11).Index + 1, _
-                                                     .Groups.Item(11).Length)), _
-                                                CInt(Mid(strInstring, _
-                                                         .Groups.Item(12).Index + 1, _
+                        strToken = range2String(CInt(Mid(strInstring,
+                                                     .Groups.Item(11).Index + 1,
+                                                     .Groups.Item(11).Length)),
+                                                CInt(Mid(strInstring,
+                                                         .Groups.Item(12).Index + 1,
                                                          .Groups.Item(12).Length)))
                     Catch : End Try
                 ElseIf strToken = " & " Then
@@ -2817,9 +2817,9 @@ Public Class utilities
             objStringBuilder.Append(strToken)
         Next intIndex1
         booValid = (intIndex1 = objMatchCollection.Count _
-                    AndAlso _
+                    AndAlso
                     objMatchCollection.Count <> 0 _
-                    AndAlso _
+                    AndAlso
                     intLength = Len(strInstring))
         Return objStringBuilder.ToString
     End Function
@@ -2837,22 +2837,22 @@ Public Class utilities
     ' pass booLeftEllipsis:=True.
     '
     '
-    Public Shared Function ellipsis(ByVal strInstring As String, _
-                                    ByVal intMaxLength As Integer, _
-    Optional ByVal strEllipsis As String = "...", _
+    Public Shared Function ellipsis(ByVal strInstring As String,
+                                    ByVal intMaxLength As Integer,
+    Optional ByVal strEllipsis As String = "...",
     Optional ByVal booLeftEllipsis As Boolean = False) _
                     As String
         Dim intEllipsisLength As Integer
         Dim intStringLength As Integer
         intStringLength = Len(strInstring) : intEllipsisLength = Len(strEllipsis)
         If intMaxLength < 0 Then
-            errorHandler("Internal programming error in call to ellipsis: " & _
+            errorHandler("Internal programming error in call to ellipsis: " &
                          "intMaxLength " & intMaxLength & " is less than zero")
             Return ("")
         End If
         If intEllipsisLength > intMaxLength Then
-            errorHandler("Internal programming error in call to ellipsis: " & _
-                         "intEllipsisLength " & intEllipsisLength & " is greater than " & _
+            errorHandler("Internal programming error in call to ellipsis: " &
+                         "intEllipsisLength " & intEllipsisLength & " is greater than " &
                          "intMaxLength " & intMaxLength)
             Return ("")
         End If
@@ -2893,11 +2893,11 @@ Public Class utilities
     ' 10 20 02     Nilges       1.  Double internal double quotes
     '
     '
-    Public Shared Function enquote(ByVal strInstring As String, _
-                                   Optional ByVal booXML As Boolean = False, _
-                                   Optional ByVal strGraphic As String = _
-                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" & _
-                                            "abcdefghijklmnopqrstuvwxyz" & _
+    Public Shared Function enquote(ByVal strInstring As String,
+                                   Optional ByVal booXML As Boolean = False,
+                                   Optional ByVal strGraphic As String =
+                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" &
+                                            "abcdefghijklmnopqrstuvwxyz" &
                                             "0123456789 ") As String
         Return (Chr(34) & Replace(strInstring, Chr(34), Chr(34) & Chr(34)) & Chr(34))
     End Function
@@ -2923,128 +2923,128 @@ Public Class utilities
     ' 10 03 03   Nilges         Added booMsgBox
     '
     ' --- Message only
-    Public Overloads Shared Sub errorHandler(ByVal strMessage As String, _
-                                             Optional ByVal booInfo As Boolean = False, _
-                                             Optional ByVal strEventLog As String = "", _
-                                             Optional ByVal booDecoration As Boolean = True, _
+    Public Overloads Shared Sub errorHandler(ByVal strMessage As String,
+                                             Optional ByVal booInfo As Boolean = False,
+                                             Optional ByVal strEventLog As String = "",
+                                             Optional ByVal booDecoration As Boolean = True,
                                              Optional ByVal booMsgBox As Boolean = False)
         Dim strFullMessage As String
-        errorHandler_(strMessage, _
-                      "unidentified object", _
-                      "unidentified procedure", _
-                      "", _
-                      strFullMessage, _
-                      booInfo, _
-                      strEventLog, _
-                      booDecoration, _
+        errorHandler_(strMessage,
+                      "unidentified object",
+                      "unidentified procedure",
+                      "",
+                      strFullMessage,
+                      booInfo,
+                      strEventLog,
+                      booDecoration,
                       booMsgBox)
     End Sub
     ' --- Message and object name only
-    Public Overloads Shared Sub errorHandler(ByVal strMessage As String, _
-                                             ByVal strObject As String, _
-                                             Optional ByVal booInfo As Boolean = False, _
-                                             Optional ByVal strEventLog As String = "", _
-                                             Optional ByVal booDecoration As Boolean = True, _
+    Public Overloads Shared Sub errorHandler(ByVal strMessage As String,
+                                             ByVal strObject As String,
+                                             Optional ByVal booInfo As Boolean = False,
+                                             Optional ByVal strEventLog As String = "",
+                                             Optional ByVal booDecoration As Boolean = True,
                                              Optional ByVal booMsgBox As Boolean = False)
         Dim strFullMessage As String
-        errorHandler_(strMessage, _
-                      strObject, _
-                      "unidentified procedure", _
-                      "", _
-                      strFullMessage, _
-                      booInfo, _
-                      strEventLog, _
-                      booDecoration, _
+        errorHandler_(strMessage,
+                      strObject,
+                      "unidentified procedure",
+                      "",
+                      strFullMessage,
+                      booInfo,
+                      strEventLog,
+                      booDecoration,
                       booMsgBox)
     End Sub
     ' --- Message, object name and procedure
-    Public Overloads Shared Sub errorHandler(ByVal strMessage As String, _
-                                             ByVal strObject As String, _
-                                             ByVal strProcedure As String, _
-                                             Optional ByVal booInfo As Boolean = False, _
-                                             Optional ByVal strEventLog As String = "", _
-                                             Optional ByVal booDecoration As Boolean = True, _
+    Public Overloads Shared Sub errorHandler(ByVal strMessage As String,
+                                             ByVal strObject As String,
+                                             ByVal strProcedure As String,
+                                             Optional ByVal booInfo As Boolean = False,
+                                             Optional ByVal strEventLog As String = "",
+                                             Optional ByVal booDecoration As Boolean = True,
                                              Optional ByVal booMsgBox As Boolean = False)
         Dim strFullMessage As String
-        errorHandler_(strMessage, _
-                      strObject, _
-                      strProcedure, _
-                      "", _
-                      strFullMessage, _
-                      booInfo, _
-                      strEventLog, _
-                      booDecoration, _
+        errorHandler_(strMessage,
+                      strObject,
+                      strProcedure,
+                      "",
+                      strFullMessage,
+                      booInfo,
+                      strEventLog,
+                      booDecoration,
                       booMsgBox)
     End Sub
     ' --- Message, object name, procedure and help info
-    Public Overloads Shared Sub errorHandler(ByVal strMessage As String, _
-                                             ByVal strObject As String, _
-                                             ByVal strProcedure As String, _
-                                             ByVal strHelp As String, _
-                                             Optional ByVal booInfo As Boolean = False, _
-                                             Optional ByVal strEventLog As String = "", _
-                                             Optional ByVal booDecoration As Boolean = True, _
+    Public Overloads Shared Sub errorHandler(ByVal strMessage As String,
+                                             ByVal strObject As String,
+                                             ByVal strProcedure As String,
+                                             ByVal strHelp As String,
+                                             Optional ByVal booInfo As Boolean = False,
+                                             Optional ByVal strEventLog As String = "",
+                                             Optional ByVal booDecoration As Boolean = True,
                                              Optional ByVal booMsgBox As Boolean = False)
         Dim strFullMessage As String
-        errorHandler_(strMessage, _
-                      strObject, _
-                      strProcedure, _
-                      strHelp, _
-                      strFullMessage, _
-                      booInfo, _
-                      strEventLog, _
-                      booDecoration, _
+        errorHandler_(strMessage,
+                      strObject,
+                      strProcedure,
+                      strHelp,
+                      strFullMessage,
+                      booInfo,
+                      strEventLog,
+                      booDecoration,
                       booMsgBox)
     End Sub
     ' --- Message, object name, procedure and help info: return complete message
-    Public Overloads Shared Sub errorHandler(ByVal strMessage As String, _
-                                             ByVal strObject As String, _
-                                             ByVal strProcedure As String, _
-                                             ByVal strHelp As String, _
-                                             ByRef strFullMessage As String, _
-                                             Optional ByVal booInfo As Boolean = False, _
-                                             Optional ByVal strEventLog As String = "", _
-                                             Optional ByVal booDecoration As Boolean = True, _
+    Public Overloads Shared Sub errorHandler(ByVal strMessage As String,
+                                             ByVal strObject As String,
+                                             ByVal strProcedure As String,
+                                             ByVal strHelp As String,
+                                             ByRef strFullMessage As String,
+                                             Optional ByVal booInfo As Boolean = False,
+                                             Optional ByVal strEventLog As String = "",
+                                             Optional ByVal booDecoration As Boolean = True,
                                              Optional ByVal booMsgBox As Boolean = False)
-        errorHandler_(strMessage, _
-                      strObject, _
-                      strProcedure, _
-                      strHelp, _
-                      strFullMessage, _
-                      booInfo, _
-                      strEventLog, _
-                      booDecoration, _
+        errorHandler_(strMessage,
+                      strObject,
+                      strProcedure,
+                      strHelp,
+                      strFullMessage,
+                      booInfo,
+                      strEventLog,
+                      booDecoration,
                       booMsgBox)
     End Sub
     ' --- Common logic
-    Private Shared Sub errorHandler_(ByVal strMessage As String, _
-                                     ByVal strObject As String, _
-                                     ByVal strProcedure As String, _
-                                     ByVal strHelp As String, _
-                                     ByRef strFullMessage As String, _
-                                     ByVal booInfo As Boolean, _
-                                     ByVal strEventLog As String, _
-                                     ByVal booDecoration As Boolean, _
+    Private Shared Sub errorHandler_(ByVal strMessage As String,
+                                     ByVal strObject As String,
+                                     ByVal strProcedure As String,
+                                     ByVal strHelp As String,
+                                     ByRef strFullMessage As String,
+                                     ByVal booInfo As Boolean,
+                                     ByVal strEventLog As String,
+                                     ByVal booDecoration As Boolean,
                                      ByVal booMsgBox As Boolean)
-        Dim strLocation As String = CStr(IIf(strObject = "" AndAlso strProcedure = "", _
-                                             "", _
-                                             CStr(IIf(strObject = "", "?", strObject)) & "." & _
+        Dim strLocation As String = CStr(IIf(strObject = "" AndAlso strProcedure = "",
+                                             "",
+                                             CStr(IIf(strObject = "", "?", strObject)) & "." &
                                              CStr(IIf(strProcedure = "", "?", strProcedure))))
         strFullMessage = strMessage
         If booDecoration Then
-            strFullMessage = CStr(IIf(booInfo, "Informational message", "Error")) & " " & _
-                             "at " & Now & ": " & strFullMessage & _
-                             CStr(IIf(strLocation <> "", vbNewLine & vbNewLine & "Location: " & strLocation, "")) & _
+            strFullMessage = CStr(IIf(booInfo, "Informational message", "Error")) & " " &
+                             "at " & Now & ": " & strFullMessage &
+                             CStr(IIf(strLocation <> "", vbNewLine & vbNewLine & "Location: " & strLocation, "")) &
                              CStr(IIf(strHelp <> "", vbNewLine & vbNewLine & strHelp, ""))
         End If
         If Trim(strEventLog) <> "" Then
             Try
                 System.Diagnostics.EventLog.WriteEntry(strEventLog, strFullMessage)
             Catch
-                Dim objExceptionEvt As New Exception("Cannot log the following message:" & _
-                                                     vbNewLine & vbNewLine & _
-                                                     strFullMessage & _
-                                                     vbNewLine & vbNewLine & _
+                Dim objExceptionEvt As New Exception("Cannot log the following message:" &
+                                                     vbNewLine & vbNewLine &
+                                                     strFullMessage &
+                                                     vbNewLine & vbNewLine &
                                                      Err.Number & " " & Err.Description)
                 Throw objExceptionEvt
                 Return
@@ -3094,34 +3094,34 @@ Public Class utilities
     Public Overloads Shared Function file2String(ByVal strFileid As String) As String
         Return (file2String_(strFileid, 1, True, 0))
     End Function
-    Public Overloads Shared Function file2String(ByVal strFileid As String, _
+    Public Overloads Shared Function file2String(ByVal strFileid As String,
                                                  ByVal intStartIndex As Integer) As String
         Return (file2String_(strFileid, intStartIndex, True, 0))
     End Function
-    Public Overloads Shared Function file2String(ByVal strFileid As String, _
-                                                 ByVal intStartIndex As Integer, _
+    Public Overloads Shared Function file2String(ByVal strFileid As String,
+                                                 ByVal intStartIndex As Integer,
                                                  ByVal intLength As Integer) As String
         Return (file2String_(strFileid, intStartIndex, False, intLength))
     End Function
     Public Overloads Shared Function file2String(ByVal objFileStream As IO.FileStream) As String
         Return (file2String_(objFileStream, 1, True, 0))
     End Function
-    Public Overloads Shared Function file2String(ByVal objFileStream As IO.FileStream, _
+    Public Overloads Shared Function file2String(ByVal objFileStream As IO.FileStream,
                                                  ByVal intStartIndex As Integer) As String
         Return (file2String_(objFileStream, intStartIndex, True, 0))
     End Function
-    Public Overloads Shared Function file2String(ByVal objFileStream As IO.FileStream, _
-                                                 ByVal intStartIndex As Integer, _
+    Public Overloads Shared Function file2String(ByVal objFileStream As IO.FileStream,
+                                                 ByVal intStartIndex As Integer,
                                                  ByVal intLength As Integer) As String
         Return (file2String_(objFileStream, intStartIndex, False, intLength))
     End Function
-    Private Shared Function file2String_(ByVal objFile As Object, _
-                                         ByVal intStartIndex As Integer, _
-                                         ByVal booReadAll As Boolean, _
+    Private Shared Function file2String_(ByVal objFile As Object,
+                                         ByVal intStartIndex As Integer,
+                                         ByVal booReadAll As Boolean,
                                          ByVal intLength As Integer) As String
         If intStartIndex < 1 Then
-            errorHandler("Start index " & intStartIndex & " is not valid", _
-                         Name, "file2String", _
+            errorHandler("Start index " & intStartIndex & " is not valid",
+                         Name, "file2String",
                          "Returning null string")
             Return ("")
         End If
@@ -3137,9 +3137,9 @@ Public Class utilities
         Try
             intFileLength = CInt(FileLen(strFileid))
         Catch
-            errorHandler("Length of file " & _
-                        "(" & strFileid & ") " & _
-                        intFileLength & " " & _
+            errorHandler("Length of file " &
+                        "(" & strFileid & ") " &
+                        intFileLength & " " &
                         "cannot be handled by file2String utility")
             Return ("")
         End Try
@@ -3215,20 +3215,20 @@ Public Class utilities
     ' 12 13 02   Nilges         Version 1
     '
     '
-    Public Shared Function findAbbrev(ByVal strTarget As String, _
+    Public Shared Function findAbbrev(ByVal strTarget As String,
                                       ByVal strKeywords As String) As Integer
         Dim strKeywordSplit() As String
         Try
             strKeywordSplit = Split(UCase(strKeywords))
         Catch
-            errorHandler("Could not split keywords", _
-                         Name, "findAbbrev", _
+            errorHandler("Could not split keywords",
+                         Name, "findAbbrev",
                          Err.Number & " " & Err.Description)
         End Try
         Dim strTargetWork As String = Trim(UCase(strTarget))
         If InStr(strTargetWork, " ") <> 0 Then
-            errorHandler("Target " & enquote(strTarget) & " contains internal spaces", _
-                         Name, "findAbbrev", _
+            errorHandler("Target " & enquote(strTarget) & " contains internal spaces",
+                         Name, "findAbbrev",
                          "Returning zero")
             Return (0)
         End If
@@ -3277,7 +3277,7 @@ Public Class utilities
         Return (findBalParenthesis(strInstring, 1))
     End Function
     ' --- Start at one and look for default right parenthesis
-    Public Overloads Shared Function findBalParenthesis(ByVal strInstring As String, _
+    Public Overloads Shared Function findBalParenthesis(ByVal strInstring As String,
                                                         ByVal intStartIndex As Integer) _
            As Integer
         Dim strLeftParenthesis As String = Mid(strInstring, intStartIndex, 1)
@@ -3287,23 +3287,23 @@ Public Class utilities
             Case "[" : strRightParenthesis = "]"
             Case "{" : strRightParenthesis = "}"
             Case Else
-                errorHandler("Cannot determine the balancing right parenthesis for the " & _
-                             "character " & enquote(strLeftParenthesis), _
-                             Name, "findBalParenthesis", _
+                errorHandler("Cannot determine the balancing right parenthesis for the " &
+                             "character " & enquote(strLeftParenthesis),
+                             Name, "findBalParenthesis",
                              "Returning 0")
                 Return (0)
         End Select
         Return (findBalParenthesis(strInstring, intStartIndex, strRightParenthesis))
     End Function
     ' --- Start at one and look for default right parenthesis
-    Public Overloads Shared Function findBalParenthesis(ByVal strInstring As String, _
-                                                        ByVal intStartIndex As Integer, _
+    Public Overloads Shared Function findBalParenthesis(ByVal strInstring As String,
+                                                        ByVal intStartIndex As Integer,
                                                         ByVal strRightParenthesis As String) _
            As Integer
         If Len(strRightParenthesis) <> 1 Then
-            errorHandler("Right parenthesis " & enquote(strRightParenthesis) & " " & _
-                         "is not a character", _
-                         Name, "findBalParenthesis", _
+            errorHandler("Right parenthesis " & enquote(strRightParenthesis) & " " &
+                         "is not a character",
+                         Name, "findBalParenthesis",
                          "Returning 0")
             Return (0)
         End If
@@ -3331,10 +3331,10 @@ Public Class utilities
     ' 06 01 03   Nilges         Bug: incorrect offsets
     '
     '
-    Public Shared Function findItem(ByVal strInstring As String, _
-                                    ByVal strTarget As String, _
-                                    ByVal strDelimiter As String, _
-                                    ByVal booSetDelimiter As Boolean, _
+    Public Shared Function findItem(ByVal strInstring As String,
+                                    ByVal strTarget As String,
+                                    ByVal strDelimiter As String,
+                                    ByVal booSetDelimiter As Boolean,
                                     Optional ByVal booIgnoreCase As Boolean = False) _
            As Integer
         Dim intDelimiterLength As Integer = Len(strDelimiter)
@@ -3342,7 +3342,7 @@ Public Class utilities
             errorHandler("The delimiter can not be a null string")
         End If
         Dim intIndex1 As Integer
-        Dim objCompareMethod As CompareMethod = _
+        Dim objCompareMethod As CompareMethod =
             CType(IIf(booIgnoreCase, CompareMethod.Text, CompareMethod.Binary), CompareMethod)
         Dim strSplitArray() As String
         Dim strTargetWork As String = strTarget
@@ -3351,15 +3351,15 @@ Public Class utilities
         End If
         ' --- Try two shortcuts to avoid a search
         If Not booSetDelimiter _
-           OrElse _
+           OrElse
            booSetDelimiter AndAlso Len(strDelimiter) = 1 Then
             ' Shortcut 1: check for common case where string starts with target
             Dim strWork As String = Mid(strInstring, 1, Len(strTarget))
             If booIgnoreCase Then strWork = UCase(strWork)
             If strWork = strTargetWork Then Return (1)
             ' Shortcut 2: use Instr and split.  
-            intIndex1 = InStr(strDelimiter & strInstring & strDelimiter, _
-                              strDelimiter & strTarget & strDelimiter, _
+            intIndex1 = InStr(strDelimiter & strInstring & strDelimiter,
+                              strDelimiter & strTarget & strDelimiter,
                               objCompareMethod)
             If intIndex1 = 0 Then Return (0)
             strSplitArray = Split(Mid(strInstring, 1, intIndex1 - Len(strDelimiter)), strDelimiter, Compare:=objCompareMethod)
@@ -3370,10 +3370,10 @@ Public Class utilities
         If booSetDelimiter Then strDelimiter1 = Mid(strDelimiter, 1, 1)
         Dim strInstringWork As String = strInstring
         If booIgnoreCase Then strInstringWork = UCase(strInstringWork)
-        strSplitArray = Split(translate(strInstringWork, _
-                                        strDelimiter, _
-                                        copies(intDelimiterLength, strDelimiter)), _
-                              strDelimiter1, _
+        strSplitArray = Split(translate(strInstringWork,
+                                        strDelimiter,
+                                        copies(intDelimiterLength, strDelimiter)),
+                              strDelimiter1,
                               Compare:=objCompareMethod)
         Dim intNullEntries As Integer
         For intIndex1 = 0 To UBound(strSplitArray)
@@ -3389,8 +3389,8 @@ Public Class utilities
     ' Find blank-delimited word in string
     '
     '
-    Public Shared Function findWord(ByVal strInstring As String, _
-                                    ByVal strTarget As String, _
+    Public Shared Function findWord(ByVal strInstring As String,
+                                    ByVal strTarget As String,
                                     Optional ByVal booIgnoreCase As Boolean = False) _
            As Integer
         Return (findItem(strInstring, strTarget, " ", True, booIgnoreCase:=booIgnoreCase))
@@ -3445,12 +3445,12 @@ Public Class utilities
         Return formatOutline(strInstring, 72, True)
     End Function
     ' --- Line width is specified
-    Public Overloads Shared Function formatOutline(ByVal strInstring As String, _
+    Public Overloads Shared Function formatOutline(ByVal strInstring As String,
                                                    ByVal intWidth As Integer) As String
         Return formatOutline(strInstring, 72, True)
     End Function
     ' --- Toplevel edit is specified
-    Public Overloads Shared Function formatOutline(ByVal strInstring As String, _
+    Public Overloads Shared Function formatOutline(ByVal strInstring As String,
                                                    ByVal booToplevelEdit As Boolean) As String
         Return formatOutline(strInstring, 72, True)
     End Function
@@ -3460,17 +3460,17 @@ Public Class utilities
         Dim intIndentation As Integer
         Dim strDewey As String
     End Structure
-    Public Overloads Shared Function formatOutline(ByVal strInstring As String, _
-                                                   ByVal intWidth As Integer, _
-                                                   ByVal booToplevelEdit As Boolean, _
-                                                   Optional ByVal intSpacing As Integer = 0, _
+    Public Overloads Shared Function formatOutline(ByVal strInstring As String,
+                                                   ByVal intWidth As Integer,
+                                                   ByVal booToplevelEdit As Boolean,
+                                                   Optional ByVal intSpacing As Integer = 0,
                                                    Optional ByVal booSpaceOnMultiline As Boolean = False) As String
         Dim strSplit() As String
         Try
             strSplit = Split(strInstring, vbNewLine)
         Catch
-            errorHandler("Cannot split: " & Err.Number & " " & Err.Description, _
-                         "utilities", "formatOutline", _
+            errorHandler("Cannot split: " & Err.Number & " " & Err.Description,
+                         "utilities", "formatOutline",
                          "Returning outline with no change")
             Return strInstring
         End Try
@@ -3478,8 +3478,8 @@ Public Class utilities
         Try
             ReDim usrIndentStack(0)
         Catch
-            errorHandler("Cannot create stack: " & Err.Number & " " & Err.Description, _
-                         "utilities", "formatOutline", _
+            errorHandler("Cannot create stack: " & Err.Number & " " & Err.Description,
+                         "utilities", "formatOutline",
                          "Returning outline with no change")
             Return strInstring
         End Try
@@ -3489,8 +3489,8 @@ Public Class utilities
             Try
                 colFirstLines = New Collection
             Catch
-                errorHandler("Cannot create collection: " & Err.Number & " " & Err.Description, _
-                            "utilities", "formatOutline", _
+                errorHandler("Cannot create collection: " & Err.Number & " " & Err.Description,
+                            "utilities", "formatOutline",
                             "Returning outline with no change")
                 Return strInstring
             End Try
@@ -3515,16 +3515,16 @@ Public Class utilities
                     Try
                         ReDim Preserve usrIndentStack(UBound(usrIndentStack) + 1)
                     Catch
-                        errorHandler("Cannot push indentation stack: " & _
-                                     Err.Number & " " & Err.Description, _
-                                     "utilities", "formatOutline", _
+                        errorHandler("Cannot push indentation stack: " &
+                                     Err.Number & " " & Err.Description,
+                                     "utilities", "formatOutline",
                                      "Returning outline with no change")
                         Return strInstring
                     End Try
                     With usrIndentStack(UBound(usrIndentStack))
                         .intRank = intRank
                         .intIndentation = usrIndentStack(UBound(usrIndentStack) - 1).intIndentation _
-                                          + _
+                                          +
                                           Len(strNextDewey)
                         .strDewey = strNextDewey
                     End With
@@ -3534,24 +3534,24 @@ Public Class utilities
                         Try
                             ReDim Preserve usrIndentStack(UBound(usrIndentStack) - 1)
                         Catch
-                            errorHandler("Cannot pop indentation stack: " & _
-                                        Err.Number & " " & Err.Description, _
-                                        "utilities", "formatOutline", _
+                            errorHandler("Cannot pop indentation stack: " &
+                                        Err.Number & " " & Err.Description,
+                                        "utilities", "formatOutline",
                                         "Returning outline with no change")
                             Return strInstring
                         End Try
                     Loop
                     If UBound(usrIndentStack) = 0 Then
-                        errorHandler("Cannot pop indentation stack: " & _
-                                     Err.Number & " " & Err.Description, _
-                                     "utilities", "formatOutline", _
+                        errorHandler("Cannot pop indentation stack: " &
+                                     Err.Number & " " & Err.Description,
+                                     "utilities", "formatOutline",
                                      "Returning outline with no change")
                         Return strInstring
                     End If
                     With usrIndentStack(UBound(usrIndentStack))
                         .intIndentation -= Len(.strDewey)
                         .intIndentation = usrIndentStack(UBound(usrIndentStack) - 1).intIndentation _
-                                        + _
+                                        +
                                         Len(strNextDewey)
                         .strDewey = strNextDewey
                         .intRank = intRank
@@ -3559,27 +3559,27 @@ Public Class utilities
                 End If
                 strNext = strSplit(intIndex1)
                 strNext = phrase(strNext, 2)
-                strNext = soft2HardParagraph(strNext, _
+                strNext = soft2HardParagraph(strNext,
                                              bytLineWidth:=CByte(intWidth _
-                                                                 - _
+                                                                 -
                                                                  usrIndentStack(UBound(usrIndentStack)).intIndentation))
                 booMultiline = booMultiline OrElse InStr(strNext, vbNewLine) <> 0
-                strNext = Replace(strNext, _
-                                  vbNewLine, _
-                                  vbNewLine & _
+                strNext = Replace(strNext,
+                                  vbNewLine,
+                                  vbNewLine &
                                   copies(usrIndentStack(UBound(usrIndentStack)).intIndentation, " "))
-                strOutstring &= CStr(IIf(strOutstring = "", "", vbNewLine)) & _
-                                copies(usrIndentStack(UBound(usrIndentStack) - 1).intIndentation, " ") & _
-                                strNextDewey & _
+                strOutstring &= CStr(IIf(strOutstring = "", "", vbNewLine)) &
+                                copies(usrIndentStack(UBound(usrIndentStack) - 1).intIndentation, " ") &
+                                strNextDewey &
                                 strNext
                 intLineCount += items(strNext, vbNewLine, False)
                 If intSpacing <> 0 AndAlso strOutstring <> "" Then
                     Try
                         colFirstLines.Add(True, "_" & intLineCount - 1)
                     Catch
-                        errorHandler("Cannot extend collection: " & _
-                                     Err.Number & " " & Err.Description, _
-                                     "utilities", "formatOutline", _
+                        errorHandler("Cannot extend collection: " &
+                                     Err.Number & " " & Err.Description,
+                                     "utilities", "formatOutline",
                                      "Returning outline with no change")
                         Return strInstring
                     End Try
@@ -3590,9 +3590,9 @@ Public Class utilities
             Try
                 strSplit = Split(strOutstring, vbNewLine)
             Catch
-                errorHandler("Cannot split in preparation for postedit: " & _
-                             Err.Number & " " & Err.Description, _
-                             "utilities", "formatOutline", _
+                errorHandler("Cannot split in preparation for postedit: " &
+                             Err.Number & " " & Err.Description,
+                             "utilities", "formatOutline",
                              "Returning outline without extra formatting requested")
                 Return strOutstring
             End Try
@@ -3689,16 +3689,16 @@ Public Class utilities
     ' 12 09 01   Nilges         Version 1
     '
     '
-    Public Shared Function histogram(ByVal dblValue As Double, _
-                                     Optional ByVal dblRangeMin As Double = 0, _
-                                     Optional ByVal dblRangeMax As Double = 32767, _
-                                     Optional ByVal dblValueMin As Double = 0, _
+    Public Shared Function histogram(ByVal dblValue As Double,
+                                     Optional ByVal dblRangeMin As Double = 0,
+                                     Optional ByVal dblRangeMax As Double = 32767,
+                                     Optional ByVal dblValueMin As Double = 0,
                                      Optional ByVal dblValueMax As Double = 32767) As Double
         If dblValueMin = dblValueMax Then Return (0)
         Return (Math.Abs(dblRangeMax - dblRangeMin) _
-                    * _
+                    *
                     ((dblValue - dblValueMin) / Math.Abs(dblValueMax - dblValueMin)) _
-                    + _
+                    +
                     dblRangeMin)
     End Function
 
@@ -3711,12 +3711,12 @@ Public Class utilities
         Return incrementDewey(strDewey, items(strDewey, ".", False))
     End Function
     ' --- Increment indexed period-separated number
-    Public Shared Function incrementDewey(ByVal strDewey As String, _
+    Public Shared Function incrementDewey(ByVal strDewey As String,
                                           ByVal intIndex As Integer) As String
         If strDewey = "" Then Return CStr(intIndex)
         If intIndex < 1 Then
-            errorHandler("Invalid index " & intIndex, _
-                         Name, "incrementDewey", _
+            errorHandler("Invalid index " & intIndex,
+                         Name, "incrementDewey",
                          "Returning original string")
             Return strDewey
         End If
@@ -3730,10 +3730,10 @@ Public Class utilities
         If intIndex <= intItems Then
             strNext = CStr(CInt(item(strDewey, intIndex, ".", False)) + 1)
         End If
-        strOutstring = itemPhrase(strDewey, 1, intIndex - 1, ".", False) & _
-                       CStr(IIf(intIndex > 1, ".", "")) & _
-                       strNext & _
-                       CStr(IIf(intIndex < intItems, ".", "")) & _
+        strOutstring = itemPhrase(strDewey, 1, intIndex - 1, ".", False) &
+                       CStr(IIf(intIndex > 1, ".", "")) &
+                       strNext &
+                       CStr(IIf(intIndex < intItems, ".", "")) &
                        itemPhrase(strDewey, intIndex + 1, -1, ".", False)
         Return strOutstring
     End Function
@@ -3763,8 +3763,8 @@ Public Class utilities
     Public Overloads Shared Function indent(ByVal strInstring As String) As String
         Return (indent(strInstring, "    ", vbNewLine))
     End Function
-    Public Overloads Shared Function indent(ByVal strInstring As String, _
-                                            ByVal intCount As Integer, _
+    Public Overloads Shared Function indent(ByVal strInstring As String,
+                                            ByVal intCount As Integer,
                                             ByVal strNewLine As String) As String
         If intCount < 0 Then
             errorHandler("Invalid intCount parameter has value " & intCount, "indent")
@@ -3772,8 +3772,8 @@ Public Class utilities
         End If
         Return (indent(strInstring, copies(intCount, " "), vbNewLine))
     End Function
-    Public Overloads Shared Function indent(ByVal strInstring As String, _
-                                            ByVal strIndent As String, _
+    Public Overloads Shared Function indent(ByVal strInstring As String,
+                                            ByVal strIndent As String,
                                             ByVal strNewLine As String) As String
         Dim intIndex1 As Integer
         Dim strArray() As String
@@ -3781,7 +3781,7 @@ Public Class utilities
             strArray = Split(strInstring, strNewLine)
         Catch
             With Err()
-                errorHandler("Not able to parse input string using Split: " & .Number & " " & .Description, _
+                errorHandler("Not able to parse input string using Split: " & .Number & " " & .Description,
                              "indent")
             End With
             Return (strInstring)
@@ -3829,47 +3829,47 @@ Public Class utilities
     ' 06 22 03     Nilges       1.  Added booString2Box 
     '
     '
-    Public Overloads Shared Function inspectionAppend(ByRef strReport As String, _
-                                                      ByVal strRule As String, _
-                                                      ByVal booRuleResult As Boolean, _
-                                                      ByRef booResult As Boolean, _
+    Public Overloads Shared Function inspectionAppend(ByRef strReport As String,
+                                                      ByVal strRule As String,
+                                                      ByVal booRuleResult As Boolean,
+                                                      ByRef booResult As Boolean,
                                                       Optional ByVal booString2Box As Boolean = False) As Boolean
         Return (inspectionAppend(strReport, strRule, booRuleResult, booResult, ""))
     End Function
-    Public Overloads Shared Function inspectionAppend(ByRef strReport As String, _
-                                                      ByVal strRule As String, _
-                                                      ByVal booRuleResult As Boolean, _
-                                                      ByRef booResult As Boolean, _
-                                                      ByVal strComments As String, _
+    Public Overloads Shared Function inspectionAppend(ByRef strReport As String,
+                                                      ByVal strRule As String,
+                                                      ByVal booRuleResult As Boolean,
+                                                      ByRef booResult As Boolean,
+                                                      ByVal strComments As String,
                                                       Optional ByVal booString2Box As Boolean = False) As Boolean
         If booString2Box Then
-            Dim strResult As String = "This rule is " & _
-                                      CStr(IIf(booRuleResult, "OK", "NOT MET")) & _
-                                      CStr(IIf(strComments = "", _
-                                               "", _
-                                               vbNewLine & vbNewLine & _
+            Dim strResult As String = "This rule is " &
+                                      CStr(IIf(booRuleResult, "OK", "NOT MET")) &
+                                      CStr(IIf(strComments = "",
+                                               "",
+                                               vbNewLine & vbNewLine &
                                                strComments))
-            strReport = append(strReport, _
-                                vbNewLine & vbNewLine, _
-                                string2Box(vbNewLine & _
-                                            strRule & _
-                                            vbNewLine & vbNewLine & _
-                                            copies("-", _
-                                                   Math.Max(Math.Max(itemMaxWidth(strRule, _
-                                                                                  vbNewLine, _
-                                                                                  False), _
-                                                                     itemMaxWidth(strResult, _
-                                                                                  vbNewLine, _
-                                                                                  False)), _
-                                                            80)) & _
-                                            vbNewLine & _
-                                            strResult, _
+            strReport = append(strReport,
+                                vbNewLine & vbNewLine,
+                                string2Box(vbNewLine &
+                                            strRule &
+                                            vbNewLine & vbNewLine &
+                                            copies("-",
+                                                   Math.Max(Math.Max(itemMaxWidth(strRule,
+                                                                                  vbNewLine,
+                                                                                  False),
+                                                                     itemMaxWidth(strResult,
+                                                                                  vbNewLine,
+                                                                                  False)),
+                                                            80)) &
+                                            vbNewLine &
+                                            strResult,
                                             "I N S P E C T I O N   R U L E"))
         Else
-            strReport = append(strReport, _
-                                vbNewLine, _
-                                strRule & ": " & CStr(IIf(booRuleResult, "OK", "Failed")) & _
-                                CStr(IIf(strComments <> "", vbNewLine, "")) & _
+            strReport = append(strReport,
+                                vbNewLine,
+                                strRule & ": " & CStr(IIf(booRuleResult, "OK", "Failed")) &
+                                CStr(IIf(strComments <> "", vbNewLine, "")) &
                                 strComments)
         End If
         booResult = booResult AndAlso booRuleResult
@@ -3943,18 +3943,18 @@ Public Class utilities
         Dim strCommentText As String
         Return isXMLcomment(strInstring, booComplete, strCommentText) And booComplete
     End Function
-    Public Overloads Shared Function isXMLcomment(ByVal strInstring As String, _
+    Public Overloads Shared Function isXMLcomment(ByVal strInstring As String,
                                                   ByRef booComplete As Boolean) As Boolean
         Dim strCommentText As String
         Return isXMLcomment(strInstring, booComplete, strCommentText)
     End Function
-    Public Overloads Shared Function isXMLcomment(ByVal strInstring As String, _
+    Public Overloads Shared Function isXMLcomment(ByVal strInstring As String,
                                                   ByRef strCommentText As String) As Boolean
         Dim booComplete As Boolean
         Return isXMLcomment(strInstring, booComplete, strCommentText) And booComplete
     End Function
-    Public Overloads Shared Function isXMLcomment(ByVal strInstring As String, _
-                                                  ByRef booComplete As Boolean, _
+    Public Overloads Shared Function isXMLcomment(ByVal strInstring As String,
+                                                  ByRef booComplete As Boolean,
                                                   ByRef strCommentText As String) As Boolean
         Dim strInstringWork As String = Trim(strInstring)
         Dim intLength As Integer = Len(strInstringWork)
@@ -3982,9 +3982,9 @@ Public Class utilities
         If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ_:", strInstringUCase) = 0 Then
             Return (False)
         End If
-        Return (verify(strInstringUCase, _
+        Return (verify(strInstringUCase,
                       "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_:") _
-               = _
+               =
                0)
     End Function
 
@@ -4047,45 +4047,45 @@ Public Class utilities
     '
     '
     ' --- Blank-delimited item
-    Public Overloads Shared Function item(ByVal strInstring As String, _
+    Public Overloads Shared Function item(ByVal strInstring As String,
                                           ByVal intIndex As Integer) _
            As String
         Return item(strInstring, intIndex, " ", True)
     End Function
     ' --- Various other items
-    Public Overloads Shared Function item(ByVal strInstring As String, _
-                                          ByVal intIndex As Integer, _
-                                          ByVal strDelimiter As String, _
+    Public Overloads Shared Function item(ByVal strInstring As String,
+                                          ByVal intIndex As Integer,
+                                          ByVal strDelimiter As String,
                                           ByVal booSetDelimiter As Boolean) _
            As String
         Dim intStartIndex As Integer = 1
-        Return (item_(strInstring, _
-                      intIndex, _
-                      strDelimiter, _
-                      booSetDelimiter, _
-                      intStartIndex, _
+        Return (item_(strInstring,
+                      intIndex,
+                      strDelimiter,
+                      booSetDelimiter,
+                      intStartIndex,
                       False))
     End Function
     ' --- Various other items
-    Public Overloads Shared Function item(ByVal strInstring As String, _
-                                          ByVal intIndex As Integer, _
-                                          ByVal strDelimiter As String, _
-                                          ByVal booSetDelimiter As Boolean, _
+    Public Overloads Shared Function item(ByVal strInstring As String,
+                                          ByVal intIndex As Integer,
+                                          ByVal strDelimiter As String,
+                                          ByVal booSetDelimiter As Boolean,
                                           ByRef intStartIndex As Integer) _
            As String
-        Return (item_(strInstring, _
-                      intIndex, _
-                      strDelimiter, _
-                      booSetDelimiter, _
-                      intStartIndex, _
+        Return (item_(strInstring,
+                      intIndex,
+                      strDelimiter,
+                      booSetDelimiter,
+                      intStartIndex,
                       True))
     End Function
     ' --- Common logic
-    Private Shared Function item_(ByVal strInstring As String, _
-                                  ByVal intIndex As Integer, _
-                                  ByVal strDelimiter As String, _
-                                  ByVal booSetDelimiter As Boolean, _
-                                  ByRef intStartIndex As Integer, _
+    Private Shared Function item_(ByVal strInstring As String,
+                                  ByVal intIndex As Integer,
+                                  ByVal strDelimiter As String,
+                                  ByVal booSetDelimiter As Boolean,
+                                  ByRef intStartIndex As Integer,
                                   ByVal booFindStartIndex As Boolean) _
            As String
         Dim intCount As Integer
@@ -4094,21 +4094,21 @@ Public Class utilities
         Dim strArray() As String
         Dim strItem As String
         If strDelimiter = "" Then
-            errorHandler("Delimiter cannot be a null string", _
-                         Name, _
-                         "item", _
+            errorHandler("Delimiter cannot be a null string",
+                         Name,
+                         "item",
                          "Returning a null item")
             Return ("")
         End If
         If intIndex < 1 Then
-            errorHandler("intIndex " & intIndex & " is not valid", _
-                         Name, _
-                         "item", _
+            errorHandler("intIndex " & intIndex & " is not valid",
+                         Name,
+                         "item",
                          "Returning a null item")
             Return ("")
         End If
         If booFindStartIndex _
-           OrElse _
+           OrElse
            booSetDelimiter AndAlso Len(strDelimiter) <> 1 Then
             ' Scan the string
             intCount = 1
@@ -4116,9 +4116,9 @@ Public Class utilities
             Dim intIndex2 As Integer
             Do While intIndex1 <= Len(strInstring)
                 If booSetDelimiter Then
-                    intIndex1 = verify(strInstring, _
-                                        strDelimiter, _
-                                        intIndex1, _
+                    intIndex1 = verify(strInstring,
+                                        strDelimiter,
+                                        intIndex1,
                                         False)
                 End If
                 If intIndex1 = 0 Then
@@ -4126,17 +4126,17 @@ Public Class utilities
                     Exit Do
                 End If
                 If booSetDelimiter Then
-                    intIndex2 = verify(strInstring & Mid(strDelimiter, 1, 1), _
-                                        strDelimiter, _
-                                        intIndex1 + 1, _
+                    intIndex2 = verify(strInstring & Mid(strDelimiter, 1, 1),
+                                        strDelimiter,
+                                        intIndex1 + 1,
                                         True)
                 Else
-                    intIndex2 = InStr(intIndex1, _
-                                      strInstring & strDelimiter, _
+                    intIndex2 = InStr(intIndex1,
+                                      strInstring & strDelimiter,
                                       strDelimiter)
                 End If
-                strItem = Mid(strInstring, _
-                              intIndex1, _
+                strItem = Mid(strInstring,
+                              intIndex1,
                               intIndex2 - intIndex1)
                 If intIndex = intCount Then
                     intStartIndex = intIndex1
@@ -4152,8 +4152,8 @@ Public Class utilities
         Else
             If booSetDelimiter Then
                 ' Use split, then ignore null entries
-                If item_string2Array_(strInstring, _
-                                        strDelimiter, _
+                If item_string2Array_(strInstring,
+                                        strDelimiter,
                                         strArray) Then
                     For intIndex1 = LBound(strArray) To UBound(strArray)
                         If strArray(intIndex1) <> "" Then
@@ -4186,8 +4186,8 @@ Public Class utilities
     ' 11 23 01     Nilges       1.  Bug: incorrect success test 
     '
     '
-    Private Shared Function item_string2Array_(ByVal strInstring As String, _
-                                                ByVal strDelimiter As String, _
+    Private Shared Function item_string2Array_(ByVal strInstring As String,
+                                                ByVal strDelimiter As String,
                                                 ByRef strArray() As String) As Boolean
         Dim intUBound As Integer
         strArray = Split(strInstring, strDelimiter)
@@ -4212,15 +4212,15 @@ Public Class utilities
     ' set to the index of the longest item.
     '
     '
-    Public Overloads Shared Function itemMaxWidth(ByVal strInstring As String, _
-                                                  ByVal strDelimiter As String, _
+    Public Overloads Shared Function itemMaxWidth(ByVal strInstring As String,
+                                                  ByVal strDelimiter As String,
                                                   ByVal booSetDelimiter As Boolean) As Integer
         Dim intIndex1 As Integer
         Return (itemMaxWidth(strInstring, strDelimiter, booSetDelimiter, intIndex1))
     End Function
-    Public Overloads Shared Function itemMaxWidth(ByVal strInstring As String, _
-                                            ByVal strDelimiter As String, _
-                                            ByVal booSetDelimiter As Boolean, _
+    Public Overloads Shared Function itemMaxWidth(ByVal strInstring As String,
+                                            ByVal strDelimiter As String,
+                                            ByVal booSetDelimiter As Boolean,
                                             ByRef intIndex As Integer) As Integer
         Dim intMaxWidth As Integer
         Dim intIndex1 As Integer
@@ -4263,24 +4263,24 @@ Public Class utilities
     '                           2.  Added null returns
     '
     '
-    Public Overloads Shared Function itemPhrase(ByVal strInstring As String, _
-                                                ByVal intStartIndex As Integer, _
-                                                ByVal intItemCount As Integer, _
-                                                ByVal strDelimiter As String, _
+    Public Overloads Shared Function itemPhrase(ByVal strInstring As String,
+                                                ByVal intStartIndex As Integer,
+                                                ByVal intItemCount As Integer,
+                                                ByVal strDelimiter As String,
                                                 ByVal booSetDelimiter As Boolean) _
                      As String
         Dim intIndex1 As Integer
         If intStartIndex < 1 Then
-            errorHandler("Invalid intStartIndex parameter: " & intStartIndex, _
-                         Name, "itemPhrase", _
+            errorHandler("Invalid intStartIndex parameter: " & intStartIndex,
+                         Name, "itemPhrase",
                          "Returning null string")
             Return ("")
         End If
         Dim intEndIndex As Integer
         Dim intItems As Integer = items(strInstring, strDelimiter, booSetDelimiter)
         If intItemCount < -1 Then
-            errorHandler("Invalid intItemCount parameter: " & intStartIndex, _
-                         Name, "itemPhrase", _
+            errorHandler("Invalid intItemCount parameter: " & intStartIndex,
+                         Name, "itemPhrase",
                          "Returning null string")
             Return ("")
         ElseIf intItemCount = -1 Then
@@ -4292,16 +4292,16 @@ Public Class utilities
         Try
             objStringBuilder = New System.Text.StringBuilder("", Len(strInstring))
         Catch
-            errorHandler("Can't create string builder", _
-                         Name, "itemPhrase", _
-                         Err.Number & " " & Err.Description & vbNewLine & vbNewLine & _
+            errorHandler("Can't create string builder",
+                         Name, "itemPhrase",
+                         Err.Number & " " & Err.Description & vbNewLine & vbNewLine &
                          "Returning a null item phrase")
             Return ("")
         End Try
         With objStringBuilder
             For intIndex1 = intStartIndex To intEndIndex
-                append(objStringBuilder, _
-                       strDelimiter, _
+                append(objStringBuilder,
+                       strDelimiter,
                        item(strInstring, intIndex1, strDelimiter, booSetDelimiter))
             Next intIndex1
             Return (objStringBuilder.ToString)
@@ -4326,8 +4326,8 @@ Public Class utilities
            As Integer
         Return (items(strInstring, " ", True))
     End Function
-    Public Overloads Shared Function items(ByVal strInstring As String, _
-                                           ByVal strDelimiter As String, _
+    Public Overloads Shared Function items(ByVal strInstring As String,
+                                           ByVal strDelimiter As String,
                                            ByVal booSetDelimiter As Boolean) _
                      As Integer
         Dim intCount As Integer
@@ -4340,10 +4340,10 @@ Public Class utilities
             intIndex1 = 1
             Dim strItem As String
             Do
-                strItem = item(Mid(strInstring, intIndex1), _
-                               1, _
-                               strDelimiter, _
-                               True, _
+                strItem = item(Mid(strInstring, intIndex1),
+                               1,
+                               strDelimiter,
+                               True,
                                intStartIndex)
                 If strItem = "" Then Exit Do
                 intItems += 1
@@ -4388,20 +4388,20 @@ Public Class utilities
         Dim strWork As String
         intCount = CInt(Rnd() * 90) + 10
         For intIndex1 = 1 To intCount
-            append(strReport, _
-                    vbNewLine & vbNewLine, _
+            append(strReport,
+                    vbNewLine & vbNewLine,
                     "Starting test " & intIndex1 & " of " & intCount)
             booSetDelimiter = (Rnd() > 0.5)
             If booSetDelimiter Then
                 strDelimiter = itemTest_mkRandomSetDelimiter_(strDelimiterSet)
             Else
-                strDelimiter = "[Delimiter" & _
-                               copies(Mid("0123456789ABCDE", CInt(Rnd() * 14) + 1, 1), _
-                                      CInt(Rnd() * 10)) & _
+                strDelimiter = "[Delimiter" &
+                               copies(Mid("0123456789ABCDE", CInt(Rnd() * 14) + 1, 1),
+                                      CInt(Rnd() * 10)) &
                                "]"
             End If
-            strTest = itemTest_mkTestString_(intIndex1, _
-                                             strDelimiter, _
+            strTest = itemTest_mkTestString_(intIndex1,
+                                             strDelimiter,
                                              booSetDelimiter)
             Try
                 strDelimiterDisplay = strDelimiter
@@ -4410,21 +4410,21 @@ Public Class utilities
                 Else
                     strDelimiterDisplay = "string " & enquote(strDelimiterDisplay)
                 End If
-                append(strReport, _
-                        vbNewLine, _
-                        "Testing item using the string " & _
-                        enquote(strTest) & " and " & _
-                        "the delimiter " & " " & _
+                append(strReport,
+                        vbNewLine,
+                        "Testing item using the string " &
+                        enquote(strTest) & " and " &
+                        "the delimiter " & " " &
                         strDelimiterDisplay)
                 intItemCount = items(strTest, strDelimiter, booSetDelimiter)
-                intItemIndex = Math.Max(CInt(IIf(Rnd() < 0.1, _
-                                        intItemCount + CInt(Rnd() * 3), _
+                intItemIndex = Math.Max(CInt(IIf(Rnd() < 0.1,
+                                        intItemCount + CInt(Rnd() * 3),
                                         CInt(Rnd() * intItemCount))), 1)
-                strWork = "item # " & _
-                            intItemIndex & " " & _
+                strWork = "item # " &
+                            intItemIndex & " " &
                             "of " & intItemCount
-                append(strReport, _
-                        vbNewLine, _
+                append(strReport,
+                        vbNewLine,
                         "Attempting to get " & strWork)
                 intStartIndex = -1
                 If Rnd() < 0.5 Then
@@ -4432,30 +4432,30 @@ Public Class utilities
                 Else
                     strItem = item(strTest, intItemIndex, strDelimiter, booSetDelimiter)
                 End If
-                append(strReport, _
-                        vbNewLine, _
-                        strWork & " is " & _
+                append(strReport,
+                        vbNewLine,
+                        strWork & " is " &
                         enquote(strItem))
                 If strItem <> "" _
-                   AndAlso _
+                   AndAlso
                    (word(strItem, 1) <> "Item" _
-                    OrElse _
+                    OrElse
                     word(strItem, 2) <> CStr(intItemIndex) _
-                    OrElse _
+                    OrElse
                     intStartIndex <> -1 _
-                    AndAlso _
+                    AndAlso
                     phrase(strItem, 3) <> "starts at " & intStartIndex) _
-                   OrElse _
+                   OrElse
                    strItem = "" _
-                   AndAlso _
+                   AndAlso
                    (booSetDelimiter AndAlso intItemIndex <= intItemCount) Then
                     append(strReport, vbNewLine, "Item has an unexpected value")
                     intError += 1
                 End If
             Catch objException As Exception
-                append(strReport, _
-                       vbNewLine, _
-                       "The following error occured in test " & intCount & ": " & _
+                append(strReport,
+                       vbNewLine,
+                       "The following error occured in test " & intCount & ": " &
                        objException.ToString)
                 intError += 1
             End Try
@@ -4467,8 +4467,8 @@ Public Class utilities
     ' Make a test string on behalf of itemTest
     '
     '
-    Public Shared Function itemTest_mkTestString_(ByVal intIndex As Integer, _
-                                                  ByVal strDelimiter As String, _
+    Public Shared Function itemTest_mkTestString_(ByVal intIndex As Integer,
+                                                  ByVal strDelimiter As String,
                                                   ByVal booSetDelimiter As Boolean) As String
         Dim intDelimiters As Integer
         Dim intIndex1 As Integer
@@ -4482,9 +4482,9 @@ Public Class utilities
                 intItemIndex += intDelimiters - 1
                 If intIndex1 = 1 Then intItemIndex += 1
             End If
-            strNext = "Item " & _
-                      intItemIndex & " " & _
-                      "starts at " & _
+            strNext = "Item " &
+                      intItemIndex & " " &
+                      "starts at " &
                       CStr(Len(strTest) + 1)
             strTest &= strNext
             intItemIndex += 1
@@ -4506,7 +4506,7 @@ Public Class utilities
         For intIndex1 = 1 To CInt(Rnd() * 31) + 1
             intIndex2 = Math.Max(CInt(Rnd() * Len(strInset)), 1)
             strOutstring &= Mid(strInset, intIndex2, 1)
-            strInset = Mid(strInset, 1, intIndex2 - 1) & _
+            strInset = Mid(strInset, 1, intIndex2 - 1) &
                         Mid(strInset, intIndex2 + 1)
         Next intIndex1
         Return (strOutstring)
@@ -4529,8 +4529,8 @@ Public Class utilities
     ' If the input strings are of unequal length missing lines are blank.
     '
     '
-    Public Shared Function joinlines(ByVal strInstring1 As String, _
-                                     ByVal strInstring2 As String, _
+    Public Shared Function joinlines(ByVal strInstring1 As String,
+                                     ByVal strInstring2 As String,
                                      Optional ByVal strGutter As String = "   ") As String
         Dim intIndex1 As Integer
         Dim intMaxLength As Integer
@@ -4566,8 +4566,8 @@ Public Class utilities
     ' Replace keywords by values
     '
     '
-    Public Shared Function keywordChange(ByVal strInstring As String, _
-                                         ByVal strControlString As String, _
+    Public Shared Function keywordChange(ByVal strInstring As String,
+                                         ByVal strControlString As String,
                                          ByVal ParamArray strSubstitution() As String) As String
         Dim intIndex1 As Integer
         Dim strInstringWork As String
@@ -4587,7 +4587,7 @@ Public Class utilities
     ' Return newline-separated line
     '
     '
-    Public Shared Function line(ByVal strInstring As String, _
+    Public Shared Function line(ByVal strInstring As String,
                          ByVal intLineNumber As Integer) As String
         Return (item(strInstring, intLineNumber, vbNewLine, False))
     End Function
@@ -4609,7 +4609,7 @@ Public Class utilities
     ' " Larry". For best results Trim the result in many contexts.
     '
     '
-    Public Shared Function listItem(ByVal strInstring As String, _
+    Public Shared Function listItem(ByVal strInstring As String,
                                     ByVal intItemNumber As Integer) As String
         Return (item(strInstring, intItemNumber, ",", False))
     End Function
@@ -4664,23 +4664,23 @@ Public Class utilities
     '                           digits
     '
     '
-    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long, _
+    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long,
                                                 ByVal intBase As Integer) As String
         Return long2BaseN(lngBase10, intBase, 0)
     End Function
-    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long, _
-                                                ByVal intBase As Integer, _
+    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long,
+                                                ByVal intBase As Integer,
                                                 ByVal bytWordSize As Byte) As String
-        Return (long2BaseN(lngBase10, _
-                          baseN2Long_base2Digits_(intBase), _
+        Return (long2BaseN(lngBase10,
+                          baseN2Long_base2Digits_(intBase),
                           bytWordSize))
     End Function
-    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long, _
+    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long,
                                                 ByVal strDigits As String) As String
         Return long2BaseN(lngBase10, strDigits, 0)
     End Function
-    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long, _
-                                                ByVal strDigits As String, _
+    Public Overloads Shared Function long2BaseN(ByVal lngBase10 As Long,
+                                                ByVal strDigits As String,
                                                 ByVal bytWordSize As Byte) As String
         Dim intBaseValue As Integer
         Dim lngBase10Work As Long
@@ -4700,17 +4700,17 @@ Public Class utilities
                     Return (Mid(strDigits, 1, 1))
                 End If
                 If lngBase10 > 2 ^ (bytWordSize - 1) - 1 _
-                   OrElse _
+                   OrElse
                    lngBase10 < -2 ^ (bytWordSize - 1) Then
-                    errorHandler("Long value " & lngBase10 & " " & _
-                                 "cannot be represented with word size " & _
+                    errorHandler("Long value " & lngBase10 & " " &
+                                 "cannot be represented with word size " &
                                  bytWordSize)
                     Return (Mid(strDigits, 1, 1))
                 End If
             End If
             If lngBase10 < 0 Then
                 If intBaseValue <> 2 OrElse bytWordSize = 0 Then
-                    errorHandler("Input number " & lngBase10 & " is negative, " & _
+                    errorHandler("Input number " & lngBase10 & " is negative, " &
                                  "but base is not 2 or word size is not specified")
                     Return ("")
                 End If
@@ -4719,11 +4719,11 @@ Public Class utilities
                 lngBase10Work = lngBase10
             End If
             Do While lngBase10Work <> 0
-                append(objStringBuilder, _
-                       "", _
-                       Mid(strDigits, _
-                           CInt(lngBase10Work Mod intBaseValue + 1), _
-                           1), _
+                append(objStringBuilder,
+                       "",
+                       Mid(strDigits,
+                           CInt(lngBase10Work Mod intBaseValue + 1),
+                           1),
                        booToStart:=True)
                 lngBase10Work = lngBase10Work \ intBaseValue
             Loop
@@ -4731,19 +4731,19 @@ Public Class utilities
         strBaseN = objStringBuilder.ToString
         If bytWordSize <> 0 Then
             If objStringBuilder.Length <= bytWordSize Then
-                strBaseN = align(strBaseN, _
-                                 bytWordSize, _
-                                 ENUalign.alignRight, _
+                strBaseN = align(strBaseN,
+                                 bytWordSize,
+                                 ENUalign.alignRight,
                                  Mid(strDigits, 1, 1))
             Else
-                errorHandler("Overflow: input number " & lngBase10 & " " & _
-                             "cannot be represented in " & _
+                errorHandler("Overflow: input number " & lngBase10 & " " &
+                             "cannot be represented in " &
                              bytWordSize & " digits")
             End If
         End If
-        If lngBase10 < 0 Then strBaseN = translate(strBaseN, _
-                                                   strDigits, _
-                                                   Mid(strDigits, 2, 1) & _
+        If lngBase10 < 0 Then strBaseN = translate(strBaseN,
+                                                   strDigits,
+                                                   Mid(strDigits, 2, 1) &
                                                    Mid(strDigits, 1, 1))
         Return (strBaseN)
     End Function
@@ -4789,7 +4789,7 @@ Public Class utilities
     ' newlines.
     '
     '
-    Public Shared Function mkXMLComment(ByVal strComment As String, _
+    Public Shared Function mkXMLComment(ByVal strComment As String,
                                         Optional ByVal booMultipleLineEdit As Boolean = False) As String
         If InStr(strComment, vbNewLine) <> 0 AndAlso booMultipleLineEdit Then
             Dim intIndex1 As Integer
@@ -4865,19 +4865,19 @@ Public Class utilities
     ' 
     '
     ' 
-    Public Overloads Shared Function mkXMLElement(ByVal strTag As String, _
-                                                  ByVal strValue As String, _
+    Public Overloads Shared Function mkXMLElement(ByVal strTag As String,
+                                                  ByVal strValue As String,
     ByVal ParamArray strAttributes() As String) As String
         Return (mkXMLElement(strTag, strValue, 0))
     End Function
-    Public Overloads Shared Function mkXMLElement(ByVal strTag As String, _
-                                                  ByVal strValue As String, _
-                                                  ByVal intLineLen As Integer, _
+    Public Overloads Shared Function mkXMLElement(ByVal strTag As String,
+                                                  ByVal strValue As String,
+                                                  ByVal intLineLen As Integer,
                                                   ByVal ParamArray strAttributes() As String) As String
         If intLineLen < 0 Then
-            errorHandler("Internal programming error: intLineLen parameter " & intLineLen & " " & _
-                            "is not valid", _
-                            "mkXMLElement", "", _
+            errorHandler("Internal programming error: intLineLen parameter " & intLineLen & " " &
+                            "is not valid",
+                            "mkXMLElement", "",
                             "This parameter must be zero or positive.  A null string has been returned.")
             Return ("")
         End If
@@ -4887,14 +4887,14 @@ Public Class utilities
         Dim strElement As String
         intLineLenWork = CInt(IIf(intLineLen = 0, Len(strValue), intLineLen))
         For intIndex1 = 1 To Len(strValue) Step intLineLenWork
-            strElement &= strNewline & _
+            strElement &= strNewline &
                           Mid(strValue, intIndex1, intLineLenWork)
         Next intIndex1
         If Not mkXMLElement_probableXML_(strElement) Then
             strElement = xmlMeta2Name(strElement)
         End If
-        Return (mkXMLTag(strTag, strAttributes) & _
-                strElement & _
+        Return (mkXMLTag(strTag, strAttributes) &
+                strElement &
                 mkXMLTag(strTag, booEndTag:=True))
     End Function
 
@@ -4912,7 +4912,7 @@ Public Class utilities
         Dim strWSgone As String = Trim(translate(strElement, strWS, copies(" ", Len(strWS))))
         If Len(strElement) <= 2 Then Exit Function
         Return (Mid(strWSgone, 1, 1) = "<" _
-               AndAlso _
+               AndAlso
                Mid(strWSgone, Len(strWSgone)) = ">")
     End Function
 
@@ -4961,18 +4961,18 @@ Public Class utilities
     '                               convert their meta-characters
     '
     '
-    Public Overloads Shared Function mkXMLTag(ByVal strTagName As String, _
+    Public Overloads Shared Function mkXMLTag(ByVal strTagName As String,
                                               ByVal booEndTag As Boolean) As String
 
         Return ("<" & CStr(IIf(booEndTag, "/", "")) & mkXMLtag_name2XML_(strTagName) & ">")
     End Function
-    Public Overloads Shared Function mkXMLTag(ByVal strTagName As String, _
+    Public Overloads Shared Function mkXMLTag(ByVal strTagName As String,
                                               ByVal ParamArray strAttributes() As String) As String
         Dim strTag As String = mkXMLTag(strTagName, False)
         Dim strAttributesWork As String = Trim(mkXMLTag_attributes2String_(strAttributes))
         If strAttributesWork <> "" Then strAttributesWork = " " & strAttributesWork
-        Return Mid(strTag, 1, Len(strTag) - 1) & _
-               strAttributesWork & _
+        Return Mid(strTag, 1, Len(strTag) - 1) &
+               strAttributesWork &
                ">"
     End Function
 
@@ -4987,20 +4987,20 @@ Public Class utilities
         Try
             objStringBuilder = New System.Text.StringBuilder
         Catch
-            errorHandler("Can't create string builder", _
-                         Name, "mkXMLTag_attributes2String_", _
+            errorHandler("Can't create string builder",
+                         Name, "mkXMLTag_attributes2String_",
                          Err.Number & Err.Description)
         End Try
         For intIndex1 = LBound(strAttributes) To UBound(strAttributes) Step 2
             intIndex2 = intIndex1 + 1
-            If Not append(objStringBuilder, " ", _
-                          strAttributes(intIndex1) & _
-                          CStr(IIf(strAttributes(intIndex2) = "", _
-                                   "", _
-                                   "=" & _
+            If Not append(objStringBuilder, " ",
+                          strAttributes(intIndex1) &
+                          CStr(IIf(strAttributes(intIndex2) = "",
+                                   "",
+                                   "=" &
                                    enquote(xmlMeta2Name(strAttributes(intIndex2)))))) Then
-                errorHandler("Can't extend string builder", _
-                             Name, "mkXMLTag_attributes2String_", _
+                errorHandler("Can't extend string builder",
+                             Name, "mkXMLTag_attributes2String_",
                              Err.Number & Err.Description)
             End If
         Next intIndex1
@@ -5092,17 +5092,17 @@ Public Class utilities
             Case "BLANK" : Return " "
             Case Else
                 If Len(strNameWork) = 8 _
-                   AndAlso _
+                   AndAlso
                    Mid(strNameWork, 1, 3) = "CHR" Then
                     strNameWork = Mid(strNameWork, 4)
                     If verify(strNameWork, "0123456789") = 0 Then
                         Return ChrW(CInt(strNameWork))
                     End If
                 End If
-                errorHandler("Invalid character name " & _
-                             enquote(strNameWork), _
-                             Name, _
-                             "name2Char", _
+                errorHandler("Invalid character name " &
+                             enquote(strNameWork),
+                             Name,
+                             "name2Char",
                              "Returning a null string")
                 Return ""
         End Select
@@ -5129,18 +5129,18 @@ Public Class utilities
     ' spaces are removed.
     '
     '
-    Public Shared Function numbers2Variables(ByVal strInstring As String, _
-                                             Optional ByVal strLetters As String = _
+    Public Shared Function numbers2Variables(ByVal strInstring As String,
+                                             Optional ByVal strLetters As String =
                                              "xyzabdefghijklmnopqrstuvwxyz") _
            As String
         Dim strSplit() As String
         Try
             strSplit = Split(strInstring, " ")
         Catch
-            errorHandler("Cannot split input string: " & _
-                         Err.Number & " " & Err.Description, _
-                         Name, _
-                         "numbers2Variables", _
+            errorHandler("Cannot split input string: " &
+                         Err.Number & " " & Err.Description,
+                         Name,
+                         "numbers2Variables",
                          "Returning unchanged original string")
             Return (strInstring)
         End Try
@@ -5148,10 +5148,10 @@ Public Class utilities
         Try
             objStringBuilder = New System.Text.StringBuilder
         Catch
-            errorHandler("Cannot create string builder: " & _
-                         Err.Number & " " & Err.Description, _
-                         Name, _
-                         "numbers2Variables", _
+            errorHandler("Cannot create string builder: " &
+                         Err.Number & " " & Err.Description,
+                         Name,
+                         "numbers2Variables",
                          "Returning unchanged original string")
             Return (strInstring)
         End Try
@@ -5269,7 +5269,7 @@ Public Class utilities
     Public Overloads Shared Function object2String(ByVal objObject As Object) As String
         Return (object2String(objObject, False))
     End Function
-    Public Overloads Shared Function object2String(ByVal objObject As Object, _
+    Public Overloads Shared Function object2String(ByVal objObject As Object,
                                                    ByVal booDeco As Boolean) As String
         Dim strObject As String
         strObject = ""
@@ -5277,8 +5277,8 @@ Public Class utilities
             strObject = CStr(objObject)
             If booDeco Then
                 If Not IsNumeric(strObject) OrElse verify(strObject, "0123456789eE+-.") <> 0 Then
-                    strObject = string2Display(strObject, _
-                                               "VBExpression", _
+                    strObject = string2Display(strObject,
+                                               "VBExpression",
                                                strGraphicExclude:="""")
                 End If
                 strObject = objObject.GetType.ToString & "(" & strObject & ")"
@@ -5345,35 +5345,35 @@ Public Class utilities
     '                           enclosing tags
     '
     '
-    Public Shared Function objectInfo2XML(ByVal strName As String, _
-                                          ByVal strAbout As String, _
-                                          ByVal booAboutComment As Boolean, _
-                                          ByVal booStateComment As Boolean, _
+    Public Shared Function objectInfo2XML(ByVal strName As String,
+                                          ByVal strAbout As String,
+                                          ByVal booAboutComment As Boolean,
+                                          ByVal booStateComment As Boolean,
                                           ByVal ParamArray strState() As String) As String
         Dim objStringBuilder As System.Text.StringBuilder
         If (UBound(strState) + 1) Mod 3 <> 0 Then
-            errorHandler("Invalid parameter array size", _
-                         Name, _
-                         "objectInfo2XML", _
+            errorHandler("Invalid parameter array size",
+                         Name,
+                         "objectInfo2XML",
                          "Returning a null string")
         End If
         Try
             objStringBuilder = New System.Text.StringBuilder
         Catch
-            errorHandler("Cannot create string builder: " & Err.Number & " " & Err.Description, _
-                         Name, _
-                         "objectInfo2XML", _
+            errorHandler("Cannot create string builder: " & Err.Number & " " & Err.Description,
+                         Name,
+                         "objectInfo2XML",
                          "Returning a null string")
             Return ("")
         End Try
         With objStringBuilder
             If booAboutComment Then
-                append(objStringBuilder, _
-                       vbNewLine, _
-                       mkXMLComment(vbNewLine & _
-                                    string2Box(vbNewLine & _
-                                               soft2HardParagraph(strAbout) & _
-                                               vbNewLine & vbNewLine) & _
+                append(objStringBuilder,
+                       vbNewLine,
+                       mkXMLComment(vbNewLine &
+                                    string2Box(vbNewLine &
+                                               soft2HardParagraph(strAbout) &
+                                               vbNewLine & vbNewLine) &
                                     vbNewLine))
             End If
             If strName <> "" Then
@@ -5387,23 +5387,23 @@ Public Class utilities
             Dim strLineSep3 As String = strLineSep & strIndent
             For intIndex1 = LBound(strState) To UBound(strState) Step 3
                 If booStateComment Then
-                    append(objStringBuilder, _
-                           strLineSep, _
+                    append(objStringBuilder,
+                           strLineSep,
                            mkXMLComment(strState(intIndex1 + 1)))
                 End If
                 intIndex2 = intIndex1 + 2
-                strLineSep3 = CStr(IIf(InStr(strState(intIndex2), vbNewLine) <> 0, _
-                                       strLineSep2, _
+                strLineSep3 = CStr(IIf(InStr(strState(intIndex2), vbNewLine) <> 0,
+                                       strLineSep2,
                                        ""))
-                append(objStringBuilder, _
-                       strLineSep, _
-                       mkXMLElement(strState(intIndex1), _
-                                    strLineSep3 & _
-                                    Replace(strState(intIndex2), _
-                                            vbNewLine, _
-                                            strLineSep2) & _
-                                    Mid(strLineSep3, _
-                                        1, _
+                append(objStringBuilder,
+                       strLineSep,
+                       mkXMLElement(strState(intIndex1),
+                                    strLineSep3 &
+                                    Replace(strState(intIndex2),
+                                            vbNewLine,
+                                            strLineSep2) &
+                                    Mid(strLineSep3,
+                                        1,
                                         Math.Max(0, Len(strLineSep3) - Len(strIndent)))))
             Next intIndex1
         End With
@@ -5440,28 +5440,28 @@ Public Class utilities
     '         sets s when t is a self-contained tag like <a/>
     '
     '
-    Public Overloads Shared Function parseXMLtag(ByVal strTag As String, _
+    Public Overloads Shared Function parseXMLtag(ByVal strTag As String,
                                                  ByRef strTagName As String) As Boolean
         Dim strTagAttributes As String
         Return (parseXMLtag(strTag, strTagName, strTagAttributes))
     End Function
-    Public Overloads Shared Function parseXMLtag(ByVal strTag As String, _
-                                                 ByRef strTagName As String, _
+    Public Overloads Shared Function parseXMLtag(ByVal strTag As String,
+                                                 ByRef strTagName As String,
                                                  ByRef strTagAttributes As String) As Boolean
         Dim booEndTag As Boolean
         Return (parseXMLtag(strTag, strTagName, strTagAttributes, booEndTag))
     End Function
-    Public Overloads Shared Function parseXMLtag(ByVal strTag As String, _
-                                                 ByRef strTagName As String, _
-                                                 ByRef strTagAttributes As String, _
+    Public Overloads Shared Function parseXMLtag(ByVal strTag As String,
+                                                 ByRef strTagName As String,
+                                                 ByRef strTagAttributes As String,
                                                  ByRef booEndTag As Boolean) As Boolean
         Dim booSelfContainedTag As Boolean
         Return (parseXMLtag(strTag, strTagName, strTagAttributes, booEndTag, booSelfContainedTag))
     End Function
-    Public Overloads Shared Function parseXMLtag(ByVal strTag As String, _
-                                                 ByRef strTagName As String, _
-                                                 ByRef strTagAttributes As String, _
-                                                 ByRef booEndTag As Boolean, _
+    Public Overloads Shared Function parseXMLtag(ByVal strTag As String,
+                                                 ByRef strTagName As String,
+                                                 ByRef strTagAttributes As String,
+                                                 ByRef booEndTag As Boolean,
                                                  ByRef booSelfContainedTag As Boolean) As Boolean
         If Len(strTag) < 3 Then Return (False)
         Dim intIndex1 As Integer = verify(strTag & " ", " >", 2, True)
@@ -5477,12 +5477,12 @@ Public Class utilities
     ' Return a phrase of blank-delimited words
     '
     '
-    Public Overloads Shared Function phrase(ByVal strInstring As String, _
+    Public Overloads Shared Function phrase(ByVal strInstring As String,
                                             ByVal intStartIndex As Integer) As String
         Return (phrase(strInstring, intStartIndex, words(strInstring)))
     End Function
-    Public Overloads Shared Function phrase(ByVal strInstring As String, _
-                                            ByVal intStartIndex As Integer, _
+    Public Overloads Shared Function phrase(ByVal strInstring As String,
+                                            ByVal intStartIndex As Integer,
                                             ByVal intWordCount As Integer) As String
         Return (itemPhrase(strInstring, intStartIndex, intWordCount, " ", True))
     End Function
@@ -5527,18 +5527,18 @@ Public Class utilities
     ' 06 03 03   Nilges         Added error handling to range conversion
     '
     '
-    Public Overloads Shared Function range2String(ByVal strStart As String, _
+    Public Overloads Shared Function range2String(ByVal strStart As String,
                                                   ByVal strEnd As String) As String
         If Len(strStart) <> 1 OrElse Len(strEnd) <> 1 Then
             errorHandler("Multiple-character or null strings cannot be converted", "range2String")
         End If
         Return (range2String(AscW(strStart), AscW(strEnd)))
     End Function
-    Public Overloads Shared Function range2String(ByVal chrStart As Char, _
+    Public Overloads Shared Function range2String(ByVal chrStart As Char,
                                                   ByVal chrEnd As Char) As String
         Return (range2String(AscW(chrStart), AscW(chrEnd)))
     End Function
-    Public Overloads Shared Function range2String(ByVal intStart As Integer, _
+    Public Overloads Shared Function range2String(ByVal intStart As Integer,
                                                   ByVal intEnd As Integer) As String
         Dim intIndex1 As Integer
         Dim objStringBuilder As New System.Text.StringBuilder("")
@@ -5546,8 +5546,8 @@ Public Class utilities
             Try
                 objStringBuilder.Append(ChrW(intIndex1))
             Catch
-                errorHandler("Cannot append character with value " & intIndex1, _
-                             Name, "range2String", _
+                errorHandler("Cannot append character with value " & intIndex1,
+                             Name, "range2String",
                              "Returning an incomplete output string")
                 Exit For
             End Try
@@ -5563,14 +5563,14 @@ Public Class utilities
         Dim strComments As String
         Return (replaceXMLmetaChars(strValue, strComments))
     End Function
-    Public Overloads Shared Function replaceXMLmetaChars(ByVal strValue As String, _
+    Public Overloads Shared Function replaceXMLmetaChars(ByVal strValue As String,
                                                   ByRef strComments As String) As String
         Return (replaceMetaChar_ _
                     (replaceMetaChar_ _
-                    (replaceMetaChar_(strValue, "&", strComments), _
-                        "<", _
-                        strComments), _
-                    ">", _
+                    (replaceMetaChar_(strValue, "&", strComments),
+                        "<",
+                        strComments),
+                    ">",
                     strComments))
     End Function
 
@@ -5578,14 +5578,14 @@ Public Class utilities
     ' Replace XML meta character...update comments
     '
     '
-    Private Shared Function replaceMetaChar_(ByVal strValue As String, _
-                                             ByVal strMetaChar As String, _
+    Private Shared Function replaceMetaChar_(ByVal strValue As String,
+                                             ByVal strMetaChar As String,
                                              ByRef strComments As String) As String
         If InStr(strValue, strMetaChar) = 0 Then Return (strValue)
         Dim strXML As String = "&#" & alignRight(CStr(AscW(strMetaChar)), 5, "0") & ";"
-        Dim strComment As String = "Replaced meta character " & _
-                                   enquote(strMetaChar) & " " & _
-                                   "with " & _
+        Dim strComment As String = "Replaced meta character " &
+                                   enquote(strMetaChar) & " " &
+                                   "with " &
                                    enquote(strXML)
         If InStr(strComments, strComment) = 0 Then
             If strComments <> "" Then strComments &= vbNewLine
@@ -5609,8 +5609,8 @@ Public Class utilities
     '
     Public Function RLE2String(ByVal strRLE As String) As String
         If Len(strRLE) = 0 Then
-            errorHandler("Input string is null", _
-                         Name, "RLE2String", _
+            errorHandler("Input string is null",
+                         Name, "RLE2String",
                          "Returning null")
         End If
         Dim strSentinel As String = Mid(strRLE, 1, 1)
@@ -5618,9 +5618,9 @@ Public Class utilities
         Try
             objStringBuilder = New System.Text.StringBuilder
         Catch ex As Exception
-            errorHandler("Can't create string builder: " & _
-                         Err.Number & " " & Err.Description, _
-                         Name, "RLE2String", _
+            errorHandler("Can't create string builder: " &
+                         Err.Number & " " & Err.Description,
+                         Name, "RLE2String",
                          "Returning unconverted RLE string")
             Return (strRLE)
         End Try
@@ -5628,16 +5628,16 @@ Public Class utilities
         Dim intIndex2 As Integer
         Do While intIndex1 <= Len(strRLE)
             intIndex2 = InStr(intIndex1, strRLE & strSentinel, strSentinel)
-            If Not (append(objStringBuilder, _
-                           "", _
+            If Not (append(objStringBuilder,
+                           "",
                            Mid(strRLE, intIndex1, intIndex2 - intIndex1)) _
-                    AndAlso _
-                    append(objStringBuilder, _
-                           "", _
-                           copies(Mid(strRLE, intIndex2 + 2, 1), _
+                    AndAlso
+                    append(objStringBuilder,
+                           "",
+                           copies(Mid(strRLE, intIndex2 + 2, 1),
                                   AscW(Mid(strRLE, intIndex2 + 1, 1))))) Then
-                errorHandler("append failure", _
-                             Name, "RLE2String", _
+                errorHandler("append failure",
+                             Name, "RLE2String",
                              "Returning incomplete, unpacked string")
             End If
         Loop
@@ -5656,30 +5656,30 @@ Public Class utilities
     '
     '
     Public Shared Function smallBusinessList() As String
-        Return ("Al's Snappy Food, " & _
-                "Singh Spicy Curry Shop, " & _
-                "Best Way Noodle Bowl, " & _
-                "You Eat You Pay You Shuddup Now Cafe, " & _
-                "O'Reilly's Bar, " & _
-                "Man with a Van Worldwide Moving and Storage Company, " & _
-                "Joe's Gas the Heck Up 'n Git Outa Town, " & _
-                "Edward's Salon de Paris Beauty Parlor (ask about our emergency entrance), " & _
-                "Moon's Snappy Cab, " & _
-                "Singh's Courteous Cab, " & _
-                "Kwame's A Number 1 Cab, " & _
-                "Giant Toad Software Development PLC, " & _
-                "Lucy's Sunnyside Tap, " & _
-                "Ball and Chain Bar and Grill, " & _
-                "Bob's Berserko Lounge, " & _
-                "Great Frog Packaged Liquors, " & _
-                "Great Horned Toad Bail Bonds, " & _
-                "Fester's Mortuary, " & _
-                "Ramesh Patel Auto Insurance, " & _
-                "Stereo Onset, " & _
-                "Bed Bath Cable Chocolate Pizza and Beyond, " & _
-                "Guns r Us, " & _
-                "Ten Things Float in Happy Bowl Won Ton, " & _
-                "Ahmed's Pita Stop, " & _
+        Return ("Al's Snappy Food, " &
+                "Singh Spicy Curry Shop, " &
+                "Best Way Noodle Bowl, " &
+                "You Eat You Pay You Shuddup Now Cafe, " &
+                "O'Reilly's Bar, " &
+                "Man with a Van Worldwide Moving and Storage Company, " &
+                "Joe's Gas the Heck Up 'n Git Outa Town, " &
+                "Edward's Salon de Paris Beauty Parlor (ask about our emergency entrance), " &
+                "Moon's Snappy Cab, " &
+                "Singh's Courteous Cab, " &
+                "Kwame's A Number 1 Cab, " &
+                "Giant Toad Software Development PLC, " &
+                "Lucy's Sunnyside Tap, " &
+                "Ball and Chain Bar and Grill, " &
+                "Bob's Berserko Lounge, " &
+                "Great Frog Packaged Liquors, " &
+                "Great Horned Toad Bail Bonds, " &
+                "Fester's Mortuary, " &
+                "Ramesh Patel Auto Insurance, " &
+                "Stereo Onset, " &
+                "Bed Bath Cable Chocolate Pizza and Beyond, " &
+                "Guns r Us, " &
+                "Ten Things Float in Happy Bowl Won Ton, " &
+                "Ahmed's Pita Stop, " &
                 "Letizia's Hot Breads")
     End Function
 
@@ -5751,13 +5751,13 @@ Public Class utilities
     '                           2.  Added strHardParaBreak parameter
     '
     '
-    Public Shared Function soft2HardParagraph(ByVal strSoftParagraphs As String, _
-                                              Optional ByVal bytLineWidth As Byte = 80, _
-                                              Optional ByVal strLinePrefix As String = "", _
-                                              Optional ByVal strLineSuffix As String = "", _
-                                              Optional ByVal booSameWidth As Boolean = False, _
-                                              Optional ByVal booInspection As Boolean = False, _
-                                              Optional ByVal strHardParaBreak As String = vbNewLine & vbNewLine, _
+    Public Shared Function soft2HardParagraph(ByVal strSoftParagraphs As String,
+                                              Optional ByVal bytLineWidth As Byte = 80,
+                                              Optional ByVal strLinePrefix As String = "",
+                                              Optional ByVal strLineSuffix As String = "",
+                                              Optional ByVal booSameWidth As Boolean = False,
+                                              Optional ByVal booInspection As Boolean = False,
+                                              Optional ByVal strHardParaBreak As String = vbNewLine & vbNewLine,
                                               Optional ByVal strHardLineBreak As String = vbNewLine) As String
         Dim booOkay As Boolean
         Dim intIndex1 As Integer
@@ -5768,7 +5768,7 @@ Public Class utilities
         Dim strSplitLines() As String
         Dim strSplitWords() As String
         If bytLineWidth < 1 Then
-            errorHandler("Invalid line width parameter " & bytLineWidth, _
+            errorHandler("Invalid line width parameter " & bytLineWidth,
                          Name, "soft2HardParagraph")
             Return ("")
         End If
@@ -5776,8 +5776,8 @@ Public Class utilities
         Try
             strSplitLines = Split(strSoftParagraphs, vbNewLine)
         Catch
-            errorHandler("Can't split input string", _
-                         Name, "soft2HardParagraph", _
+            errorHandler("Can't split input string",
+                         Name, "soft2HardParagraph",
                          Err.Number & " " & Err.Description)
             Return ("")
         End Try
@@ -5786,8 +5786,8 @@ Public Class utilities
                 Try
                     strSplitWords = Split(strSplitLines(intIndex1), " ")
                 Catch
-                    errorHandler("Can't split input line", _
-                                Name, "soft2HardParagraph", _
+                    errorHandler("Can't split input line",
+                                Name, "soft2HardParagraph",
                                 Err.Number & " " & Err.Description)
                     Return ("")
                 End Try
@@ -5795,45 +5795,45 @@ Public Class utilities
                 For intIndex2 = 0 To UBound(strSplitWords)
                     If strSplitWords(intIndex2) <> "" Then
                         If Len(strOutputLine) _
-                        + _
+                        +
                         Len(strSplitWords(intIndex2)) _
-                        + _
+                        +
                         intSuffixLength _
-                        + _
+                        +
                         1 _
-                        > _
+                        >
                         bytLineWidth Then
-                            soft2HardParagraph_attachOutputLine_(strOutputLine, _
-                                                                 strOutput, _
-                                                                 bytLineWidth, _
-                                                                 strLinePrefix, _
-                                                                 strLineSuffix, _
-                                                                 booSameWidth, _
+                            soft2HardParagraph_attachOutputLine_(strOutputLine,
+                                                                 strOutput,
+                                                                 bytLineWidth,
+                                                                 strLinePrefix,
+                                                                 strLineSuffix,
+                                                                 booSameWidth,
                                                                  strHardLineBreak)
                         End If
-                        strOutputLine = strOutputLine & _
-                                        CStr(IIf(strOutputLine = strLinePrefix, "", " ")) & _
+                        strOutputLine = strOutputLine &
+                                        CStr(IIf(strOutputLine = strLinePrefix, "", " ")) &
                                         strSplitWords(intIndex2)
                     End If
                 Next intIndex2
-                soft2HardParagraph_attachOutputLine_(strOutputLine, _
-                                                     strOutput, _
-                                                     bytLineWidth, _
-                                                     strLinePrefix, _
-                                                     strLineSuffix, _
-                                                     booSameWidth, _
+                soft2HardParagraph_attachOutputLine_(strOutputLine,
+                                                     strOutput,
+                                                     bytLineWidth,
+                                                     strLinePrefix,
+                                                     strLineSuffix,
+                                                     booSameWidth,
                                                      strHardLineBreak)
             Else
                 strOutput &= strHardParaBreak
             End If
         Next intIndex1
         If strOutput = "" Then
-            soft2HardParagraph_attachOutputLine_(strLinePrefix, _
-                                                 strOutput, _
-                                                 bytLineWidth, _
-                                                 strLinePrefix, _
-                                                 strLineSuffix, _
-                                                 booSameWidth, _
+            soft2HardParagraph_attachOutputLine_(strLinePrefix,
+                                                 strOutput,
+                                                 bytLineWidth,
+                                                 strLinePrefix,
+                                                 strLineSuffix,
+                                                 booSameWidth,
                                                  strHardLineBreak)
         End If
         If booInspection Then
@@ -5841,32 +5841,32 @@ Public Class utilities
             Try
                 strSplitLines = Split(strOutput, vbNewLine)
             Catch
-                errorHandler("Can't split result string for inspection", _
-                            Name, "soft2HardParagraph", _
+                errorHandler("Can't split result string for inspection",
+                            Name, "soft2HardParagraph",
                             Err.Number & " " & Err.Description)
                 Return ("")
             End Try
             For intIndex1 = 0 To UBound(strSplitLines)
                 If booSameWidth Then
                     booOkay = Len(strSplitLines(intIndex1)) _
-                              = _
+                              =
                               bytLineWidth
                 Else
                     booOkay = Len(strSplitLines(intIndex1)) _
-                              = _
+                              =
                               bytLineWidth
                 End If
                 If Not booOkay Then Exit For
             Next intIndex1
             If intIndex1 <= UBound(strSplitLines) Then
                 errorHandler _
-                    ("Internal failure in soft2HardParagraph: " & _
-                    "line " & intIndex1 & " " & _
-                    "is of the unexpected width " & _
-                    Len(strSplitLines(intIndex1)) & " " & _
-                    "where each line width must be " & _
-                    CStr(IIf(booSameWidth, "=", "<=")) & " " & _
-                    bytLineWidth & ": " & _
+                    ("Internal failure in soft2HardParagraph: " &
+                    "line " & intIndex1 & " " &
+                    "is of the unexpected width " &
+                    Len(strSplitLines(intIndex1)) & " " &
+                    "where each line width must be " &
+                    CStr(IIf(booSameWidth, "=", "<=")) & " " &
+                    bytLineWidth & ": " &
                     enquote(string2Display(strSplitLines(intIndex1), strGraphicExclude:=" ")))
             End If
         End If
@@ -5877,25 +5877,25 @@ Public Class utilities
     ' Attach line to output on behalf of soft2HardParagraph
     '
     '
-    Private Shared Sub soft2HardParagraph_attachOutputLine_(ByRef strOutputLine As String, _
-                                                            ByRef strOutput As String, _
-                                                            ByVal bytLineWidth As Byte, _
-                                                            ByVal strPrefix As String, _
-                                                            ByVal STRsuffix As String, _
-                                                            ByVal booSameWidth As Boolean, _
+    Private Shared Sub soft2HardParagraph_attachOutputLine_(ByRef strOutputLine As String,
+                                                            ByRef strOutput As String,
+                                                            ByVal bytLineWidth As Byte,
+                                                            ByVal strPrefix As String,
+                                                            ByVal STRsuffix As String,
+                                                            ByVal booSameWidth As Boolean,
                                                             ByVal strHardLineBreak As String)
         If strOutputLine = "" Then Exit Sub
-        strOutput = strOutput & _
+        strOutput = strOutput &
                     CStr(IIf(strOutput = "" _
-                             OrElse _
+                             OrElse
                              Len(strOutput) >= Len(strHardLineBreak) _
-                             AndAlso _
-                             Mid(strOutput, Len(strOutput) - Len(strHardLineBreak) + 1) = strHardLineBreak, _
-                             "", _
-                             strHardLineBreak & strPrefix)) & _
+                             AndAlso
+                             Mid(strOutput, Len(strOutput) - Len(strHardLineBreak) + 1) = strHardLineBreak,
+                             "",
+                             strHardLineBreak & strPrefix)) &
                     Trim(strOutputLine)
         If booSameWidth Then
-            strOutput = strOutput & _
+            strOutput = strOutput &
                         copies(Math.Max(0, bytLineWidth - Len(strOutputLine) - Len(STRsuffix)), " ")
         End If
         strOutput = strOutput & STRsuffix
@@ -5909,20 +5909,20 @@ Public Class utilities
     Public Overloads Function sortItems(ByVal strInstring As String) As String
         sortItems(strInstring, " ", False)
     End Function
-    Public Overloads Function sortItems(ByVal strInstring As String, _
-                                        ByVal strDelimiter As String, _
+    Public Overloads Function sortItems(ByVal strInstring As String,
+                                        ByVal strDelimiter As String,
                                         ByVal booStringMode As Boolean) As String
         sortItems(strInstring, " ", False)
     End Function
-    Public Overloads Function sortItems(ByVal strInstring As String, _
-                                        ByVal strDelimiter As String, _
-                                        ByVal booStringMode As Boolean, _
+    Public Overloads Function sortItems(ByVal strInstring As String,
+                                        ByVal strDelimiter As String,
+                                        ByVal booStringMode As Boolean,
                                         ByVal booDescending As Boolean) As String
     End Function
-    Public Overloads Function sortItems(ByVal strInstring As String, _
-                                        ByVal strDelimiter As String, _
-                                        ByVal booStringMode As Boolean, _
-                                        ByVal booDescending As Boolean, _
+    Public Overloads Function sortItems(ByVal strInstring As String,
+                                        ByVal strDelimiter As String,
+                                        ByVal booStringMode As Boolean,
+                                        ByVal booDescending As Boolean,
                                         ByVal booInspect As Boolean) As String
         Dim intIndex1 As Integer
         Dim intIndex2 As Integer
@@ -5946,11 +5946,11 @@ Public Class utilities
             For intIndex2 = 1 To intWordCountCurrent
                 strNextKey = word(strInstring, intIndex2)
                 If Not booDescending _
-                       AndAlso _
+                       AndAlso
                        strNextKey > strLast _
-                       AndAlso _
+                       AndAlso
                        strNextKey < strNext _
-                       OrElse _
+                       OrElse
                        booDescending AndAlso strNextKey > strNext Then
                     strNext = strNextKey
                     intNextIndex = intIndex2
@@ -5967,14 +5967,14 @@ Public Class utilities
             Dim strPrevious As String
             For intIndex1 = 1 To items(strInstring, strDelimiter, Not booStringMode)
                 booHigh = (item(strInstring, intIndex1, strDelimiter, Not booStringMode) _
-                           > _
+                           >
                            strPrevious)
                 If booDescending AndAlso Not booHigh _
-                   OrElse _
+                   OrElse
                    Not booDescending AndAlso booHigh Then
-                    errorHandler("Internal programming error: sort failure", _
-                                 Name, _
-                                 "sortItems", _
+                    errorHandler("Internal programming error: sort failure",
+                                 Name,
+                                 "sortItems",
                                  "Returning incorrect result")
                     Exit For
                 End If
@@ -5987,15 +5987,15 @@ Public Class utilities
     ' Delete item on behalf of sortItems
     '
     '
-    Private Function sortItems_itemDelete_(ByVal strInstring As String, _
+    Private Function sortItems_itemDelete_(ByVal strInstring As String,
                                            ByVal lngIndex As Long) As String
         Dim intIndex1 As Integer
         Dim strOutstring As String
         strOutstring = ""
         For intIndex1 = 1 To words(strInstring)
             If lngIndex <> intIndex1 Then
-                strOutstring = append(strOutstring, _
-                                      " ", _
+                strOutstring = append(strOutstring,
+                                      " ",
                                       word(strInstring, intIndex1))
             End If
         Next intIndex1
@@ -6046,32 +6046,32 @@ Public Class utilities
     '
     ' 
     Public Overloads Shared Function spinlock(ByRef intLock As Integer) As Boolean
-        Return (spinlock(intLock, _
+        Return (spinlock(intLock,
                         SPINLOCK_TIMEOUT_DEFAULT))
     End Function
-    Public Overloads Shared Function spinlock(ByRef intLock As Integer, _
+    Public Overloads Shared Function spinlock(ByRef intLock As Integer,
                                               ByVal intTimeout As Integer) As Boolean
-        Return (spinlock(intLock, _
-                        intTimeout, _
+        Return (spinlock(intLock,
+                        intTimeout,
                         SPINLOCK_SLEEPWAIT_DEFAULT))
     End Function
-    Public Overloads Shared Function spinlock(ByRef intLock As Integer, _
-                                              ByVal intTimeout As Integer, _
+    Public Overloads Shared Function spinlock(ByRef intLock As Integer,
+                                              ByVal intTimeout As Integer,
                                               ByVal intSleep As Integer) As Boolean
         Dim intCount As Integer
-        Return (spinlock(intLock, _
-                        intTimeout, _
-                        SPINLOCK_SLEEPWAIT_DEFAULT, _
+        Return (spinlock(intLock,
+                        intTimeout,
+                        SPINLOCK_SLEEPWAIT_DEFAULT,
                         intCount))
     End Function
-    Public Overloads Shared Function spinlock(ByRef intLock As Integer, _
-                                              ByVal intTimeout As Integer, _
-                                              ByVal intSleep As Integer, _
+    Public Overloads Shared Function spinlock(ByRef intLock As Integer,
+                                              ByVal intTimeout As Integer,
+                                              ByVal intSleep As Integer,
                                               ByRef intCount As Integer) As Boolean
         Dim intSleepWork As Integer = intSleep
         Dim intTimeoutWork As Integer = intTimeout
         If intTimeoutWork < -2 Then
-            errorHandler("Invalid intTimeout value " & intTimeoutWork, _
+            errorHandler("Invalid intTimeout value " & intTimeoutWork,
                          Name, "spinlock")
             Return (False)
         ElseIf intTimeoutWork = -2 Then
@@ -6080,7 +6080,7 @@ Public Class utilities
         If intSleepWork = -2 Then
             intSleepWork = SPINLOCK_SLEEPWAIT_DEFAULT
         ElseIf intSleepWork < 0 Then
-            errorHandler("Invalid intSleep value " & intSleepWork, _
+            errorHandler("Invalid intSleep value " & intSleepWork,
                          Name, "spinlock")
             Return (False)
         End If
@@ -6092,7 +6092,7 @@ Public Class utilities
             If Interlocked.Exchange(intLock, intLock) = 0 Then Return (True)
             If intSleep <> 0 Then objThreading.CurrentThread.Sleep(intSleepWork)
         Loop While intTimeoutWork = -1 _
-                   OrElse _
+                   OrElse
                    intTimeoutWork > 0 AndAlso DateDiff(DateInterval.Second, datStart, Now) < intTimeoutWork
         Return (False)
     End Function
@@ -6110,12 +6110,12 @@ Public Class utilities
     Public Overloads Shared Function string2Box(ByVal strInstring As String) As String
         Return string2Box(strInstring, "", "*")
     End Function
-    Public Overloads Shared Function string2Box(ByVal strInstring As String, _
+    Public Overloads Shared Function string2Box(ByVal strInstring As String,
                                                 ByVal strBoxLabel As String) As String
         Return string2Box(strInstring, strBoxLabel, "*")
     End Function
-    Public Overloads Shared Function string2Box(ByVal strInstring As String, _
-                                                ByVal strBoxLabel As String, _
+    Public Overloads Shared Function string2Box(ByVal strInstring As String,
+                                                ByVal strBoxLabel As String,
                                                 ByVal strBuildChar As String) As String
         Dim colLines As New Collection
         Dim intIndex1 As Integer
@@ -6139,24 +6139,24 @@ Public Class utilities
             intIndex1 = intIndex2 + Len(vbNewLine)
         Loop
         intMaxLength += 4
-        intMaxLength = CInt(Math.Max(intMaxLength, _
+        intMaxLength = CInt(Math.Max(intMaxLength,
                                 CInt(IIf(strBoxLabel = "", 10, Len(strBoxLabel) + 15))))
         ' --- Produce the text box
         strFence = copies(intMaxLength, strBuildChar)
         If strBoxLabel = "" Then
             strOutstring = strFence
         Else
-            strOutstring = copies(5, strBuildChar) & _
-                           " " & strBoxLabel & " " & _
-                           copies(CInt(Math.Max(0, intMaxLength - 5 - Len(strBoxLabel) - 2)), _
+            strOutstring = copies(5, strBuildChar) &
+                           " " & strBoxLabel & " " &
+                           copies(CInt(Math.Max(0, intMaxLength - 5 - Len(strBoxLabel) - 2)),
                                   strBuildChar)
         End If
         For intIndex1 = 1 To colLines.Count
-            strOutstring = strOutstring & _
-                           vbNewLine & _
-                           strBuildChar & " " & _
-                           CStr(colLines(intIndex1)) & _
-                           copies(intMaxLength - Len(colLines(intIndex1)) - 4, " ") & _
+            strOutstring = strOutstring &
+                           vbNewLine &
+                           strBuildChar & " " &
+                           CStr(colLines(intIndex1)) &
+                           copies(intMaxLength - Len(colLines(intIndex1)) - 4, " ") &
                            " " & strBuildChar
         Next intIndex1
         Return (strOutstring & vbNewLine & strFence)
@@ -6268,42 +6268,42 @@ Public Class utilities
     '
     ' 
     ' --- Convert to use XML notation
-    Public Overloads Shared Function string2Display(ByVal strInstring As String, _
-                                                    Optional ByVal objGraphic As Object = Nothing, _
-                                                    Optional ByVal strGraphicInclude As String = "", _
+    Public Overloads Shared Function string2Display(ByVal strInstring As String,
+                                                    Optional ByVal objGraphic As Object = Nothing,
+                                                    Optional ByVal strGraphicInclude As String = "",
                                                     Optional ByVal strGraphicExclude As String = "") As String
-        Return (string2Display(strInstring, _
-                               "XML", _
-                               objGraphic:=objGraphic, _
-                               strGraphicInclude:=strGraphicInclude, _
+        Return (string2Display(strInstring,
+                               "XML",
+                               objGraphic:=objGraphic,
+                               strGraphicInclude:=strGraphicInclude,
                                strGraphicExclude:=strGraphicExclude))
     End Function
     ' --- Convert to use notation specified as a string
-    Public Overloads Shared Function string2Display(ByVal strInstring As String, _
-                                                    ByVal strSyntax As String, _
-                                                    Optional ByVal objGraphic As Object = Nothing, _
-                                                    Optional ByVal strGraphicInclude As String = "", _
+    Public Overloads Shared Function string2Display(ByVal strInstring As String,
+                                                    ByVal strSyntax As String,
+                                                    Optional ByVal objGraphic As Object = Nothing,
+                                                    Optional ByVal strGraphicInclude As String = "",
                                                     Optional ByVal strGraphicExclude As String = "") As String
         Dim enuSyntax As ENUdisplay2StringSyntax = display2String_syntax2Enum_(strSyntax)
         Dim strGraphic As String = CStr(IIf((objGraphic Is Nothing), "", objGraphic))
         If enuSyntax <> ENUdisplay2StringSyntax.Invalid Then
-            Return (string2Display(strInstring, _
-                                   enuSyntax, _
-                                   strGraphic, _
-                                   strGraphicInclude:=strGraphicInclude, _
+            Return (string2Display(strInstring,
+                                   enuSyntax,
+                                   strGraphic,
+                                   strGraphicInclude:=strGraphicInclude,
                                    strGraphicExclude:=strGraphicExclude))
         End If
     End Function
     ' --- Convert to use notation specified as an enumerator
-    Public Overloads Shared Function string2Display(ByVal strInstring As String, _
+    Public Overloads Shared Function string2Display(ByVal strInstring As String,
                                                     ByVal enuSyntax As ENUdisplay2StringSyntax) As String
         Return (string2Display(strInstring, enuSyntax, ""))
     End Function
     ' --- Specify the graphic character set, and its optional inclusions and exclusions                                             
-    Public Overloads Shared Function string2Display(ByVal strInstring As String, _
-                                                    ByVal enuSyntax As ENUdisplay2StringSyntax, _
-                                                    ByVal strGraphic As String, _
-                                                    Optional ByVal strGraphicInclude As String = "", _
+    Public Overloads Shared Function string2Display(ByVal strInstring As String,
+                                                    ByVal enuSyntax As ENUdisplay2StringSyntax,
+                                                    ByVal strGraphic As String,
+                                                    Optional ByVal strGraphicInclude As String = "",
                                                     Optional ByVal strGraphicExclude As String = "") As String
         Dim intIndex1 As Integer
         Dim intIndex2 As Integer
@@ -6323,92 +6323,92 @@ Public Class utilities
             strGraphicSet = Replace(strGraphicSet, "\", "")
         End If
         If enuSyntax = ENUdisplay2StringSyntax.VBExpression _
-           OrElse _
+           OrElse
            enuSyntax = ENUdisplay2StringSyntax.VBExpressionCondensed Then
             strGraphicSet = Replace(strGraphicSet, ChrW(34), "")
         End If
         If strGraphicSet = "" Then
-            errorHandler("After application of include and exclude, and format-related " & _
-                         "changes, to the default " & _
-                         "or specified set of graphic characters, the result set is null", _
-                         Name, "string2Display", _
+            errorHandler("After application of include and exclude, and format-related " &
+                         "changes, to the default " &
+                         "or specified set of graphic characters, the result set is null",
+                         Name, "string2Display",
                          "Returning a null string")
             Return ("")
         End If
         If enuSyntax <> ENUdisplay2StringSyntax.C _
-           And _
+           And
            enuSyntax <> ENUdisplay2StringSyntax.XML _
-           And _
+           And
            enuSyntax <> ENUdisplay2StringSyntax.XMLcondensed _
-           And _
+           And
            enuSyntax <> ENUdisplay2StringSyntax.VBExpression _
-           And _
+           And
            enuSyntax <> ENUdisplay2StringSyntax.VBExpressionCondensed Then
-            errorHandler("Invalid enuSyntax parameter of " & enuSyntax.ToString, _
-                         Name, "string2Display", _
+            errorHandler("Invalid enuSyntax parameter of " & enuSyntax.ToString,
+                         Name, "string2Display",
                          "Returning a null string")
             Return ("")
         End If
         If enuSyntax = ENUdisplay2StringSyntax.C _
-           AndAlso _
+           AndAlso
            verify(strInstring, asciiCharsetEnum2String(ENUasciiCharset.allAscii)) _
-           <> _
+           <>
            0 Then
-            errorHandler("Syntax is C but input string contains non-ASCII characters", _
-                         "string2Display", Name, _
-                         "Unlike the other formats supported by string2Display " & _
-                         "(XML and VB expression) the C format is not able to handle " & _
+            errorHandler("Syntax is C but input string contains non-ASCII characters",
+                         "string2Display", Name,
+                         "Unlike the other formats supported by string2Display " &
+                         "(XML and VB expression) the C format is not able to handle " &
                          "international characters outside the extended ASCII range 0..255.")
             Return ("")
         End If
         If strInstring = "" _
-           AndAlso _
+           AndAlso
            (enuSyntax = ENUdisplay2StringSyntax.VBExpression _
-            OrElse _
+            OrElse
             enuSyntax = ENUdisplay2StringSyntax.VBExpressionCondensed) Then
             Return (Chr(34) & Chr(34))
         End If
         string2Display = ""
         intIndex1 = 1
         Do While intIndex1 <= Len(strInstring)
-            intIndex2 = verify(strInstring & Chr(0), _
-                               strGraphicSet, _
+            intIndex2 = verify(strInstring & Chr(0),
+                               strGraphicSet,
                                intIndex1)
             strNext = Mid(strInstring, intIndex1, intIndex2 - intIndex1)
             If strNext <> "" _
-               AndAlso _
+               AndAlso
                (enuSyntax = ENUdisplay2StringSyntax.VBExpression _
-                Or _
+                Or
                 enuSyntax = ENUdisplay2StringSyntax.VBExpressionCondensed) Then
-                strNext = CStr(IIf(objStringBuilder.Length = 0, "", " & ")) & _
-                string2Display_segment2Expression_(strNext, _
+                strNext = CStr(IIf(objStringBuilder.Length = 0, "", " & ")) &
+                string2Display_segment2Expression_(strNext,
                                                     enuSyntax _
-                                                    = _
-                                                    ENUdisplay2StringSyntax. _
-                                                    VBExpressionCondensed, _
+                                                    =
+                                                    ENUdisplay2StringSyntax.
+                                                    VBExpressionCondensed,
                                                     True)
             End If
             objStringBuilder.Append(strNext)
             If intIndex2 > Len(strInstring) Then Exit Do
-            intIndex1 = verify(strInstring & "A", _
-                               CStr(strGraphicSet), _
-                               intIndex2, _
+            intIndex1 = verify(strInstring & "A",
+                               CStr(strGraphicSet),
+                               intIndex2,
                                True)
             strNext = Mid(strInstring, intIndex2, intIndex1 - intIndex2)
             If enuSyntax = ENUdisplay2StringSyntax.C Then
                 strNext = string2Display_string2C_(strNext)
             ElseIf enuSyntax = ENUdisplay2StringSyntax.XML _
-                   OrElse _
+                   OrElse
                    enuSyntax = ENUdisplay2StringSyntax.XMLcondensed Then
-                strNext = string2Display_string2XML_(strNext, _
+                strNext = string2Display_string2XML_(strNext,
                                                      enuSyntax = ENUdisplay2StringSyntax.XMLcondensed)
             Else
-                strNext = CStr(IIf(objStringBuilder.Length = 0, "", " & ")) & _
+                strNext = CStr(IIf(objStringBuilder.Length = 0, "", " & ")) &
                           string2Display_segment2Expression_ _
-                          (strNext, _
+                          (strNext,
                            enuSyntax _
-                           = _
-                           ENUdisplay2StringSyntax.VBExpressionCondensed, _
+                           =
+                           ENUdisplay2StringSyntax.VBExpressionCondensed,
                            False)
             End If
             objStringBuilder.Append(strNext)
@@ -6420,9 +6420,9 @@ Public Class utilities
     ' Convert displayable characters to a VB subexpression
     '
     '
-    Private Shared Function string2Display_segment2Expression_(ByVal strSegment As String, _
+    Private Shared Function string2Display_segment2Expression_(ByVal strSegment As String,
                                                                ByVal booCondense _
-                                                                     As Boolean, _
+                                                                     As Boolean,
                                                                ByVal booDisplayable _
                                                                      As Boolean) As String
         If Not booCondense Then
@@ -6450,11 +6450,11 @@ Public Class utilities
                     intSubstringLength = intIndex2 - intIndex1
                     If intSubstringLength > 1 Then
                         If objStringBuilderChars.Length <> 0 Then
-                            append(objStringBuilderExp, _
-                                   " & ", _
+                            append(objStringBuilderExp,
+                                   " & ",
                                    string2Display_segment2Expression_ _
-                                   (objStringBuilderChars.ToString, _
-                                    False, _
+                                   (objStringBuilderChars.ToString,
+                                    False,
                                     booDisplayable))
                             objStringBuilderChars.Length = 0
                         End If
@@ -6463,12 +6463,12 @@ Public Class utilities
                         Else
                             strStartChar = "ChrW(" & AscW(strStartChar) & ")"
                         End If
-                        append(objStringBuilderExp, _
-                            " & ", _
-                            "copies(" & _
-                            strStartChar & _
-                            ", " & _
-                            intSubstringLength & _
+                        append(objStringBuilderExp,
+                            " & ",
+                            "copies(" &
+                            strStartChar &
+                            ", " &
+                            intSubstringLength &
                             ")")
                         intIndex1 = intIndex2
                     End If
@@ -6486,16 +6486,16 @@ Public Class utilities
                     intSubstringLength = intIndex2 - intIndex1
                     If intSubstringLength > 1 Then
                         If objStringBuilderChars.Length <> 0 Then
-                            append(objStringBuilderExp, _
-                                   " & ", _
+                            append(objStringBuilderExp,
+                                   " & ",
                                    string2Display_segment2Expression_ _
-                                   (objStringBuilderChars.ToString, _
-                                    False, _
+                                   (objStringBuilderChars.ToString,
+                                    False,
                                     booDisplayable))
                             objStringBuilderChars.Length = 0
                         End If
-                        append(objStringBuilderExp, _
-                            " & ", _
+                        append(objStringBuilderExp,
+                            " & ",
                             "range2String(" & intIndex4 & ", " & intIndex3 - 1 & ")")
                         intIndex1 = intIndex2
                     Else
@@ -6505,11 +6505,11 @@ Public Class utilities
                 End If
             Loop
             If objStringBuilderChars.Length <> 0 Then
-                append(objStringBuilderExp, _
-                        " & ", _
+                append(objStringBuilderExp,
+                        " & ",
                         string2Display_segment2Expression_ _
-                        (objStringBuilderChars.ToString, _
-                         False, _
+                        (objStringBuilderChars.ToString,
+                         False,
                          booDisplayable))
             End If
             Return objStringBuilderExp.ToString
@@ -6521,14 +6521,14 @@ Public Class utilities
     '
     '
     Private Shared Function string2Display_nondisplayable2Expression_ _
-            (ByVal strNonDisplayable As String, _
+            (ByVal strNonDisplayable As String,
              ByVal booCondense As Boolean) As String
         Dim intIndex1 As Integer
         Dim intLength As Integer
         Dim objStringBuilder As New System.Text.StringBuilder("")
         For intIndex1 = 1 To Len(strNonDisplayable)
-            append(objStringBuilder, _
-                   " & ", _
+            append(objStringBuilder,
+                   " & ",
                    "ChrW(" & AscW(Mid(strNonDisplayable, intIndex1, 1)) & ")")
         Next intIndex1
         Return objStringBuilder.ToString
@@ -6549,7 +6549,7 @@ Public Class utilities
         intIndex1 = 1
         Do While intIndex1 <= intLength
             If intIndex1 <= intLength - 1 _
-               AndAlso _
+               AndAlso
                Mid(strInstring, intIndex1, 2) = vbNewLine Then
                 strNextEscape = "\n" : intIndex1 += Len(vbNewLine)
             Else
@@ -6559,16 +6559,16 @@ Public Class utilities
                 Else
                     lngAsc = AscW(strNextCharacter)
                     If lngAsc < 0 OrElse lngAsc > 255 Then
-                        errorHandler("International character values cannot be " & _
+                        errorHandler("International character values cannot be " &
                                      "converted to C syntax")
                         Return ("")
                     End If
-                    strNextEscape = "\x" & _
-                                    align(long2BaseN(lngAsc, _
+                    strNextEscape = "\x" &
+                                    align(long2BaseN(lngAsc,
                                           asciiCharsetEnum2String _
-                                          (ENUasciiCharset.hexDigits)), _
-                                          2, _
-                                          ENUalign.alignRight, _
+                                          (ENUasciiCharset.hexDigits)),
+                                          2,
+                                          ENUalign.alignRight,
                                           "0")
                 End If
                 intIndex1 += 1
@@ -6583,14 +6583,14 @@ Public Class utilities
     '
     '
     Private Shared Function string2Display_string2XML_ _
-            (ByVal strInstring As String, _
+            (ByVal strInstring As String,
              ByVal booCondensed As Boolean) As String
         Dim intIndex1 As Integer
         Dim objStringBuilder As New System.Text.StringBuilder
         Dim strNext As String
         For intIndex1 = 1 To Len(strInstring)
-            strNext = CStr(AscW(Mid(strInstring, _
-                                    intIndex1, _
+            strNext = CStr(AscW(Mid(strInstring,
+                                    intIndex1,
                                     1)))
             If Not booCondensed Then
                 strNext = align(strNext, 5, ENUalign.alignRight, "0")
@@ -6618,7 +6618,7 @@ Public Class utilities
     '                           2. Add error handler for file open
     '
     ' 
-    Public Shared Function string2File(ByVal strOutstring As String, _
+    Public Shared Function string2File(ByVal strOutstring As String,
                                        ByVal strFileId As String) As Boolean
         Dim intIndex1 As Integer
         ' --- Erase old file when it exists
@@ -6626,9 +6626,9 @@ Public Class utilities
             Try
                 Kill(strFileId)
             Catch
-                errorHandler("Cannot erase pre-existing file: " & Err.Number & Err.Description, _
-                             Name, _
-                             "string2File", _
+                errorHandler("Cannot erase pre-existing file: " & Err.Number & Err.Description,
+                             Name,
+                             "string2File",
                              "Returning False")
                 Return (False)
             End Try
@@ -6638,11 +6638,11 @@ Public Class utilities
         Try
             objStream = New IO.FileStream(strFileId, IO.FileMode.CreateNew)
         Catch ex As Exception
-            errorHandler("Cannot create stream: " & Err.Number & " " & Err.Description, _
-                         Name, _
-                         "string2File", _
-                         "Returning False" & _
-                         vbNewLine & vbNewLine & _
+            errorHandler("Cannot create stream: " & Err.Number & " " & Err.Description,
+                         Name,
+                         "string2File",
+                         "Returning False" &
+                         vbNewLine & vbNewLine &
                          ex.ToString)
             Return (False)
         End Try
@@ -6651,11 +6651,11 @@ Public Class utilities
             Try
                 objStream.WriteByte(CByte(Asc(Mid(strOutstring, intIndex1, 1))))
             Catch ex As Exception
-                errorHandler("Could not write file: " & Err.Number & " " & Err.Description, _
-                             Name, _
-                             "string2File", _
-                             "Returning False" & _
-                             vbNewLine & vbNewLine & _
+                errorHandler("Could not write file: " & Err.Number & " " & Err.Description,
+                             Name,
+                             "string2File",
+                             "Returning False" &
+                             vbNewLine & vbNewLine &
                              ex.ToString)
                 objStream.Close()
                 Return (False)
@@ -6665,11 +6665,11 @@ Public Class utilities
         Try
             objStream.Close()
         Catch ex As Exception
-            errorHandler("Cannot close stream: " & Err.Number & Err.Description, _
-                         Name, _
-                         "string2File", _
-                         "Returning False" & _
-                         vbNewLine & vbNewLine & _
+            errorHandler("Cannot close stream: " & Err.Number & Err.Description,
+                         Name,
+                         "string2File",
+                         "Returning False" &
+                         vbNewLine & vbNewLine &
                          ex.ToString)
             Return (False)
         End Try
@@ -6712,7 +6712,7 @@ Public Class utilities
         Return (string2Object(strInstring, booOK))
     End Function
 
-    Public Overloads Shared Function string2Object(ByVal strInstring As String, _
+    Public Overloads Shared Function string2Object(ByVal strInstring As String,
                                                    ByRef booOK As Boolean) As Object
         Dim objValue As Object
         Dim strInstringWork As String = Trim(strInstring)
@@ -6731,22 +6731,22 @@ Public Class utilities
     ' On behalf of string2Object, undecorate string if possible
     '
     '
-    Private Shared Function string2Object_unDeco_(ByVal strInstring As String, _
-                                                  ByRef strType As String, _
+    Private Shared Function string2Object_unDeco_(ByVal strInstring As String,
+                                                  ByRef strType As String,
                                                   ByRef strValue As String) As Boolean
         Dim intIndex1 As Integer = InStr(strInstring, "(")
         If intIndex1 < 2 _
-           OrElse _
+           OrElse
            intIndex1 > InStr(strInstring & Chr(34), Chr(34)) Then
             Return (False)
         End If
         If Mid(strInstring, Len(strInstring)) <> ")" Then Return (False)
         strType = Mid(strInstring, 1, intIndex1 - 1)
-        strValue = Mid(strInstring, _
-                       intIndex1 + 1, _
+        strValue = Mid(strInstring,
+                       intIndex1 + 1,
                        Len(strInstring) - intIndex1 - 1)
         If Not IsNumeric(strValue) Then
-            strValue = display2String(strValue, _
+            strValue = display2String(strValue,
                                       ENUdisplay2StringSyntax.VBExpressionCondensed)
         End If
         Return (True)
@@ -6762,8 +6762,8 @@ Public Class utilities
     ' found the type.
     '
     '
-    Private Shared Function string2Object_value2Type_(ByVal strInstring As String, _
-                                                      ByRef strType As String, _
+    Private Shared Function string2Object_value2Type_(ByVal strInstring As String,
+                                                      ByRef strType As String,
                                                       ByRef objValue As Object) As Boolean
         If isQuoted(strInstring) Then
             objValue = dequote(strInstring)
@@ -6796,10 +6796,10 @@ Public Class utilities
                     Case "SYSTEM.LONG" : objValue = CLng(strInstring)
                     Case "SYSTEM.STRING" : objValue = CStr(strInstring)
                     Case Else
-                        errorHandler("Unsupported string type " & _
-                                     enquote(strType), _
-                                     Name, _
-                                     "string2Object_value2Type_", _
+                        errorHandler("Unsupported string type " &
+                                     enquote(strType),
+                                     Name,
+                                     "string2Object_value2Type_",
                                      "Not converting the value")
                 End Select
             End If
@@ -6855,10 +6855,10 @@ Public Class utilities
                 Try
                     objRegEx = New System.Text.RegularExpressions.Regex("^[0123456789.+-]+[ ]*%$")
                 Catch
-                    errorHandler("Cannot create regular expression", _
-                                 Name, "string2Percent", _
-                                 Err.Number & " " & Err.Description & _
-                                 vbNewLine & vbNewLine & _
+                    errorHandler("Cannot create regular expression",
+                                 Name, "string2Percent",
+                                 Err.Number & " " & Err.Description &
+                                 vbNewLine & vbNewLine &
                                  "Return -1 to indicate non-percent value")
                     Return (-1)
                 End Try
@@ -6924,7 +6924,7 @@ Public Class utilities
     Public Overloads Function string2RLE(ByVal strInstring As String) As String
         Return (string2RLE(strInstring, True))
     End Function
-    Public Overloads Function string2RLE(ByVal strInstring As String, _
+    Public Overloads Function string2RLE(ByVal strInstring As String,
                                          ByVal booCheck As Boolean) As String
         Dim strSentinel As String = string2Sentinel(strInstring)
         If strSentinel = "" Then Return ("")
@@ -6934,9 +6934,9 @@ Public Class utilities
         Try
             objStringBuilder = New System.Text.StringBuilder
         Catch ex As Exception
-            errorHandler("Can't create string builder: " & _
-                         Err.Number & " " & Err.Description, _
-                         Name, "string2RLE", _
+            errorHandler("Can't create string builder: " &
+                         Err.Number & " " & Err.Description,
+                         Name, "string2RLE",
                          "Returning a null string")
             Return ("")
         End Try
@@ -6961,13 +6961,13 @@ Public Class utilities
         Loop
         Dim strOutstring As String = strSentinel & objStringBuilder.ToString
         If booCheck _
-           AndAlso _
+           AndAlso
            RLE2String(strOutstring) <> strInstring Then
-            errorHandler("RLE string " & _
-                         enquote(ellipsis(object2String(strOutstring), 32)) & " " & _
-                         "fails to match input string " & _
-                         enquote(ellipsis(object2String(strInstring), 32)), _
-                         Name, "string2RLE", _
+            errorHandler("RLE string " &
+                         enquote(ellipsis(object2String(strOutstring), 32)) & " " &
+                         "fails to match input string " &
+                         enquote(ellipsis(object2String(strInstring), 32)),
+                         Name, "string2RLE",
                          "Returning the (possibly incorrect) RLE")
         End If
         Return (strOutstring)
@@ -7006,35 +7006,35 @@ Public Class utilities
     '         always check to make sure its result is not the null string.
     '
     '
-    Public Shared Function string2Sentinel(ByVal strInstring As String, _
-                                            Optional ByVal strCharacters As String = ",;:", _
+    Public Shared Function string2Sentinel(ByVal strInstring As String,
+                                            Optional ByVal strCharacters As String = ",;:",
                                             Optional ByVal intLimit As Integer = -1) _
                     As String
         If strCharacters = "" Then
-            errorHandler("strCharacters cannot be a null string", _
-                         Name, "string2Sentinel", _
+            errorHandler("strCharacters cannot be a null string",
+                         Name, "string2Sentinel",
                          "Returning a null sentinel")
             Return ("")
         End If
         If intLimit < -1 Then
-            errorHandler("intLimit is not valid", _
-                         Name, "string2Sentinel", _
+            errorHandler("intLimit is not valid",
+                         Name, "string2Sentinel",
                          "Returning a null sentinel")
             Return ("")
         End If
         Dim intLimitWork As Integer
-        Dim strSentinel As String = string2Sentinel_(strInstring, _
-                                                     strCharacters, _
-                                                     intLimit, _
+        Dim strSentinel As String = string2Sentinel_(strInstring,
+                                                     strCharacters,
+                                                     intLimit,
                                                      intLimitWork)
         If strSentinel <> "" _
-           OrElse _
+           OrElse
            intLimit <> -1 AndAlso intLimitWork >= intLimit Then Return (strSentinel)
         Dim intWidth As Integer = 1
         Do
-            strSentinel = string2Sentinel_(strInstring, _
-                                           intWidth, _
-                                           intLimit, _
+            strSentinel = string2Sentinel_(strInstring,
+                                           intWidth,
+                                           intLimit,
                                            intLimitWork)
             If strSentinel <> "" OrElse intLimitWork >= intLimit Then Return (strSentinel)
             intWidth += 1
@@ -7047,9 +7047,9 @@ Public Class utilities
     '
     '
     ' --- Check for a listed set of characters
-    Private Overloads Shared Function string2Sentinel_(ByVal strInstring As String, _
-                                                        ByVal strCharacters As String, _
-                                                        ByVal intLimit As Integer, _
+    Private Overloads Shared Function string2Sentinel_(ByVal strInstring As String,
+                                                        ByVal strCharacters As String,
+                                                        ByVal intLimit As Integer,
                                                         ByRef intLimitReached As Integer) _
             As String
         Dim intIndex1 As Integer
@@ -7063,9 +7063,9 @@ Public Class utilities
         Return ("")
     End Function
     ' --- Check for a set of strings, of the specified width
-    Private Overloads Shared Function string2Sentinel_(ByVal strInstring As String, _
-                                                        ByVal intWidth As Integer, _
-                                                        ByVal intLimit As Integer, _
+    Private Overloads Shared Function string2Sentinel_(ByVal strInstring As String,
+                                                        ByVal intWidth As Integer,
+                                                        ByVal intLimit As Integer,
                                                         ByRef intLimitReached As Integer) _
             As String
         Dim lngIndex1 As Long
@@ -7150,7 +7150,7 @@ Public Class utilities
     '                           Make sure filenumber starts at one
     '
     '
-    Public Shared Function tempFileid(ByVal strPath As String, _
+    Public Shared Function tempFileid(ByVal strPath As String,
                                       Optional ByVal strFileType As String = "") As String
         Dim colDir As Collection
         Dim intIndex1 As Integer
@@ -7163,10 +7163,10 @@ Public Class utilities
         Try
             colDir = New Collection
         Catch ex As Exception
-            errorHandler("Cannot create collection: " & _
-                         Err.Number & " " & Err.Description, _
-                         Name, "tempFileid", _
-                         "Returning null string" & vbNewLine & vbNewLine & _
+            errorHandler("Cannot create collection: " &
+                         Err.Number & " " & Err.Description,
+                         Name, "tempFileid",
+                         "Returning null string" & vbNewLine & vbNewLine &
                          ex.ToString)
             Return ("")
         End Try
@@ -7175,10 +7175,10 @@ Public Class utilities
             Try
                 colDir.Add(strDir)
             Catch ex As Exception
-                errorHandler("Cannot extend collection: " & _
-                             Err.Number & " " & Err.Description, _
-                             Name, "tempFileid", _
-                             "Returning null string" & vbNewLine & vbNewLine & _
+                errorHandler("Cannot extend collection: " &
+                             Err.Number & " " & Err.Description,
+                             Name, "tempFileid",
+                             "Returning null string" & vbNewLine & vbNewLine &
                              ex.ToString)
                 Return ("")
             End Try
@@ -7186,18 +7186,18 @@ Public Class utilities
         Loop
         intFileNumber = 0
         For intIndex1 = 1 To colDir.Count
-            If tempFileid_isTempFileid_(CStr(colDir.Item(intIndex1)), _
-                                        intNext, _
+            If tempFileid_isTempFileid_(CStr(colDir.Item(intIndex1)),
+                                        intNext,
                                         strFileType:=strFileType) Then
                 intFileNumber = Math.Max(intFileNumber, intNext)
             End If
         Next intIndex1
         intFileNumber = intFileNumber + 1
         If intFileNumber < 10000 Then
-            Return (appendPath(strPath, _
-                              "temp" & _
-                              alignRight(CStr(intFileNumber), 4, strFill:="0") & _
-                              "." & _
+            Return (appendPath(strPath,
+                              "temp" &
+                              alignRight(CStr(intFileNumber), 4, strFill:="0") &
+                              "." &
                               strFileTypeWork))
         End If
     End Function
@@ -7208,8 +7208,8 @@ Public Class utilities
     ' null or blank) on behalf of tempFileid
     '
     '
-    Private Shared Function tempFileid_isTempFileid_(ByVal strFileid As String, _
-                                                     ByRef intNumber As Integer, _
+    Private Shared Function tempFileid_isTempFileid_(ByVal strFileid As String,
+                                                     ByRef intNumber As Integer,
                                                      Optional ByVal strFileType As String = "") As Boolean
         Dim strFileTypeWork As String
         Dim strNumber As String
@@ -7217,9 +7217,9 @@ Public Class utilities
         Try
             strSplit = Split(strFileid, ".")
         Catch ex As Exception
-            errorHandler("Cannot split: " & Err.Number & " " & Err.Description, _
-                         Name, "", _
-                         "Returning False" & vbNewLine & vbNewLine & _
+            errorHandler("Cannot split: " & Err.Number & " " & Err.Description,
+                         Name, "",
+                         "Returning False" & vbNewLine & vbNewLine &
                          ex.ToString)
             Return (False)
         End Try
@@ -7287,13 +7287,13 @@ Public Class utilities
         test_(strReport, intErrCount, "baseN2Long", "15", "bbbb", "ab", 0, False)
         test_(strReport, intErrCount, "baseN2Long", -1, "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "ab", 32, False)
         test_(strReport, intErrCount, "breakLongWords", "", "", 32)
-        test_(strReport, intErrCount, "breakLongWords", _
-                                      "11111111 22 333333 333 4 55555555 6666\ 6666 77\ 7777777\ 777\ 77777\ 7777777\ 7777 123456 789ABC DEFGHI JKLMNO PQRSTU VWXYZ", _
-                                      "11111111 22 333333333 4 55555555 6666\6666 77\7777777\777\77777\7777777\7777 123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", _
+        test_(strReport, intErrCount, "breakLongWords",
+                                      "11111111 22 333333 333 4 55555555 6666\ 6666 77\ 7777777\ 777\ 77777\ 7777777\ 7777 123456 789ABC DEFGHI JKLMNO PQRSTU VWXYZ",
+                                      "11111111 22 333333333 4 55555555 6666\6666 77\7777777\777\77777\7777777\7777 123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                                       8)
-        test_(strReport, intErrCount, "breakLongWords", _
-                                      "C:/ Microsoft/ Windows/ Flump/ Kanump/ Temp.TXT", _
-                                      "C:/Microsoft/Windows/Flump/Kanump/Temp.TXT", _
+        test_(strReport, intErrCount, "breakLongWords",
+                                      "C:/ Microsoft/ Windows/ Flump/ Kanump/ Temp.TXT",
+                                      "C:/Microsoft/Windows/Flump/Kanump/Temp.TXT",
                                       20)
         test_(strReport, intErrCount, "breakLongWords", "", "", 32)
         test_(strReport, intErrCount, "breakLongWords", "", "", 32)
@@ -7307,56 +7307,56 @@ Public Class utilities
         test_(strReport, intErrCount, "ellipsis", "This is a long...", "This is a long string", 17, "...", False)
         Dim strTestFileid As String = tempFileid(CurDir)
         If strTestFileid <> "" Then
-            strReport &= vbNewLine & vbNewLine & _
+            strReport &= vbNewLine & vbNewLine &
                          "Testing string2File and file2String"
             Dim strTestInfo As String = "aa" & ChrW(0)
             Try
                 string2File(strTestInfo, strTestFileid)
                 booOK = (file2String(strTestFileid) = strTestInfo)
-                strReport &= vbNewLine & _
-                                "The file as written by string2File " & _
-                                CStr(IIf(booOK, "matches", "does not match")) & " " & _
+                strReport &= vbNewLine &
+                                "The file as written by string2File " &
+                                CStr(IIf(booOK, "matches", "does not match")) & " " &
                                 "the file as read by file2String"
                 If Not booOK Then intErrCount += 1
             Catch ex As Exception
-                strReport &= vbNewLine & _
-                             "Error in file2String or string2File: " & _
+                strReport &= vbNewLine &
+                             "Error in file2String or string2File: " &
                              Err.Number & " " & Err.Description
             End Try
             Kill(strTestFileid)
             test_(strReport, intErrCount, "fileExists", False, strTestFileid)
         Else
             intErrCount += 1
-            strReport &= vbNewLine & vbNewLine & _
+            strReport &= vbNewLine & vbNewLine &
                          "Cannot test string2File, file2String or fileExists: tempFileid failed"
         End If
         test_(strReport, intErrCount, "findAbbrev", 2, "AB", "Al's Abdul's Joe's Jane's Moon's")
         test_(strReport, intErrCount, "findAbbrev", 4, "ja", "Al's Abdul's Joe's Jane's Moon's")
         test_(strReport, intErrCount, "findAbbrev", 0, "k", "Al's Abdul's Joe's Jane's Moon's")
         test_(strReport, intErrCount, "findAbbrev", 1, "Al's", "Al's Abdul's Joe's Jane's Moon's")
-        test_(strReport, _
-              intErrCount, _
-              "findItem", _
-              15, _
-              smallBusinessList, _
-              "BOB'S BERSERKO LOUNGE", _
-              ", ", _
-              False, _
+        test_(strReport,
+              intErrCount,
+              "findItem",
+              15,
+              smallBusinessList,
+              "BOB'S BERSERKO LOUNGE",
+              ", ",
+              False,
               True)
         Dim dblIndex1 As Double
         Try
             For dblIndex1 = 0 To 10 Step 0.1
-                strWork &= vbNewLine & _
-                           copies("*", _
-                                  CInt(histogram(Math.Abs(Math.Sin(dblIndex1)), _
-                                       dblRangeMin:=1, _
-                                       dblRangeMax:=32, _
+                strWork &= vbNewLine &
+                           copies("*",
+                                  CInt(histogram(Math.Abs(Math.Sin(dblIndex1)),
+                                       dblRangeMin:=1,
+                                       dblRangeMax:=32,
                                        dblValueMax:=Math.Sin(10))))
             Next dblIndex1
         Catch ex As Exception
             strWork = "Histogram test failed"
         End Try
-        strReport &= vbNewLine & vbNewLine & _
+        strReport &= vbNewLine & vbNewLine &
                      string2Box(strWork, "Histogram Test: should be a sine wave")
         test_(strReport, intErrCount, "itemPhrase", "You Eat You Pay You Shuddup Now Cafe, O'Reilly's Bar, Man with a Van Worldwide Moving and Storage Company", smallBusinessList, 4, 3, ", ", False)
         test_(strReport, intErrCount, "itemMaxWidth", 7, "Item 1,Item 21,,", ",", False)
@@ -7371,89 +7371,89 @@ Public Class utilities
     ' Run one test on behalf of the test method
     '
     '
-    Private Shared Sub test_(ByRef strReport As String, _
-                             ByRef intErrCount As Integer, _
-                             ByVal strMethod As String, _
-                             ByVal objExpected As Object, _
+    Private Shared Sub test_(ByRef strReport As String,
+                             ByRef intErrCount As Integer,
+                             ByVal strMethod As String,
+                             ByVal objExpected As Object,
                              ByVal ParamArray objParameters() As Object)
         Dim intIndex1 As Integer
         Dim strCall As String
         Dim strNext As String
         For intIndex1 = 0 To UBound(objParameters)
-            strCall = append(strCall, _
-                             ", ", _
+            strCall = append(strCall,
+                             ", ",
                              object2String(objParameters(intIndex1)))
         Next intIndex1
         strCall = strMethod & "(" & strCall & ")"
-        strReport = append(strReport, vbNewLine & vbNewLine, _
-                           "Testing " & strMethod & " using: " & _
+        strReport = append(strReport, vbNewLine & vbNewLine,
+                           "Testing " & strMethod & " using: " &
                            strCall)
         Dim objActual As Object
         Dim strErrInfo As String
         Try
             Select Case UBound(objParameters)
                 Case -1 : objActual = utility(strMethod)
-                Case 0 : objActual = utility(strMethod, _
+                Case 0 : objActual = utility(strMethod,
                                              objParameters(0))
-                Case 1 : objActual = utility(strMethod, _
-                                             objParameters(0), _
+                Case 1 : objActual = utility(strMethod,
+                                             objParameters(0),
                                              objParameters(1))
-                Case 2 : objActual = utility(strMethod, _
-                                            objParameters(0), _
-                                            objParameters(1), _
+                Case 2 : objActual = utility(strMethod,
+                                            objParameters(0),
+                                            objParameters(1),
                                             objParameters(2))
-                Case 3 : objActual = utility(strMethod, _
-                                            objParameters(0), _
-                                            objParameters(1), _
-                                            objParameters(2), _
+                Case 3 : objActual = utility(strMethod,
+                                            objParameters(0),
+                                            objParameters(1),
+                                            objParameters(2),
                                             objParameters(3))
-                Case 4 : objActual = utility(strMethod, _
-                                            objParameters(0), _
-                                            objParameters(1), _
-                                            objParameters(2), _
-                                            objParameters(3), _
+                Case 4 : objActual = utility(strMethod,
+                                            objParameters(0),
+                                            objParameters(1),
+                                            objParameters(2),
+                                            objParameters(3),
                                             objParameters(4))
-                Case 5 : objActual = utility(strMethod, _
-                                            objParameters(0), _
-                                            objParameters(1), _
-                                            objParameters(2), _
-                                            objParameters(3), _
-                                            objParameters(4), _
+                Case 5 : objActual = utility(strMethod,
+                                            objParameters(0),
+                                            objParameters(1),
+                                            objParameters(2),
+                                            objParameters(3),
+                                            objParameters(4),
                                             objParameters(5))
-                Case 6 : objActual = utility(strMethod, _
-                                            objParameters(0), _
-                                            objParameters(1), _
-                                            objParameters(2), _
-                                            objParameters(3), _
-                                            objParameters(4), _
-                                            objParameters(5), _
+                Case 6 : objActual = utility(strMethod,
+                                            objParameters(0),
+                                            objParameters(1),
+                                            objParameters(2),
+                                            objParameters(3),
+                                            objParameters(4),
+                                            objParameters(5),
                                             objParameters(6))
                 Case Else
-                    errorHandler("Unsupported parameter count " & _
-                                 UBound(objParameters) + 1, _
+                    errorHandler("Unsupported parameter count " &
+                                 UBound(objParameters) + 1,
                                  "test_", "objUtilities", "Test has failed")
             End Select
             Dim strExpected As String = object2String(objExpected)
             Dim strActual As String = object2String(objActual)
             If (strExpected <> strActual) Then
                 intErrCount += 1
-                strErrInfo = "Expected value " & strExpected & " " & _
+                strErrInfo = "Expected value " & strExpected & " " &
                              "fails to match actual value " & strActual
             End If
         Catch ex As Exception
             intErrCount += 1
             strErrInfo = Err.Number & " " & Err.Description
         End Try
-        strReport = append(strReport, vbNewLine & vbNewLine, _
-                           "Test " & _
-                           CStr(IIf(strErrInfo = "", "succeeded", "failed")) & ": " & _
-                           test__result2String_(objExpected, _
+        strReport = append(strReport, vbNewLine & vbNewLine,
+                           "Test " &
+                           CStr(IIf(strErrInfo = "", "succeeded", "failed")) & ": " &
+                           test__result2String_(objExpected,
                                                 CStr(IIf(strErrInfo = "", "Expected/actual", "Expected"))))
         If strErrInfo <> "" Then
-            strReport = append(strReport, vbNewLine, _
-                               test__result2String_(objActual, "Actual")) & _
-                        vbNewLine & vbNewLine & _
-                        string2Box(soft2HardParagraph(strErrInfo), _
+            strReport = append(strReport, vbNewLine,
+                               test__result2String_(objActual, "Actual")) &
+                        vbNewLine & vbNewLine &
+                        string2Box(soft2HardParagraph(strErrInfo),
                                    "E R R O R   I N   T E S T")
         End If
     End Sub
@@ -7466,7 +7466,7 @@ Public Class utilities
     ' multiline.
     '
     '
-    Private Shared Function test__result2String_(ByVal objResult As Object, _
+    Private Shared Function test__result2String_(ByVal objResult As Object,
                                                  ByVal strType As String) As String
         Dim strResult As String
         Try
@@ -7483,11 +7483,11 @@ Public Class utilities
     ' Test the outline formatter
     '
     '
-    Private Shared Sub test_formatOutline_(ByRef strReport As String, _
+    Private Shared Sub test_formatOutline_(ByRef strReport As String,
                                            ByRef intErrorCount As Integer)
-        strReport &= vbNewLine & vbNewLine & _
-                     "Testing formatOutline: making some random outlines: " & _
-                     "for each formatted outline, it must match, word by word, " & _
+        strReport &= vbNewLine & vbNewLine &
+                     "Testing formatOutline: making some random outlines: " &
+                     "for each formatted outline, it must match, word by word, " &
                      "the unformatted outline"
         Dim booSpaceOnMultiline As Boolean
         Dim booTopLevelEdit As Boolean
@@ -7514,36 +7514,36 @@ Public Class utilities
             booTopLevelEdit = CBool(IIf(Rnd() < 0.5, True, False))
             intSpacing = CInt(Rnd() * 2)
             booSpaceOnMultiline = CBool(IIf(Rnd() < 0.5, True, False))
-            strExplanation = "The following outline was created for a text width of " & _
-                             intWidth & ". " & _
-                             "Top level Dewey editing is " & _
-                             CStr(IIf(booTopLevelEdit, "", "not ")) & " in effect. " & _
-                             "Line spacing is " & intSpacing & " extra lines per outline item " & _
-                             CStr(IIf(booSpaceOnMultiline, _
-                                      "but it is conditional on multiple line entries", _
+            strExplanation = "The following outline was created for a text width of " &
+                             intWidth & ". " &
+                             "Top level Dewey editing is " &
+                             CStr(IIf(booTopLevelEdit, "", "not ")) & " in effect. " &
+                             "Line spacing is " & intSpacing & " extra lines per outline item " &
+                             CStr(IIf(booSpaceOnMultiline,
+                                      "but it is conditional on multiple line entries",
                                       "and it is applied unconditionally"))
             Try
-                strNextFormatted = formatOutline(strNext, _
-                                                 intWidth, _
-                                                 booTopLevelEdit, _
-                                                 intSpacing:=intSpacing, _
+                strNextFormatted = formatOutline(strNext,
+                                                 intWidth,
+                                                 booTopLevelEdit,
+                                                 intSpacing:=intSpacing,
                                                  booSpaceOnMultiline:=booSpaceOnMultiline)
             Catch
-                strReport &= vbNewLine & vbNewLine & _
-                             "Error in formatOutline: " & _
+                strReport &= vbNewLine & vbNewLine &
+                             "Error in formatOutline: " &
                              Err.Number & " " & Err.Description
                 intErrorCount += 1
                 Return
             End Try
-            strReport &= vbNewLine & vbNewLine & _
-                         string2Box(soft2HardParagraph(strExplanation) & _
-                                    vbNewLine & vbNewLine & _
-                                    strNextFormatted, _
+            strReport &= vbNewLine & vbNewLine &
+                         string2Box(soft2HardParagraph(strExplanation) &
+                                    vbNewLine & vbNewLine &
+                                    strNextFormatted,
                                     "Formatted outline " & intIndex1 & " of " & intCount)
             If phrase(Replace(Replace(strNextFormatted, ".", ""), vbNewLine, " "), 1) _
-               <> _
+               <>
                phrase(Replace(Replace(strNext, ".", ""), vbNewLine, " "), 1) Then
-                strReport &= vbNewLine & vbNewLine & _
+                strReport &= vbNewLine & vbNewLine &
                              "Formatted outline fails to match unformatted after editing"
                 intErrorCount += 1
             End If
@@ -7556,21 +7556,21 @@ Public Class utilities
     '
     ' --- No line limit
     Private Overloads Shared Sub test_formatOutline__mkRandomOutline_ _
-                                 (ByRef strOutline As String, _
-                                  ByVal strDewey As String, _
+                                 (ByRef strOutline As String,
+                                  ByVal strDewey As String,
                                   ByVal intMaxLength As Integer)
         test_formatOutline__mkRandomOutline_(strOutline, strDewey, intMaxLength, -1)
     End Sub
     ' --- Restrict the line count
     Private Overloads Shared Sub test_formatOutline__mkRandomOutline_ _
-                                 (ByRef strOutline As String, _
-                                  ByVal strDewey As String, _
-                                  ByVal intMaxLength As Integer, _
+                                 (ByRef strOutline As String,
+                                  ByVal strDewey As String,
+                                  ByVal intMaxLength As Integer,
                                   ByVal intMaxLines As Integer)
         If Len(strOutline) > intMaxLength OrElse intMaxLines = 0 Then Return
-        strOutline = strOutline & _
-                     CStr(IIf(strOutline = "", "", vbNewLine)) & _
-                     strDewey & " " & _
+        strOutline = strOutline &
+                     CStr(IIf(strOutline = "", "", vbNewLine)) &
+                     strDewey & " " &
                      copies("This is a test ", CInt(Rnd() * 9) + 1)
         If intMaxLines <> -1 AndAlso items(strOutline, vbNewLine, False) >= intMaxLines Then
             Return
@@ -7584,18 +7584,18 @@ Public Class utilities
             Else
                 strDeweyParent = incrementDewey(strDeweyParent)
             End If
-            test_formatOutline__mkRandomOutline_(strOutline, _
-                                                 strDeweyParent, _
+            test_formatOutline__mkRandomOutline_(strOutline,
+                                                 strDeweyParent,
                                                  intMaxLength)
         ElseIf sngRnd < 0.66 Then
             ' --- Create child outline entry
-            test_formatOutline__mkRandomOutline_(strOutline, _
-                                                 strDewey & ".1", _
+            test_formatOutline__mkRandomOutline_(strOutline,
+                                                 strDewey & ".1",
                                                  intMaxLength)
         Else
             ' --- Create sibling outline entry
-            test_formatOutline__mkRandomOutline_(strOutline, _
-                                                 incrementDewey(strDewey), _
+            test_formatOutline__mkRandomOutline_(strOutline,
+                                                 incrementDewey(strDewey),
                                                  intMaxLength)
         End If
     End Sub
@@ -7604,10 +7604,10 @@ Public Class utilities
     ' Test the outline formatter
     '
     '
-    Private Shared Sub test_char2Name_(ByRef strReport As String, _
+    Private Shared Sub test_char2Name_(ByRef strReport As String,
                                        ByRef intErrorCount As Integer)
-        strReport &= vbNewLine & vbNewLine & _
-                     "Testing char2Name and name2Char using Unicode/DBCS " & _
+        strReport &= vbNewLine & vbNewLine &
+                     "Testing char2Name and name2Char using Unicode/DBCS " &
                      "characters 0..300"
         Dim booOK As Boolean
         Dim intIndex1 As Integer
@@ -7617,11 +7617,11 @@ Public Class utilities
             strChar = ChrW(intIndex1)
             strName = char2Name(strChar)
             booOK = (name2Char(strName) = strChar)
-            strReport &= vbNewLine & _
-                         "The name of the character " & intIndex1 & " is " & _
-                         enquote(strName) & " " & _
-                         "and this name " & _
-                         CStr(IIf(booOK, "", "DOES NOT ")) & _
+            strReport &= vbNewLine &
+                         "The name of the character " & intIndex1 & " is " &
+                         enquote(strName) & " " &
+                         "and this name " &
+                         CStr(IIf(booOK, "", "DOES NOT ")) &
                          "converts back to the original character correctly"
             If Not booOK Then intErrorCount += 1
         Next intIndex1
@@ -7652,8 +7652,8 @@ Public Class utilities
     ' characters are not translated.
     '
     '
-    Public Shared Function translate(ByVal strInstring As String, _
-                                     ByVal strSourceCharacterSet As String, _
+    Public Shared Function translate(ByVal strInstring As String,
+                                     ByVal strSourceCharacterSet As String,
                                      ByVal strTargetCharacterSet As String) As String
         Dim intIndex1 As Integer
         Dim intIndex2 As Integer
@@ -8009,59 +8009,59 @@ Public Class utilities
     ' 06 24 03     Nilges       Added itemMaxWidth
     ' 02 21 04     Nilges       Added breakLongWords
     '
-    Public Shared Function utility(ByVal strUtilityName As String, _
+    Public Shared Function utility(ByVal strUtilityName As String,
                                    ByVal ParamArray objParameters() As Object) As Object
         Try
             Select Case UCase(Trim(strUtilityName))
                 Case "ABBREV"
                     Return (abbrev(CStr(objParameters(0)), CStr(objParameters(1))))
                 Case "ALIGN"
-                    Return (align(CStr(objParameters(0)), _
-                                  CInt(objParameters(1)), _
-                                  CType(objParameters(2), ENUalign), _
+                    Return (align(CStr(objParameters(0)),
+                                  CInt(objParameters(1)),
+                                  CType(objParameters(2), ENUalign),
                                   CStr(objParameters(3))))
                 Case "ALIGNCENTER"
-                    Return (align(CStr(objParameters(0)), _
-                                  CInt(objParameters(1)), _
-                                  ENUalign.alignCenter, _
+                    Return (align(CStr(objParameters(0)),
+                                  CInt(objParameters(1)),
+                                  ENUalign.alignCenter,
                                   CStr(objParameters(2))))
                 Case "ALIGNLEFT"
-                    Return (align(CStr(objParameters(0)), _
-                                  CInt(objParameters(1)), _
-                                  ENUalign.alignLeft, _
+                    Return (align(CStr(objParameters(0)),
+                                  CInt(objParameters(1)),
+                                  ENUalign.alignLeft,
                                   CStr(objParameters(2))))
                 Case "ALIGNRIGHT"
-                    Return (align(CStr(objParameters(0)), _
-                                  CInt(objParameters(1)), _
-                                  ENUalign.alignRight, _
+                    Return (align(CStr(objParameters(0)),
+                                  CInt(objParameters(1)),
+                                  ENUalign.alignRight,
                                   CStr(objParameters(2))))
                 Case "APPEND"
-                    Return (append(CStr(objParameters(0)), _
-                                   CStr(objParameters(1)), _
-                                   CStr(objParameters(2)), _
-                                   booToStart:=CBool(objParameters(3)), _
+                    Return (append(CStr(objParameters(0)),
+                                   CStr(objParameters(1)),
+                                   CStr(objParameters(2)),
+                                   booToStart:=CBool(objParameters(3)),
                                    intMaxLength:=CInt(objParameters(4))))
                 Case "APPENDPATH"
                     Return (appendPath(CStr(objParameters(0)), CStr(objParameters(1))))
                 Case "BASEN2LONG"
-                    Return (baseN2Long(CStr(objParameters(0)), _
-                                       CStr(objParameters(1)), _
-                                       CByte(objParameters(2)), _
+                    Return (baseN2Long(CStr(objParameters(0)),
+                                       CStr(objParameters(1)),
+                                       CByte(objParameters(2)),
                                        booIgnoreCase:=CBool(objParameters(3))))
                 Case "BREAKLONGWORDS"
-                    Return (breakLongWords(CStr(objParameters(0)), _
+                    Return (breakLongWords(CStr(objParameters(0)),
                                            CInt(objParameters(1))))
                 Case "DATATYPE"
                     Return (datatype(CStr(objParameters(0)), CStr(objParameters(1))))
                 Case "DEQUOTE"
                     Return (dequote(CStr(objParameters(0))))
                 Case "DISPLAY2STRING"
-                    Return (display2String(CStr(objParameters(0)), _
+                    Return (display2String(CStr(objParameters(0)),
                                            display2String_syntax2Enum_(CStr(objParameters(1)))))
                 Case "ELLIPSIS"
-                    Return (ellipsis(CStr(objParameters(0)), _
-                                    CInt(objParameters(1)), _
-                                    strEllipsis:=CStr(objParameters(2)), _
+                    Return (ellipsis(CStr(objParameters(0)),
+                                    CInt(objParameters(1)),
+                                    strEllipsis:=CStr(objParameters(2)),
                                     booLeftEllipsis:=CBool(objParameters(3))))
                 Case "FILE2STRING"
                     Return (file2String(CStr(objParameters(0))))
@@ -8070,29 +8070,29 @@ Public Class utilities
                 Case "FINDABBREV"
                     Return (findAbbrev(CStr(objParameters(0)), CStr(objParameters(1))))
                 Case "FINDITEM"
-                    Return (findItem(CStr(objParameters(0)), _
-                                    CStr(objParameters(1)), _
-                                    CStr(objParameters(2)), _
-                                    CBool(objParameters(3)), _
+                    Return (findItem(CStr(objParameters(0)),
+                                    CStr(objParameters(1)),
+                                    CStr(objParameters(2)),
+                                    CBool(objParameters(3)),
                                     booIgnoreCase:=CBool(objParameters(4))))
                 Case "FINDWORD"
-                    Return (findWord(CStr(objParameters(0)), _
-                                    CStr(objParameters(1)), _
+                    Return (findWord(CStr(objParameters(0)),
+                                    CStr(objParameters(1)),
                                     booIgnoreCase:=CBool(objParameters(4))))
                 Case "HISTOGRAM"
-                    Return (histogram(CDbl(objParameters(0)), _
-                                     CDbl(objParameters(1)), _
-                                     CDbl(objParameters(2)), _
-                                     CDbl(objParameters(2)), _
+                    Return (histogram(CDbl(objParameters(0)),
+                                     CDbl(objParameters(1)),
+                                     CDbl(objParameters(2)),
+                                     CDbl(objParameters(2)),
                                      CDbl(objParameters(2))))
                 Case "INDENT"
                     If IsNumeric(objParameters(1)) Then
-                        Return (indent(CStr(objParameters(0)), _
-                                       CInt(objParameters(1)), _
+                        Return (indent(CStr(objParameters(0)),
+                                       CInt(objParameters(1)),
                                        CStr(objParameters(2))))
                     Else
-                        Return (indent(CStr(objParameters(0)), _
-                                       CStr(objParameters(1)), _
+                        Return (indent(CStr(objParameters(0)),
+                                       CStr(objParameters(1)),
                                        CStr(objParameters(2))))
                     End If
                 Case "INT2DIGITS"
@@ -8100,36 +8100,36 @@ Public Class utilities
                 Case "ISQUOTED"
                     Return (isQuoted(CStr(objParameters(0))))
                 Case "ITEM"
-                    Return (item(CStr(objParameters(0)), _
-                                 CInt(objParameters(1)), _
-                                 CStr(objParameters(2)), _
+                    Return (item(CStr(objParameters(0)),
+                                 CInt(objParameters(1)),
+                                 CStr(objParameters(2)),
                                  CBool(objParameters(3))))
                 Case "ITEMMAXWIDTH"
-                    Return (itemMaxWidth(CStr(objParameters(0)), _
-                                         CStr(objParameters(1)), _
+                    Return (itemMaxWidth(CStr(objParameters(0)),
+                                         CStr(objParameters(1)),
                                          CBool(objParameters(2))))
                 Case "ITEMPHRASE"
-                    Return (itemPhrase(CStr(objParameters(0)), _
-                                      CInt(objParameters(1)), _
-                                      CInt(objParameters(2)), _
-                                      CStr(objParameters(3)), _
+                    Return (itemPhrase(CStr(objParameters(0)),
+                                      CInt(objParameters(1)),
+                                      CInt(objParameters(2)),
+                                      CStr(objParameters(3)),
                                       CBool(objParameters(4))))
                 Case "ITEMS"
                     Return (items(CStr(objParameters(0)), CStr(objParameters(1)), CBool(objParameters(2))))
                 Case "LONG2BASEN"
-                    Return (long2BaseN(CLng(objParameters(0)), _
-                                      CStr(objParameters(1)), _
+                    Return (long2BaseN(CLng(objParameters(0)),
+                                      CStr(objParameters(1)),
                                       CByte(objParameters(2))))
                 Case "PHRASE"
-                    Return (phrase(CStr(objParameters(0)), _
-                                  CInt(objParameters(1)), _
+                    Return (phrase(CStr(objParameters(0)),
+                                  CInt(objParameters(1)),
                                   CInt(objParameters(2))))
                 Case "RANGE2STRING"
                     If UCase(objParameters(0).GetType.ToString) = "SYSTEM.STRING" Then
-                        Return (range2String(CStr(objParameters(0)), _
+                        Return (range2String(CStr(objParameters(0)),
                                             CStr(objParameters(1))))
                     Else
-                        Return (range2String(CInt(objParameters(0)), _
+                        Return (range2String(CInt(objParameters(0)),
                                             CInt(objParameters(1))))
                     End If
                 Case "SHELL"
@@ -8143,45 +8143,45 @@ Public Class utilities
                         Case "NORMALFOCUS" : objAppWinStyle = AppWinStyle.NormalFocus
                         Case "NORMALNOFOCUS" : objAppWinStyle = AppWinStyle.NormalNoFocus
                         Case Else
-                            errorHandler("Invalid application focus name " & enquote(strFocus), _
-                                         Name, "utility", _
+                            errorHandler("Invalid application focus name " & enquote(strFocus),
+                                         Name, "utility",
                                          "Focus has been set to Hide")
                             objAppWinStyle = AppWinStyle.Hide
                     End Select
-                    Return (Shell(CStr(objParameters(0)), _
-                                  Style:=objAppWinStyle, _
+                    Return (Shell(CStr(objParameters(0)),
+                                  Style:=objAppWinStyle,
                                   Wait:=CBool(objParameters(1))))
                 Case "STRING2BOX"
                     Return (string2Box(CStr(objParameters(0)), CStr(objParameters(1)), CStr(objParameters(2))))
                 Case "STRING2DISPLAY"
-                    Return (string2Display(CStr(objParameters(0)), _
-                                           CStr(objParameters(1)), _
+                    Return (string2Display(CStr(objParameters(0)),
+                                           CStr(objParameters(1)),
                                            CObj(objParameters(2))))
                 Case "STRING2FILE"
-                    Return (string2File(CStr(objParameters(0)), _
+                    Return (string2File(CStr(objParameters(0)),
                                         CStr(objParameters(1))))
                 Case "TRANSLATE"
-                    Return (translate(CStr(objParameters(0)), _
-                                     CStr(objParameters(1)), _
+                    Return (translate(CStr(objParameters(0)),
+                                     CStr(objParameters(1)),
                                      CStr(objParameters(2))))
                 Case "VERIFY"
-                    Return (verify(CStr(objParameters(0)), _
-                                   CStr(objParameters(1)), _
-                                   CInt(objParameters(2)), _
+                    Return (verify(CStr(objParameters(0)),
+                                   CStr(objParameters(1)),
+                                   CInt(objParameters(2)),
                                    CBool(objParameters(3))))
                 Case "WORD"
-                    Return (word(CStr(objParameters(0)), _
+                    Return (word(CStr(objParameters(0)),
                                 CInt(objParameters(1))))
                 Case "WORDS"
                     Return (words(CStr(objParameters(0))))
                 Case Else
-                    errorHandler("Unsupported utility name " & enquote(strUtilityName), _
-                                 Name, "utility", _
+                    errorHandler("Unsupported utility name " & enquote(strUtilityName),
+                                 Name, "utility",
                                  "Returning Nothing")
             End Select
         Catch
-            errorHandler("Error in calling utility " & enquote(strUtilityName) & ": " & Err.Number & " " & Err.Description, _
-                         Name, "utility", _
+            errorHandler("Error in calling utility " & enquote(strUtilityName) & ": " & Err.Number & " " & Err.Description,
+                         Name, "utility",
                          "Returning Nothing")
         End Try
         Return (Nothing)
@@ -8204,7 +8204,7 @@ Public Class utilities
     '
     Public Shared Function vbCodeType(ByVal strInstring As String) As String
         If word(item(strInstring, 1, vbNewLine, False), 1) = "VERSION" _
-           AndAlso _
+           AndAlso
            word(item(strInstring, 2, vbNewLine, False), 1) = "BEGIN" Then
             Return ("VB6")
         End If
@@ -8226,36 +8226,36 @@ Public Class utilities
     ' 05 13 03     Nilges       1.  Replaced msgbox by error handling
     '
     '
-    Public Overloads Shared Function verify(ByVal strInstring As String, _
+    Public Overloads Shared Function verify(ByVal strInstring As String,
                                             ByVal strCharacterSet As String) _
            As Integer
-        verify = verify(strInstring, _
-                        strCharacterSet, _
-                        1, _
+        verify = verify(strInstring,
+                        strCharacterSet,
+                        1,
                         False)
     End Function
-    Public Overloads Shared Function verify(ByVal strInstring As String, _
-                                            ByVal strCharacterSet As String, _
+    Public Overloads Shared Function verify(ByVal strInstring As String,
+                                            ByVal strCharacterSet As String,
                                             ByVal intStartIndex As Integer) _
            As Integer
-        verify = verify(strInstring, _
-                        strCharacterSet, _
-                        intStartIndex, _
+        verify = verify(strInstring,
+                        strCharacterSet,
+                        intStartIndex,
                         False)
     End Function
-    Public Overloads Shared Function verify(ByVal strInstring As String, _
-                                            ByVal strCharacterSet As String, _
+    Public Overloads Shared Function verify(ByVal strInstring As String,
+                                            ByVal strCharacterSet As String,
                                             ByVal booMatch As Boolean) _
            As Integer
-        verify = verify(strInstring, _
-                        strCharacterSet, _
-                        1, _
+        verify = verify(strInstring,
+                        strCharacterSet,
+                        1,
                         booMatch)
     End Function
     ' --- Common overload
-    Public Overloads Shared Function verify(ByVal strInstring As String, _
-                                            ByVal strCharacterSet As String, _
-                                            ByVal intStartIndex As Integer, _
+    Public Overloads Shared Function verify(ByVal strInstring As String,
+                                            ByVal strCharacterSet As String,
+                                            ByVal intStartIndex As Integer,
                                             ByVal booMatch As Boolean) _
                 As Integer
         '
@@ -8270,9 +8270,9 @@ Public Class utilities
         Dim intVerify As Integer
         ' --- Error checking
         If intStartIndex <= 0 Then
-            errorHandler("Error in verify function: intStartIndex " & _
-                         intStartIndex & " is not valid", _
-                         Name, "verify", _
+            errorHandler("Error in verify function: intStartIndex " &
+                         intStartIndex & " is not valid",
+                         Name, "verify",
                          "Returning 0")
             Exit Function
         End If
@@ -8291,8 +8291,8 @@ Public Class utilities
                 ' character set should drive verification.
                 intIndex2 = Len(strInstring) + 1
                 For bytIndex1 = 1 To CByte(intCharacterSetLength)
-                    intIndex1 = InStr(intStartIndex, _
-                                      strInstring, _
+                    intIndex1 = InStr(intStartIndex,
+                                      strInstring,
                                       Mid(strCharacterSet, CInt(bytIndex1), 1))
                     If intIndex1 <> 0 Then
                         If intIndex1 < intIndex2 Then
@@ -8311,7 +8311,7 @@ Public Class utilities
             intVerify = CInt(IIf(intIndex1 <= Len(strInstring), intIndex1, 0))
         Else
             For intIndex1 = intStartIndex To Len(strInstring)
-                intIndex2 = InStr(strCharacterSet, _
+                intIndex2 = InStr(strCharacterSet,
                                 Mid$(strInstring, intIndex1, 1))
                 If intIndex2 = 0 Then
                     intVerify = intIndex1
@@ -8359,9 +8359,9 @@ Public Class utilities
     '
     Public Shared Function xy2Point(ByVal intX As Integer, ByVal intY As Integer) As Point
         If intX < 0 OrElse intY < 0 Then
-            errorHandler("Invalid X and/or y coordinates " & _
-                         intX & "," & intY, _
-                         Name, "xy2Point", _
+            errorHandler("Invalid X and/or y coordinates " &
+                         intX & "," & intY,
+                         Name, "xy2Point",
                          "These values must be zero or positive")
             Return (Nothing)
         End If
@@ -8369,8 +8369,8 @@ Public Class utilities
         Try
             objPoint = New Point(intX, intY)
         Catch
-            errorHandler("Cannot create Point", _
-                         Name, "xy2Point", _
+            errorHandler("Cannot create Point",
+                         Name, "xy2Point",
                          Err.Number & " " & Err.Description)
             Return (Nothing)
         End Try
@@ -8383,9 +8383,9 @@ Public Class utilities
     '
     Public Shared Function xy2Size(ByVal intX As Integer, ByVal intY As Integer) As Size
         If intX < 0 OrElse intY < 0 Then
-            errorHandler("Invalid X and/or y values " & _
-                         intX & "," & intY, _
-                         Name, "xy2Size", _
+            errorHandler("Invalid X and/or y values " &
+                         intX & "," & intY,
+                         Name, "xy2Size",
                          "These values must be zero or positive")
             Return (Nothing)
         End If
@@ -8393,8 +8393,8 @@ Public Class utilities
         Try
             objSize = New Size(intX, intY)
         Catch
-            errorHandler("Cannot create Size", _
-                         Name, "xy2Size", _
+            errorHandler("Cannot create Size",
+                         Name, "xy2Size",
                          Err.Number & " " & Err.Description)
             Return (Nothing)
         End Try

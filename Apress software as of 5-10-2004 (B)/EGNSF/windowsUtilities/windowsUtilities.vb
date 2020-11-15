@@ -1,4 +1,4 @@
-Option Strict
+'Option Strict
 
 Imports System
 Imports Microsoft.VisualBasic

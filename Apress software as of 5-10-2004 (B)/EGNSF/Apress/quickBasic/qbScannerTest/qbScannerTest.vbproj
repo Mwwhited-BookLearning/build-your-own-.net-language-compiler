@@ -22,10 +22,14 @@
     <OptionStrict>Off</OptionStrict>
     <RootNamespace>qbScannerTest</RootNamespace>
     <StartupObject>qbScannerTest.Form1</StartupObject>
-    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
-    <UpgradeBackupLocation>C:\Repos\learning\build-your-own-.net-language-compiler\Apress software as of 5-10-2004 (B)\EGNSF\Backup\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <OldToolsVersion>0.0</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -62,22 +66,6 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="collectionUtilities">
-      <Name>collectionUtilities</Name>
-      <HintPath>..\..\..\..\collectionUtilities\bin\collectionUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="qbScanner">
-      <Name>qbScanner</Name>
-      <HintPath>..\bin\qbScanner.dll</HintPath>
-    </Reference>
-    <Reference Include="qbToken">
-      <Name>qbToken</Name>
-      <HintPath>..\..\qbToken\bin\qbToken.dll</HintPath>
-    </Reference>
-    <Reference Include="qbTokenType">
-      <Name>qbTokenType</Name>
-      <HintPath>..\..\qbTokenType\bin\qbTokenType.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -92,18 +80,6 @@
     </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
-    </Reference>
-    <Reference Include="utilities">
-      <Name>utilities</Name>
-      <HintPath>..\..\..\..\utilities\bin\utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="windowsUtilities">
-      <Name>windowsUtilities</Name>
-      <HintPath>..\..\..\..\windowsUtilities\bin\windowsUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="zoom">
-      <Name>zoom</Name>
-      <HintPath>..\..\..\..\zoom\bin\zoom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +108,42 @@
     <EmbeddedResource Include="scanPrompt.resx">
       <DependentUpon>scanPrompt.vb</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\collectionUtilities\collectionUtilities.vbproj">
+      <Project>{f58d97bf-62d3-4d2b-9a3d-0b78a152ab43}</Project>
+      <Name>collectionUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\utilities\utilities.vbproj">
+      <Project>{a5fde5e9-2dd8-40d4-8183-46e0fee30f5f}</Project>
+      <Name>utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\windowsUtilities\windowsUtilities.vbproj">
+      <Project>{f09bab71-81b4-4b3c-88ed-49c4c7f41536}</Project>
+      <Name>windowsUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\zoom\zoom.vbproj">
+      <Project>{fd422408-5c05-4c62-97f9-a4e64ce8b4d5}</Project>
+      <Name>zoom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\qbScanner\qbScanner.vbproj">
+      <Project>{5228c714-293e-4d56-b084-3a4f1488787f}</Project>
+      <Name>qbScanner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\qbTokenType\qbTokenType.vbproj">
+      <Project>{82353f27-69b5-4dff-9ca0-2ed1362dd897}</Project>
+      <Name>qbTokenType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\qbToken\qbToken.vbproj">
+      <Project>{815cd2e6-9719-4b16-8e05-67b5ac507dd6}</Project>
+      <Name>qbToken</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>

@@ -22,9 +22,11 @@
     <OptionStrict>Off</OptionStrict>
     <RootNamespace>integerCalc</RootNamespace>
     <StartupObject>integerCalc.Form1</StartupObject>
-    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
-    <UpgradeBackupLocation>C:\Repos\learning\build-your-own-.net-language-compiler\Apress software as of 5-10-2004 (B)\EGNSF\Backup2\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <OldToolsVersion>0.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -62,10 +64,6 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="collectionUtilities">
-      <Name>collectionUtilities</Name>
-      <HintPath>..\..\collectionUtilities\bin\collectionUtilities.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -80,18 +78,6 @@
     </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
-    </Reference>
-    <Reference Include="utilities">
-      <Name>utilities</Name>
-      <HintPath>..\..\utilities\bin\utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="windowsUtilities">
-      <Name>windowsUtilities</Name>
-      <HintPath>..\..\windowsUtilities\bin\windowsUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="zoom">
-      <Name>zoom</Name>
-      <HintPath>..\..\zoom\bin\zoom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +101,24 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\collectionUtilities\collectionUtilities.vbproj">
+      <Project>{f58d97bf-62d3-4d2b-9a3d-0b78a152ab43}</Project>
+      <Name>collectionUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\utilities\utilities.vbproj">
+      <Project>{a5fde5e9-2dd8-40d4-8183-46e0fee30f5f}</Project>
+      <Name>utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\windowsUtilities\windowsUtilities.vbproj">
+      <Project>{f09bab71-81b4-4b3c-88ed-49c4c7f41536}</Project>
+      <Name>windowsUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\zoom\zoom.vbproj">
+      <Project>{fd422408-5c05-4c62-97f9-a4e64ce8b4d5}</Project>
+      <Name>zoom</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
