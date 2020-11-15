@@ -121,7 +121,7 @@ Me.ResumeLayout(False)
     ' ***** Scanner's data structure *****
     Private Enum ENUscannedType
         number
-        operator
+        [operator]
         leftParenthesis
         rightParenthesis
     End Enum    
@@ -370,7 +370,7 @@ Me.ResumeLayout(False)
             End Try            
             With usrScanned(UBound(usrScanned))
                 objValue = Nothing
-                .enuType = ENUscannedType.operator ' Assume
+                .enuType = ENUscannedType.[operator] ' Assume
                 .intStartIndex = intIndex1
                 .intLength = 1
                 Select Case Mid(strExpression, intIndex1, 1)
@@ -726,7 +726,7 @@ Me.ResumeLayout(False)
             Catch
                 strTokenWork = CStr(.objValue)                
             End Try             
-            If .enuType <> ENUscannedType.operator _
+            If .enuType <> ENUscannedType.[operator] _
                AndAlso _
                .enuType <> ENUscannedType.leftParenthesis _
                AndAlso _
