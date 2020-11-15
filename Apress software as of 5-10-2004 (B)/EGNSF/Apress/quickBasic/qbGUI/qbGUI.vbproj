@@ -1,211 +1,176 @@
-<VisualStudioProject>
-    <VisualBasic
-        ProjectType = "Local"
-        ProductVersion = "7.10.3077"
-        SchemaVersion = "2.0"
-        ProjectGuid = "{839B18D8-4754-4AEE-A731-6E18C15F0C6D}"
-    >
-        <Build>
-            <Settings
-                ApplicationIcon = ""
-                AssemblyKeyContainerName = ""
-                AssemblyName = "qbGUI"
-                AssemblyOriginatorKeyFile = ""
-                AssemblyOriginatorKeyMode = "None"
-                DefaultClientScript = "JScript"
-                DefaultHTMLPageLayout = "Grid"
-                DefaultTargetSchema = "IE50"
-                DelaySign = "false"
-                OutputType = "WinExe"
-                OptionCompare = "Binary"
-                OptionExplicit = "On"
-                OptionStrict = "Off"
-                RootNamespace = "qbGUI"
-                StartupObject = "qbGUI.Form1"
-            >
-                <Config
-                    Name = "Debug"
-                    BaseAddress = "285212672"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "QBGUI_EXTENSIONS = True, QBGUI_POPCHECK = False"
-                    DefineDebug = "true"
-                    DefineTrace = "true"
-                    DebugSymbols = "true"
-                    IncrementalBuild = "true"
-                    Optimize = "true"
-                    OutputPath = "bin\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "true"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "1"
-                />
-                <Config
-                    Name = "Release"
-                    BaseAddress = "285212672"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "QBGUI_POPCHECK = False"
-                    DefineDebug = "false"
-                    DefineTrace = "true"
-                    DebugSymbols = "false"
-                    IncrementalBuild = "false"
-                    Optimize = "true"
-                    OutputPath = "bin\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "1"
-                />
-            </Settings>
-            <References>
-                <Reference
-                    Name = "System"
-                    AssemblyName = "System"
-                />
-                <Reference
-                    Name = "System.Data"
-                    AssemblyName = "System.Data"
-                />
-                <Reference
-                    Name = "System.Drawing"
-                    AssemblyName = "System.Drawing"
-                />
-                <Reference
-                    Name = "System.Windows.Forms"
-                    AssemblyName = "System.Windows.Forms"
-                />
-                <Reference
-                    Name = "System.XML"
-                    AssemblyName = "System.Xml"
-                />
-                <Reference
-                    Name = "utilities"
-                    AssemblyName = "utilities"
-                    HintPath = "..\..\..\utilities\bin\utilities.dll"
-                />
-                <Reference
-                    Name = "windowsUtilities"
-                    AssemblyName = "windowsUtilities"
-                    HintPath = "..\..\..\windowsUtilities\bin\windowsUtilities.dll"
-                />
-                <Reference
-                    Name = "zoom"
-                    AssemblyName = "zoom"
-                    HintPath = "..\..\..\zoom\bin\zoom.dll"
-                />
-                <Reference
-                    Name = "qbPolish"
-                    AssemblyName = "qbPolish"
-                    HintPath = "..\qbPolish\bin\qbPolish.dll"
-                />
-                <Reference
-                    Name = "qbTokenType"
-                    AssemblyName = "qbTokenType"
-                    HintPath = "..\qbTokenType\bin\qbTokenType.dll"
-                />
-                <Reference
-                    Name = "qbToken"
-                    AssemblyName = "qbToken"
-                    HintPath = "..\qbToken\bin\qbToken.dll"
-                />
-                <Reference
-                    Name = "collectionUtilities"
-                    AssemblyName = "collectionUtilities"
-                    HintPath = "..\..\..\collectionUtilities\bin\collectionUtilities.dll"
-                />
-                <Reference
-                    Name = "qbScanner"
-                    AssemblyName = "qbScanner"
-                    HintPath = "..\qbScanner\bin\qbScanner.dll"
-                />
-                <Reference
-                    Name = "qbVariable"
-                    AssemblyName = "qbVariable"
-                    HintPath = "..\qbVariable\bin\qbVariable.dll"
-                />
-                <Reference
-                    Name = "qbVariableType"
-                    AssemblyName = "qbVariableType"
-                    HintPath = "..\qbVariableType\bin\qbVariableType.dll"
-                />
-                <Reference
-                    Name = "quickBasicEngine"
-                    Project = "{B947BE61-3610-4AC0-844F-C222F78CF7F1}"
-                    Package = "{F184B08F-C81C-45F6-A57F-5ABD9991F28F}"
-                />
-            </References>
-            <Imports>
-                <Import Namespace = "Microsoft.VisualBasic" />
-                <Import Namespace = "System" />
-                <Import Namespace = "System.Collections" />
-                <Import Namespace = "System.Data" />
-                <Import Namespace = "System.Drawing" />
-                <Import Namespace = "System.Diagnostics" />
-                <Import Namespace = "System.Windows.Forms" />
-            </Imports>
-        </Build>
-        <Files>
-            <Include>
-                <File
-                    RelPath = "AssemblyInfo.vb"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "eventLogFormat.vb"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "eventLogFormat.resx"
-                    DependentUpon = "eventLogFormat.vb"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "Form1.vb"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Form1.resx"
-                    DependentUpon = "Form1.vb"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "modifyVariable.vb"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "modifyVariable.resx"
-                    DependentUpon = "modifyVariable.vb"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "options.vb"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "options.resx"
-                    DependentUpon = "options.vb"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "readme.txt"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "run.vb"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "run.resx"
-                    DependentUpon = "run.vb"
-                    BuildAction = "EmbeddedResource"
-                />
-            </Include>
-        </Files>
-    </VisualBasic>
-</VisualStudioProject>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>7.10.3077</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{839B18D8-4754-4AEE-A731-6E18C15F0C6D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon />
+    <AssemblyKeyContainerName />
+    <AssemblyName>qbGUI</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>qbGUI</RootNamespace>
+    <StartupObject>qbGUI.Form1</StartupObject>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <UpgradeBackupLocation>C:\Repos\learning\build-your-own-.net-language-compiler\Apress software as of 5-10-2004 (B)\EGNSF\Backup\</UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>qbGUI.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <DefineConstants>QBGUI_EXTENSIONS = True, QBGUI_POPCHECK = False</DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>qbGUI.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <DefineConstants>QBGUI_POPCHECK = False</DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\quickBasicEngine\quickBasicEngine.vbproj">
+      <Name>quickBasicEngine</Name>
+      <Project>{B947BE61-3610-4AC0-844F-C222F78CF7F1}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <Reference Include="collectionUtilities">
+      <Name>collectionUtilities</Name>
+      <HintPath>..\..\..\collectionUtilities\bin\collectionUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="qbPolish">
+      <Name>qbPolish</Name>
+      <HintPath>..\qbPolish\bin\qbPolish.dll</HintPath>
+    </Reference>
+    <Reference Include="qbScanner">
+      <Name>qbScanner</Name>
+      <HintPath>..\qbScanner\bin\qbScanner.dll</HintPath>
+    </Reference>
+    <Reference Include="qbToken">
+      <Name>qbToken</Name>
+      <HintPath>..\qbToken\bin\qbToken.dll</HintPath>
+    </Reference>
+    <Reference Include="qbTokenType">
+      <Name>qbTokenType</Name>
+      <HintPath>..\qbTokenType\bin\qbTokenType.dll</HintPath>
+    </Reference>
+    <Reference Include="qbVariable">
+      <Name>qbVariable</Name>
+      <HintPath>..\qbVariable\bin\qbVariable.dll</HintPath>
+    </Reference>
+    <Reference Include="qbVariableType">
+      <Name>qbVariableType</Name>
+      <HintPath>..\qbVariableType\bin\qbVariableType.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="utilities">
+      <Name>utilities</Name>
+      <HintPath>..\..\..\utilities\bin\utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="windowsUtilities">
+      <Name>windowsUtilities</Name>
+      <HintPath>..\..\..\windowsUtilities\bin\windowsUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="zoom">
+      <Name>zoom</Name>
+      <HintPath>..\..\..\zoom\bin\zoom.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="eventLogFormat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modifyVariable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="options.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="run.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Content Include="readme.txt" />
+    <EmbeddedResource Include="eventLogFormat.resx">
+      <DependentUpon>eventLogFormat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modifyVariable.resx">
+      <DependentUpon>modifyVariable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="options.resx">
+      <DependentUpon>options.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="run.resx">
+      <DependentUpon>run.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

@@ -4,12 +4,12 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>7.10.3077</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{69BB02F6-1E9C-4015-B515-F7B2D5F443F9}</ProjectGuid>
+    <ProjectGuid>{B8F0A56B-C5EE-49A5-91B9-1E3E78C55D81}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon />
     <AssemblyKeyContainerName />
-    <AssemblyName>creditEvaluation</AssemblyName>
+    <AssemblyName>qbScannerTest</AssemblyName>
     <AssemblyOriginatorKeyFile />
     <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -20,25 +20,25 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionExplicit>On</OptionExplicit>
     <OptionStrict>Off</OptionStrict>
-    <RootNamespace>creditEvaluation</RootNamespace>
-    <StartupObject>creditEvaluation.Form1</StartupObject>
+    <RootNamespace>qbScannerTest</RootNamespace>
+    <StartupObject>qbScannerTest.Form1</StartupObject>
     <FileUpgradeFlags>40</FileUpgradeFlags>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
-    <UpgradeBackupLocation>C:\Repos\learning\build-your-own-.net-language-compiler\Apress software as of 5-10-2004 (B)\EGNSF\Backup2\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>C:\Repos\learning\build-your-own-.net-language-compiler\Apress software as of 5-10-2004 (B)\EGNSF\Backup\</UpgradeBackupLocation>
     <OldToolsVersion>0.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>creditEvaluation.xml</DocumentationFile>
+    <DocumentationFile>qbScannerTest.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile />
     <DefineConstants />
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <DebugSymbols>true</DebugSymbols>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>1</WarningLevel>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
@@ -46,7 +46,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>creditEvaluation.xml</DocumentationFile>
+    <DocumentationFile>qbScannerTest.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile />
     <DefineConstants />
@@ -64,23 +64,19 @@
   <ItemGroup>
     <Reference Include="collectionUtilities">
       <Name>collectionUtilities</Name>
-      <HintPath>..\..\collectionUtilities\bin\collectionUtilities.dll</HintPath>
+      <HintPath>..\..\..\..\collectionUtilities\bin\collectionUtilities.dll</HintPath>
     </Reference>
     <Reference Include="qbScanner">
       <Name>qbScanner</Name>
-      <HintPath>..\quickBasic\qbScanner\bin\qbScanner.dll</HintPath>
+      <HintPath>..\bin\qbScanner.dll</HintPath>
     </Reference>
     <Reference Include="qbToken">
       <Name>qbToken</Name>
-      <HintPath>..\quickBasic\qbToken\bin\qbToken.dll</HintPath>
+      <HintPath>..\..\qbToken\bin\qbToken.dll</HintPath>
     </Reference>
     <Reference Include="qbTokenType">
       <Name>qbTokenType</Name>
-      <HintPath>..\quickBasic\qbTokenType\bin\qbTokenType.dll</HintPath>
-    </Reference>
-    <Reference Include="quickBasicEngine">
-      <Name>quickBasicEngine</Name>
-      <HintPath>..\quickBasic\quickBasicEngine\bin\quickBasicEngine.dll</HintPath>
+      <HintPath>..\..\qbTokenType\bin\qbTokenType.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -99,11 +95,15 @@
     </Reference>
     <Reference Include="utilities">
       <Name>utilities</Name>
-      <HintPath>..\..\utilities\bin\utilities.dll</HintPath>
+      <HintPath>..\..\..\..\utilities\bin\utilities.dll</HintPath>
     </Reference>
     <Reference Include="windowsUtilities">
       <Name>windowsUtilities</Name>
-      <HintPath>..\..\windowsUtilities\bin\windowsUtilities.dll</HintPath>
+      <HintPath>..\..\..\..\windowsUtilities\bin\windowsUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="zoom">
+      <Name>zoom</Name>
+      <HintPath>..\..\..\..\zoom\bin\zoom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -122,18 +122,15 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="parseRule.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ruleEntry.vb">
+    <Compile Include="scanPrompt.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Content Include="readMe.txt" />
+    <Content Include="readme.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ruleEntry.resx">
-      <DependentUpon>ruleEntry.vb</DependentUpon>
+    <EmbeddedResource Include="scanPrompt.resx">
+      <DependentUpon>scanPrompt.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
